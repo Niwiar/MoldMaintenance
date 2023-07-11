@@ -1777,8 +1777,8 @@ function autoRefresh() {
 function notifyRefresh() {
   getNotify();
 }
-setInterval('autoRefresh()', 1000 * 60);
-setInterval('notifyRefresh()', 1000 * 60 * 30);
+// setInterval('autoRefresh()', 1000 * 60);
+// setInterval('notifyRefresh()', 1000 * 60 * 30);
 
 const getNotify = async () => {
   let LoginUser = await getProfile();
