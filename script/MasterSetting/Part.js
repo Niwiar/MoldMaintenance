@@ -1,5 +1,5 @@
 function filltbPart() {
-  tbPart = $("#tbPart").DataTable({
+  tbPart = $('#tbPart').DataTable({
     bDestroy: true,
     scrollCollapse: true,
     searching: true,
@@ -7,32 +7,32 @@ function filltbPart() {
     lengthChange: false,
     info: false,
     autoWidth: false,
-    dom: "rtp",
+    dom: 'rtp',
     ajax: {
-      url: "/part_master/list",
-      dataSrc: "",
+      url: '/part_master/list',
+      dataSrc: '',
     },
     columns: [
       {
-        data: "index",
+        data: 'index',
       },
       {
-        data: "PartSection",
+        data: 'PartSection',
       },
       {
-        data: "PartName",
+        data: 'PartName',
         render: function (data) {
           return `<div class="d-flex justify-content-start align-item-center"><span class="text-start">${data}</span></div>`;
         },
       },
       {
-        data: "PartNo",
+        data: 'PartNo',
         render: function (data) {
           return `<div class="d-flex justify-content-start align-item-center"><span class="text-start">${data}</span></div>`;
         },
       },
       {
-        width: "20%",
+        width: '20%',
         defaultContent:
           '<div class="btn-group btn-group-sm" role="group"><button class="btn btn-warning" id="EditPartBtn" type="button" data-bs-target="#modalPartDetail" data-bs-toggle="modal"><i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button class="btn btn-danger ms-1" id="DeletePartBtn" type="button"><i class="fa fa-remove m-1"></i>ลบ</button></div>',
       },
@@ -42,35 +42,35 @@ function filltbPart() {
 
 function dropDownPartSection() {
   $.ajax({
-    url: "/dropdown/section/ALL",
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    url: '/dropdown/section/ALL',
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
       // console.log(res)
       if (res.length == 0) {
-        $("#PartSection_ option, #PartSection_ optgroup").remove();
-        $("#PartSection_").append(
+        $('#PartSection_ option, #PartSection_ optgroup').remove();
+        $('#PartSection_').append(
           "<optgroup label='No data in database'></optgroup>"
         );
       } else {
-        $("#PartSection_ option, #PartSection_ optgroup").remove();
+        $('#PartSection_ option, #PartSection_ optgroup').remove();
         res.forEach((obj) => {
-          $("#PartSection_").append(
+          $('#PartSection_').append(
             "<option value='" +
-            obj.Section +
-            "'> " +
-            "<span>" +
-            obj.Section +
-            "</span>" +
-            "</option>"
+              obj.Section +
+              "'> " +
+              '<span>' +
+              obj.Section +
+              '</span>' +
+              '</option>'
           );
         });
       }
     },
     error: function (err) {
-      $("#PartSection_ option, #PartSection_ optgroup").remove();
-      $("#PartSection_").append(
+      $('#PartSection_ option, #PartSection_ optgroup').remove();
+      $('#PartSection_').append(
         "<optgroup label='No data in database'></optgroup>"
       );
     },
@@ -78,24 +78,23 @@ function dropDownPartSection() {
 }
 
 function searchtbPart() {
-  $("#tbPart thead tr")
+  $('#tbPart thead tr')
     .clone(true)
-    .addClass("filters")
-    .appendTo("#tbPart thead");
-  $("#tbPart .filters th").each(function (i) {
-    var title = $("#tbPart thead th").eq($(this).index()).text();
-    console.log(title);
-    if (title != "action") {
+    .addClass('filters')
+    .appendTo('#tbPart thead');
+  $('#tbPart .filters th').each(function (i) {
+    var title = $('#tbPart thead th').eq($(this).index()).text();
+    if (title != 'action') {
       $(this).html(
         '<input class="form-control p-1" type="text" placeholder="' +
-        title +
-        '" />'
+          title +
+          '" />'
       );
     } else {
       $(this).html(
         '<input class="form-control p-1" type="text" placeholder="' +
-        title +
-        '" disabled/>'
+          title +
+          '" disabled/>'
       );
     }
   });
@@ -103,8 +102,8 @@ function searchtbPart() {
     .columns()
     .eq(0)
     .each(function (colIdx) {
-      $("input", $("#tbPart .filters th")[colIdx]).on(
-        "keyup change",
+      $('input', $('#tbPart .filters th')[colIdx]).on(
+        'keyup change',
         function () {
           // console.log(tbPart.column(colIdx).search(this.value))
           // console.log('event', colIdx)
@@ -122,81 +121,81 @@ $(document).ready(() => {
   searchtbPart();
   dropDownPartSection();
 
-  $("#DownloadPartBtn").unbind();
-  $("#DownloadPartBtn").click(async (e) => {
+  $('#DownloadPartBtn').unbind();
+  $('#DownloadPartBtn').click(async (e) => {
     window.open(`/import_master/download/MasterPart`);
   });
   // Import Part
-  $("#ImportPartBtn").unbind();
-  $("#ImportPartBtn").click(async (e) => {
-    $("#ImportPartFile").click();
+  $('#ImportPartBtn').unbind();
+  $('#ImportPartBtn').click(async (e) => {
+    $('#ImportPartFile').click();
   });
-  $("#ImportPartFile").change(async (e) => {
+  $('#ImportPartFile').change(async (e) => {
     let ajaxUrl = `/import_master/MasterPart`;
-    let ExFile = $("#ImportPartFile").prop("files")[0];
+    let ExFile = $('#ImportPartFile').prop('files')[0];
     let Excel = new FormData();
-    Excel.append("masterfile", ExFile, "MasterPart");
+    Excel.append('masterfile', ExFile, 'MasterPart');
     AjaxImportExcel(ajaxUrl, tbPart, Excel);
-    $("#ImportPartFile").val('')
+    $('#ImportPartFile').val('');
   });
 
   // Add Part
-  $("#AddPartBtn").unbind();
-  $("#AddPartBtn").on("click", function () {
-    $("#modalPartDetail").modal("show");
-    $("#PartForm").trigger("reset");
-    $("#PartSection_").removeAttr("disabled");
+  $('#AddPartBtn').unbind();
+  $('#AddPartBtn').on('click', function () {
+    $('#modalPartDetail').modal('show');
+    $('#PartForm').trigger('reset');
+    $('#PartSection_').removeAttr('disabled');
 
-    $("#PartSubmitBtn").unbind();
-    $("#PartSubmitBtn").on("click", () => {
-      let PartSection = $.trim($("#PartSection_").val());
-      let PartName = $.trim($("#PartName_").val());
-      let PartNo = $.trim($("#PartNo_").val());
+    $('#PartSubmitBtn').unbind();
+    $('#PartSubmitBtn').on('click', () => {
+      let PartSection = $.trim($('#PartSection_').val());
+      let PartName = $.trim($('#PartName_').val());
+      let PartNo = $.trim($('#PartNo_').val());
       let Data = {
         PartSection: PartSection,
         PartName: PartName,
         PartNo: PartNo,
       };
-      AjaxPost(`part_master/add`, tbPart, Data, $("#modalPartDetail"));
+      AjaxPost(`part_master/add`, tbPart, Data, $('#modalPartDetail'));
     });
-    $(".close,.no").click(function () {
-      $("#modalPartDetail").modal("hide");
+    $('.close,.no').click(function () {
+      $('#modalPartDetail').modal('hide');
     });
   });
 
   // error //
   // Edit Part
-  $("#tbPart").unbind();
-  $("#tbPart").on("click", "#EditPartBtn", function () {
-    $("#modalPartDetail").modal("show");
-    $("#PartForm").trigger("reset");
+  $('#tbPart').unbind();
+  $('#tbPart').on('click', '#EditPartBtn', function () {
+    $('#modalPartDetail').modal('show');
+    $('#PartForm').trigger('reset');
     // $("#PartSection_").attr("disabled", "disabled");
-    let tr = $(this).closest("tr");
+    let tr = $(this).closest('tr');
     let { PartId, PartNo, PartName, PartSection } = tbPart.row(tr).data();
 
-    $("#PartName_").val(PartName);
-    $("#PartNo_").val(PartNo);
-    $("#PartSection_").val(PartSection);
+    $('#PartName_').val(PartName);
+    $('#PartNo_').val(PartNo);
+    $('#PartSection_').val(PartSection);
 
-    $("#PartSubmitBtn").unbind();
-    $("#PartSubmitBtn").on("click", () => {
+    $('#PartSubmitBtn').unbind();
+    $('#PartSubmitBtn').on('click', () => {
       let Data = {
         PartId: PartId,
-        PartSection: $("#PartSection_").val(),
-        PartName: $("#PartName_").val(),
-        PartNo: $("#PartNo_").val(),
+        PartSection: $('#PartSection_').val(),
+        PartName: $('#PartName_').val(),
+        PartNo: $('#PartNo_').val(),
       };
-      AjaxPut(`/part_master/edit`, tbPart, Data, $("#modalPartDetail"));
+      AjaxPut(`/part_master/edit`, tbPart, Data, $('#modalPartDetail'));
     });
-    $(".close,.no").click(function () {
-      $("#modalPartDetail").modal("hide");
+    $('.close,.no').click(function () {
+      $('#modalPartDetail').modal('hide');
     });
   });
 
   // Delete Part
-  $("#tbPart").on("click", "#DeletePartBtn", function () {
-    tr = $(this).closest("tr");
+  $('#tbPart').on('click', '#DeletePartBtn', function () {
+    tr = $(this).closest('tr');
     let { PartId } = tbPart.row(tr).data();
-    AjaxDelete("/part_master/delete/" + PartId, tbPart);
+    AjaxDelete('/part_master/delete/' + PartId, tbPart);
   });
 });

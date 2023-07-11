@@ -92,7 +92,6 @@ function DropdownDmUserSection() {
     contentType: 'application/json',
     dataType: 'json',
     success: function (res) {
-      console.log('DpSection: ', res[0]);
       if (res.length == 0) {
         $('#DmUserSection_ option, #DmUserSection_ optgroup').remove();
         $('#UserPosition_ option, #UserPosition_ optgroup').remove();

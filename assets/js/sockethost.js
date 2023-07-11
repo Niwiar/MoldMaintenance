@@ -1,2 +1,5 @@
-const hostname = window.location.hostname + ":3000";
-const socketHost = window.location.protocol + "//" + hostname;
+const hostname =
+  window.location.hostname + window.location.hostname.endsWith('.net')
+    ? ''
+    : ':3000';
+const socketHost = window.location.protocol + '//' + hostname;
