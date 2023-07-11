@@ -1,0 +1,33 @@
+.statusCard {
+  width: 185px;
+  height: 230px;
+  margin: 7px;
+  border-color: rgba(0,102,99,0.76);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.15);
+}
+
+.statusCard.StatusRun {
+  background-color: lime;
+}
+
+.statusCard b {
+  font-size: 1.25em;
+}
+
+.statusCard .card-header {
+  background-color: #006663;
+}
+
+.statusCard .card-body {
+  padding: 0px;
+}
+
+.statusCard i {
+  font-size: 0.75em;
+}
+
+.statusCard span {
+  display: block;
+  font-size: 0.75em;
+}
+

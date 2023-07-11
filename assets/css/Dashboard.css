@@ -1,0 +1,138 @@
+.normal {
+  background: #36b94a;
+}
+
+.danger {
+  background: #dc3545;
+}
+
+.icon {
+  width: 100px;
+}
+
+.iconbox {
+  height: 100px;
+  /*position: relative;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  width: 100%;
+}
+
+.btn-home {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  right: 1.5%;
+  bottom: 1.5%;
+  background: rgba(90, 92, 105, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.btn-home:hover {
+  background: #5a5c69;
+}
+
+.btn-home i {
+  font-size: 25px;
+  text-align: center;
+  color: #fff;
+}
+
+@media only screen and (min-width: 1910px) {
+  .menu {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+/* .btn-home {
+    display: none;
+  } */
+
+#setTargetOperationRate:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: rgb(206,212,218);
+  outline: 0;
+  box-shadow: none;
+}
+
+.bg-bb.box-hour {
+  padding: 2px;
+  height: 35px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.box-input {
+  height: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+}
+
+.box-input .form-control {
+  height: 29px;
+}
+
+.box-sum {
+  height: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.rb-0 {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.card-skill {
+  max-height: 120px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.collapse-title {
+  margin-left: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background: rgb(255,255,255);
+  font-size: 18px;
+}
+
+.collapse-body {
+  padding-left: 10px;
+  padding-top: 10px;
+  background: #ffffff;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: 5px solid rgb(5,85,162);
+  border-top-width: 0px;
+  border-top-style: none;
+}
+
+.nav-tabs.bg-bb {
+  /*border-top-left-radius: 8px;*/
+  /*border-top-right-radius: 8px;*/
+  border-bottom-width: 0px;
+  /*padding-left: 5px;*/
+}
+
+.imgInTable {
+  width: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.border-6 {
+  border-radius: 6px;
+}
+

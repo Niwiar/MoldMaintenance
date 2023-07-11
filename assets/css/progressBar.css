@@ -1,0 +1,43 @@
+.progress-time {
+  position: relative;
+  height: 18px;
+}
+
+.progress-time-front {
+  border-width: 3px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 1.5px;
+}
+
+.progress-time-be {
+  border-width: 3px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 1.5px;
+  border-left-width: 1.5px;
+}
+
+.progress-time-back {
+  border-width: 3px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-left-width: 1.5px;
+}
+
+.progress-time span.front {
+  width: 45px;
+  position: absolute;
+  top: 21px;
+  left: -23px;
+  font-size: 13px;
+}
+
+.progress-time span.back {
+  width: 45px;
+  position: absolute;
+  top: 21px;
+  right: -24px;
+  font-size: 13px;
+}
+

@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>HLT-Setting</title>
+  <!-- <title>HL-RepairOrder</title> -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo&amp;display=swap" />
+  <link rel="stylesheet" href="css/Browallia%20New.css" />
+  <link rel="stylesheet" href="css/JasmineUPC.css" />
+  <link rel="stylesheet" href="fonts/fontPrompt.css" />
+  <link rel="stylesheet" href="css/Tahoma.css" />
+  <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="fonts/font-awesome.min.css" />
+  <link rel="stylesheet" href="fonts/fontawesome5-overrides.min.css" />
+  <link rel="stylesheet" href="css/Dashboard.css" />
+  <link rel="stylesheet" href="css/datatables.min.css" />
+  <link rel="stylesheet" href="css/InputDisable.css" />
+  <link rel="stylesheet" href="css/Login-Form-Basic-icons.css" />
+  <link rel="stylesheet" href="css/Ludens---Custom-Code-Google-Map-just-the-iframe.css" />
+  <link rel="stylesheet" href="css/PageHeader.css" />
+  <link rel="stylesheet" href="css/progressBar.css" />
+  <link rel="stylesheet" href="css/ScrollBar.css" />
+  <link rel="stylesheet" href="css/Stats-icons.css" />
+  <link rel="stylesheet" href="css/StatusCard.css" />
+  <link rel="stylesheet" href="css/Style.css" />
+  <link rel="stylesheet" href="css/Theme.css" />
+</head>
+
+<body id="page-top">
+  <div id="contentWrapper">
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalMoldDetail">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="dieTitle">ข้อมูลแม่พิมพ์</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="MoldForm">
+              <div>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Cavity :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control \" type="number" id="Cavity_" />
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Section :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <select class="form-select" id="MoldSection_">
+                      <option value="PO" selected="">PO</option>
+                      <option value="DC">DC</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Mold Name :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control" type="text" id="MoldName_" />
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Control No :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control" type="text" id="MoldControl_" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Other :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control \" type="number" id="OtherPlan_" />
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Cleaning :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control \" type="number" id="CleaningPlan_" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Preventive :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control \" type="number" id="PreventivePlan_" />
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">Shot Life :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control \" type="number" id="LifeShot_" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">% Danger :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control \" type="number" id="Danger_" />
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <label class="col-form-label d-flex justify-content-start align-items-center">% Warning :</label>
+                  </div>
+                  <div class="col-md-3 col-sm-6">
+                    <input class="form-control \" type="number" id="Warning_" />
+                  </div>
+                </div>
+
+                <div class="row pt-2 d-none" id="MoldEditPartMc" style="border-top: 2px dashed rgb(211, 211, 211)">
+                  <div class="col-12 col-lg-6">
+                    <h4>รายการชิ้นงาน</h4>
+                    <div class="row my-2">
+                      <div class="col">
+                        <select class="form-select" id="MoldPartSelect">
+                          <option value="12" selected="">Part A</option>
+                          <option value="13">Part B</option>
+                          <option value="14">Part C</option>
+                        </select>
+                      </div>
+                      <div class="col-auto">
+                        <button class="btn btn-dark float-end" id="AddMoldPartBtn" type="button">
+                          เพิ่มชิ้นงาน
+                        </button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="table-responsive text-center">
+                          <table class="table table-sm" id="tbDataPart">
+                            <thead>
+                              <tr>
+                                <th>INDEX</th>
+                                <th>Part name</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>Part A</td>
+                                <td>
+                                  <button class="btn btn-danger btn-sm ms-1" id="DelMoldPartBtn" type="button"
+                                    data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                    <i class="fa fa-remove m-1"></i>ลบ
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>Part B</td>
+                                <td>
+                                  <button class="btn btn-danger btn-sm ms-1" id="DelMoldPartBtn" type="button"
+                                    data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                    <i class="fa fa-remove m-1"></i>ลบ
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <h4>รายการเครื่องจักร</h4>
+                    <div class="row my-2">
+                      <div class="col">
+                        <select class="form-select" id="MoldMcSelect">
+                          <option value="12" selected="">MC 1</option>
+                          <option value="13">MC 2</option>
+                          <option value="14">MC 3</option>
+                        </select>
+                      </div>
+                      <div class="col-auto">
+                        <button class="btn btn-dark float-end" id="AddMoldMcBtn" type="button">
+                          เพิ่มเครื่องจักร
+                        </button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="table-responsive text-center">
+                          <table class="table table-sm" id="tbDataMc">
+                            <thead>
+                              <tr>
+                                <th>INDEX</th>
+                                <th>M/C</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>1</td>
+                                <td>MC 1</td>
+                                <td>
+                                  <button class="btn btn-danger btn-sm ms-1" id="DelMoldMcBtn" type="button"
+                                    data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                    <i class="fa fa-remove m-1"></i>ลบ
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>2</td>
+                                <td>MC 2</td>
+                                <td>
+                                  <button class="btn btn-danger btn-sm ms-1" id="DelMoldMcBtn" type="button"
+                                    data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                    <i class="fa fa-remove m-1"></i>ลบ
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="MoldSubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalPartDetail">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="dieTitle-4">ข้อมูลชิ้นงาน</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="PartForm">
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Section :</label>
+                </div>
+                <div class="col">
+                  <!-- <input class="form-control" type="text" id="PartSection_"> -->
+                  <select class="form-select" id="PartSection_">
+                    <option value="PO" selected="">PO</option>
+                    <option value="DC">DC</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Part Name :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="PartName_" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Part No :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="PartNo_" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="PartSubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalMcDetail">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="dieTitle-5">ข้อมูลเครื่องจักร</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="McForm">
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Section :</label>
+                </div>
+                <div class="col">
+                  <select class="form-select" id="McSection_">
+                    <option value="PO" selected="">PO</option>
+                    <option value="DC">DC</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">M/C :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="McName_" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="McSubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalProblemDetail">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="dieTitle-1">ข้อมูลปัญหา</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="PartForm111">
+              <div class="row">
+                <div class="col-5">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">หมายเลขปัญหา/ตัวอักษร
+                    :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="ProblemNo_" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">ปัญหา :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="Problem_" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="ProblemSubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalCheckDetail">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="dieTitle-2">ข้อมูลการตรวจเช็ค</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="CheckForm">
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">หมายเลข/ตัวอักษร :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="CheckNo_" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">รายการตรวจเช็ค :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="Check_" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="CheckSubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalPreventiveDetail">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="dieTitle-3">ข้อมูลการตรวจเช็ค</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="PreventiveForm">
+              <div class="row mb-2 pb-2" style="border-bottom: 2px solid rgb(213, 213, 213)">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">หัวข้อการตรวจเช็ค
+                    :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="CheckTopic_" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <input class="form-control" id="CheckPreventListNo_" type="number" placeholder="หมายเลข..." />
+                </div>
+                <div class="col">
+                  <input class="form-control" id="CheckPreventList_" type="text" placeholder="รายการ..." />
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-info float-end" id="AddCheckListPreventBtn" type="button">
+                    <i class="fa fa-plus n-1"></i>เพิ่มรายการ
+                  </button>
+                </div>
+              </div>
+              <div class="table-responsive text-center box-shadow mt-3">
+                <table class="table table-sm" id="tbCheckListPrevent">
+                  <thead>
+                    <tr>
+                      <th>no</th>
+                      <th>checklist</th>
+                      <th>action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Pin มีรอยขีดข่วนแตกหักเสียหายหรือไม่</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                          <div class="dropstart btn-group-sm" role="group">
+                            <button class="btn btn-warning" id="EditCheckListPreventBtn" aria-expanded="false"
+                              data-bs-toggle="dropdown" type="button">
+                              <i class="fa fa-pencil-square-o m-1"></i>แก้ไข
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end p-1">
+                              <form id="CheckListPreventForm">
+                                <input class="form-control" type="number" id="CheckPassword_Req"
+                                  placeholder="หมายเลข..." />
+                                <input class="form-control" type="text" id="CheckPassword_Req"
+                                  placeholder="รายการ..." />
+                                <div class="btn-group btn-group-sm mt-3" role="group">
+                                  <button class="btn btn-info btn-sm float-end" id="ConfirmCheckListPreventBtn"
+                                    type="button">
+                                    ยืนยัน
+                                  </button>
+                                  <button class="btn btn-danger btn-sm float-end" id="CancelCheckListPreventBtn"
+                                    type="button">
+                                    ยกเลิก
+                                  </button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                          <button class="btn btn-danger ms-1" id="DelCheckListPreventBtn" type="button"
+                            data-bs-target="#modalDelete" data-bs-toggle="modal">
+                            <i class="fa fa-remove m-1" id="DelProbBtn-18"></i>ลบ
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Center Pin มีรอยขีดข่วนแตกหักเสียหายหรือไม่</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button class="btn btn-warning" id="EditProbBtn-14" type="button"
+                            data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                            <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button class="btn btn-danger ms-1"
+                            id="DelProbBtn-19" type="button" data-bs-target="#modalDelete" data-bs-toggle="modal">
+                            <i class="fa fa-remove m-1"></i>ลบ
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>
+                        ชิ้นส่วนที่มีลักษณะไม่แข็งแรงที่มีการ Touch กับ Slide
+                        มีรอยแตกร้าวหรือไม่
+                      </td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button class="btn btn-warning" id="EditProbBtn-15" type="button"
+                            data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                            <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button class="btn btn-danger ms-1"
+                            id="DelProbBtn-20" type="button" data-bs-target="#modalDelete" data-bs-toggle="modal">
+                            <i class="fa fa-remove m-1"></i>ลบ
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Parting Line มีรอยขีดข่วน แตกหัก เสียหายหรือไม่</td>
+                      <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                          <button class="btn btn-warning" id="EditProbBtn-16" type="button"
+                            data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                            <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button class="btn btn-danger ms-1"
+                            id="DelProbBtn-21" type="button" data-bs-target="#modalDelete" data-bs-toggle="modal">
+                            <i class="fa fa-remove m-1"></i>ลบ
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="CheckTopicSubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalUserDetail">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">ข้อมูลผู้ใช้งาน</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="MfgUserForm">
+              <div class="row">
+                <div class="col">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Section :</label>
+                </div>
+                <div class="col">
+                  <select class="form-select" id="UserSection_"></select>
+                  <select class="form-select" id="DmUserSection_"></select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Position :</label>
+                </div>
+                <div class="col">
+                  <select class="form-select" id="UserPosition_">
+                    <option value="LEADER" selected="">LEADER</option>
+                    <option value="WORKER">WORKER</option>
+                    <option value="TECHNICIAN">TECHNICIAN</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Name :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="Name_" placeholder="name" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Email :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="email" id="Email_" placeholder="example@email.com" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Username :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="Username_" placeholder="username" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Password :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="Password_" placeholder="password" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="UserSubmit" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalPositionDetail">
+      <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">ข้อมูลตำแหน่ง</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="PositionForm">
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Position Name :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="PositionName_" />
+                </div>
+              </div>
+            </form>
+            <h4>การอนุญาต</h4>
+            <div class="table-responsive text-center permission-table">
+              <table class="table table-sm table-bordered">
+                <thead>
+                  <tr>
+                    <th>Module</th>
+                    <th>option</th>
+                    <th>action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="section-all">
+                    <td rowspan="3">Repair Request</td>
+                    <td>สร้างคำสั่งซ่อม (Create Request)</td>
+                    <td class="d-flex justify-content-evenly align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckCreReq-Yes" name="CreateRequest" /><label
+                          class="form-check-label" for="CheckCreReq-Yes">YES</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckCreReq-No" name="CreateRequest" /><label
+                          class="form-check-label" for="CheckCreReq-No">NO</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-all">
+                    <td>ตรวจสอบงานซ่อม (Check Request)</td>
+                    <td class="d-flex justify-content-evenly align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckCheReq-Yes" name="CheckRequest" /><label
+                          class="form-check-label" for="CheckCheReq-Yes">YES</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckCheReq-No" name="CheckRequest" /><label
+                          class="form-check-label" for="CheckCheReq-No">NO</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-all">
+                    <td>อนุมัติงานซ่อม (Approve Request)</td>
+                    <td class="d-flex justify-content-evenly align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckAppReq-Yes" name="ApproveRequest" /><label
+                          class="form-check-label" for="CheckAppReq-Yes">YES</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckAppReq-No" name="ApproveRequest" /><label
+                          class="form-check-label" for="CheckAppReq-No">NO</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-dm">
+                    <td rowspan="1">Performance</td>
+                    <td>การเข้าถึงข้อมูล (Data Access)</td>
+                    <td class="d-flex flex-column justify-content-evenly align-items-center flex-lg-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckPerfoDataAcc-No"
+                          name="PerformanceDataAccess" /><label class="form-check-label" for="CheckPerfoDataAcc-No">NO
+                          ACCESS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckPerfoDataAcc-Only"
+                          name="PerformanceDataAccess" /><label class="form-check-label"
+                          for="CheckPerfoDataAcc-Only">VIEW ONLY</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckPerfoDataAcc-View"
+                          name="PerformanceDataAccess" /><label class="form-check-label"
+                          for="CheckPerfoDataAcc-View">VIEW &amp; EDIT</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-all">
+                    <td>Report</td>
+                    <td>การเข้าถึงข้อมูล (Data Access)</td>
+                    <td class="d-flex flex-column justify-content-evenly align-items-center flex-lg-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckReDataAcc-No"
+                          name="ReportDataAccess" /><label class="form-check-label" for="CheckReDataAcc-No">NO
+                          ACCESS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckReDataAcc-Only"
+                          name="ReportDataAccess" /><label class="form-check-label" for="CheckReDataAcc-Only">VIEW
+                          ONLY</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckReDataAcc-View"
+                          name="ReportDataAccess" /><label class="form-check-label" for="CheckReDataAcc-View">VIEW &amp;
+                          EDIT</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-dm">
+                    <td rowspan="2">Master Setting</td>
+                    <td>
+                      ทะเบียนแม่พิมพ์และชิ้นงาน<br />(Master Mold, Part &amp;
+                      Machine)
+                    </td>
+                    <td class="d-flex flex-column justify-content-evenly align-items-center flex-lg-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckMMaPM-No" name="MMaPM" /><label
+                          class="form-check-label" for="CheckMMaPM-No">NO ACCESS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckMMaPM-Only" name="MMaPM" /><label
+                          class="form-check-label" for="CheckMMaPM-Only">VIEW ONLY</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckMMaPM-View" name="MMaPM" /><label
+                          class="form-check-label" for="CheckMMaPM-View">VIEW &amp; EDIT</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-dm">
+                    <td>
+                      ทะเบียนปัญหาและการตรวจสอบแม่พิมพ์<br />(Master Mold
+                      Problem &amp; Checklist)
+                    </td>
+                    <td class="d-flex flex-column justify-content-evenly align-items-center flex-lg-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckMMPaC-No" name="MMPaC" /><label
+                          class="form-check-label" for="CheckMMPaC-No">NO ACCESS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckMMPaC-Only" name="MMPaC" /><label
+                          class="form-check-label" for="CheckMMPaC-Only">VIEW ONLY</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckMMPaC-View" name="MMPaC" /><label
+                          class="form-check-label" for="CheckMMPaC-View">VIEW &amp; EDIT</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-dm">
+                    <td rowspan="3">User Setting</td>
+                    <td>ทะเบียนผู้ใช้งาน (User Setting)</td>
+                    <td class="d-flex flex-column justify-content-evenly align-items-center flex-lg-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckUS-No" name="UserSetting" /><label
+                          class="form-check-label" for="CheckUS-No">NO ACCESS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckUS-Only" name="UserSetting" /><label
+                          class="form-check-label" for="CheckUS-Only">VIEW ONLY</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckUS-View" name="UserSetting" /><label
+                          class="form-check-label" for="CheckUS-View">VIEW &amp; EDIT</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-dm">
+                    <td>ทะเบียนผู้ซ่อม (Die Making User Setting)</td>
+                    <td class="d-flex flex-column justify-content-evenly align-items-center flex-lg-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckDmUS-No"
+                          name="DieMakingUserSetting" /><label class="form-check-label" for="CheckDmUS-No">NO
+                          ACCESS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckDmUS-Only"
+                          name="DieMakingUserSetting" /><label class="form-check-label" for="CheckDmUS-Only">VIEW
+                          ONLY</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckDmUS-View"
+                          name="DieMakingUserSetting" /><label class="form-check-label" for="formCheck-23">VIEW &amp;
+                          EDIT</label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="section-dm">
+                    <td>
+                      ทะเบียนแผนก, ตำแหน่ง และสิทธิ์การเข้าถึง<br />(Section,
+                      Position &amp; Permission Setting)
+                    </td>
+                    <td class="d-flex flex-column justify-content-evenly align-items-center flex-lg-row">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckSaPaPS-No" name="SaPaPS" /><label
+                          class="form-check-label" for="CheckSaPaPS-No">NO ACCESS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckSaPaPS-Only" name="SaPaPS" /><label
+                          class="form-check-label" for="CheckSaPaPS-Only">VIEW ONLY</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="CheckSaPaPS-View" name="SaPaPS" /><label
+                          class="form-check-label" for="CheckSaPaPS-View">VIEW &amp; EDIT</label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="PositionSubmit" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalSectionDetail">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">ข้อมูลแผนก</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="PerSectionForm">
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Section No :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="PerSectionNo_" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Section Name :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="PerSectionName_" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label class="col-form-label d-flex justify-content-end align-items-center">Password :</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" id="PerSectionPass_" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="PerSectionSubmit" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalDelete">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Confirm Delete</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure to delete?</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary no" type="button" data-bs-dismiss="modal">
+              No</button><button class="btn btn-danger" id="confirmDel" type="button">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid m-0 p-0">
+      <div class="row m-0 p-0" id="header">
+        <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center px-0 py-2" id="header-logo">
+          <a href="/">
+            <div class="d-flex justify-content-center align-items-center">
+              <img id="logo" src="img/logo.png" />
+            </div>
+          </a>
+        </div>
+        <div class="col p-0">
+          <nav class="navbar navbar-light navbar-expand d-flex nav-bar-top" style="background: var(--bs-card-bg)">
+            <div class="container-fluid">
+              <ul class="navbar-nav d-flex flex-shrink-0 justify-content-center align-items-center">
+                <li class="nav-item">
+                  <div>
+                    <h3 id="currentDate">16/10/2022</h3>
+                    <p id="currentDay" class="m-0">Monday</p>
+                  </div>
+                </li>
+                <li class="nav-item border-right"></li>
+                <li class="nav-item">
+                  <div>
+                    <h3 id="currentTime">13:15:57</h3>
+                    <p class="m-0">Current Time</p>
+                  </div>
+                </li>
+                <li class="nav-item border-right"></li>
+                <li class="nav-item">
+                  <h2 class="d-none d-lg-block fw-bold">Mold Maintenance System</h2>
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col-12text-end">
+                  <h5 id="Username"></h5>
+                  <p class="m-0">
+                    <a href="/user/logout">Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row m-0">
+        <div class="col-12 col-lg-2 p-0" id="sidebar">
+          <ul class="nav nav-justified d-flex flex-row justify-content-center align-items-center flex-lg-column">
+            <li class="nav-item m-0" id="MoldMaintenanceNav">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/"><i
+                  class="fa fa-calendar-check-o"></i>
+                <p class="m-0">Mold Maintenance List</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="MoldPmNav"><a
+                class="nav-link d-flex flex-column justify-content-center align-items-center" href="/moldpm"><i
+                  class="fa fa-list-alt"></i>
+                <p class="m-0">Mold Actual Control</p>
+              </a></li>
+            <li class="nav-item m-0" id="PerformanceNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/performance"><i
+                  class="fas fa-chart-line"></i>
+                <p class="m-0">Performance</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="ReportNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/report_dm"><i
+                  class="far fa-file-alt"></i>
+                <p class="m-0">Report</p>
+              </a>
+            </li>
+            <li class="nav-item focus m-0" id="SettingNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/setting"><i
+                  class="fa fa-gear"></i>
+                <p class="m-0">Setting</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-10 p-0">
+          <div id="content" class="py-3" style="min-height: 90vh">
+            <div class="container-fluid">
+              <div class="row mb-2 mt-0">
+                <div class="col text-left mx-auto">
+                  <h5 class="fw-bold">Setting</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="master-tab">
+                    <ul class="nav nav-tabs mb-0" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link active" role="tab" data-bs-toggle="tab" href="#mold-master">ชิ้นงาน</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" role="tab" data-bs-toggle="tab" href="#user-master">บัญชีผู้ใช้</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content m-0">
+                      <!-- Mold -->
+                      <div class="tab-pane active" role="tabpanel" id="mold-master">
+                        <div class="d-flex flex-column  tabs">
+                          <ul class="nav nav-tabs d-flex flex-row  bg-bb mt-0" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" role="tab" data-bs-toggle="tab"
+                                href="#mold-tab">ทะเบียนแม่พิมพ์</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" role="tab" data-bs-toggle="tab" href="#part-tab">ทะเบียนชิ้นงาน</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" role="tab" data-bs-toggle="tab" href="#mc-tab">ทะเบียนเครื่องจักร</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" role="tab" data-bs-toggle="tab" href="#problem-tab">ทะเบียนปัญหา</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" role="tab" data-bs-toggle="tab"
+                                href="#check-tab">ทะเบียนการตรวจสอบ</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content">
+                            <!--  -->
+                            <div class="tab-pane fade show active p-3" role="tabpanel" id="mold-tab">
+                              <div>
+                                <header class="d-flex justify-content-between align-items-center px-3 py-1">
+                                  <h3 class="fw-light">รายการแม่พิมพ์</h3>
+                                  <div>
+
+                                    <button
+                                      class="btn btn-primary btn-sm me-2 d-flex float-start justify-content-center align-items-center"
+                                      id="DownloadMoldBtn" type="button" style="color: rgb(255, 255, 255)">
+                                      ดาวน์โหลดข้อมูลแม่พิมพ์
+                                    </button>
+                                    <input class="form-control form-control-sm d-none" type="file" id="ImportMoldFile"
+                                      style="width: 300px"
+                                      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                                    <button
+                                      class="btn btn-dark btn-sm me-2 d-flex float-start justify-content-center align-items-center"
+                                      id="ImportMoldBtn" type="button" style="color: rgb(255, 255, 255)">
+                                      อัปโหลดข้อมูลแม่พิมพ์
+                                    </button>
+                                    <button
+                                      class="btn btn-info btn-sm d-flex float-end justify-content-center align-items-center"
+                                      id="AddMoldBtn" type="button" data-bs-toggle="modal"
+                                      data-bs-target="#modalMoldDetail" style="color: rgb(255, 255, 255)">
+                                      <i class="fa fa-plus"></i>&nbsp;เพิ่มแม่พิมพ์
+                                    </button>
+                                  </div>
+
+                                </header>
+                                <div class="table-responsive text-center box-shadow mt-3">
+                                  <table class="table table-sm" id="tbMold">
+                                    <thead>
+                                      <tr>
+                                        <th>Index</th>
+                                        <th>section</th>
+                                        <th>mold Name</th>
+                                        <th>mold control no</th>
+                                        <th>cavity</th>
+                                        <th>other</th>
+                                        <th>cleaning</th>
+                                        <th>preventive</th>
+                                        <th>shot life</th>
+                                        <th>% danger</th>
+                                        <th>% warning</th>
+                                        <th>action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- -->
+                            <div class="tab-pane fade p-3" role="tabpanel" id="part-tab">
+                              <div>
+                                <header class="d-flex justify-content-between align-items-center px-3 py-1">
+                                  <h3 class="fw-light">รายการชิ้นงาน</h3>
+                                  <div>
+                                    <input class="form-control form-control-sm d-none" type="file" id="ImportPartFile"
+                                      style="width: 300px"
+                                      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                                    <button
+                                      class="btn btn-primary btn-sm me-2 d-flex float-start justify-content-center align-items-center"
+                                      id="DownloadPartBtn" type="button" style="color: rgb(255, 255, 255)">
+                                      ดาวน์โหลดข้อมูลชิ้นงาน
+                                    </button>
+                                    <button
+                                      class="btn btn-dark btn-sm me-2 d-flex float-start justify-content-center align-items-center"
+                                      id="ImportPartBtn" type="button" style="color: rgb(255, 255, 255)">
+                                      อัปโหลดข้อมูลชิ้นงาน
+                                    </button>
+                                    <button
+                                      class="btn btn-info btn-sm d-flex float-end justify-content-center align-items-center"
+                                      id="AddPartBtn" type="button" data-bs-toggle="modal"
+                                      data-bs-target="#modalPartDetail" style="color: rgb(255, 255, 255)">
+                                      <i class="fa fa-plus"></i>&nbsp;เพิ่มชิ้นงาน
+                                    </button>
+                                  </div>
+                                </header>
+                                <div class="table-responsive text-center box-shadow mt-3">
+                                  <table class="table table-sm" id="tbPart">
+                                    <thead>
+                                      <tr>
+                                        <th>index</th>
+                                        <th>SECTION</th>
+                                        <th>part name</th>
+                                        <th>part no</th>
+                                        <th>action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <!--  -->
+                            <div class="tab-pane fade p-3" role="tabpanel" id="mc-tab">
+                              <div>
+                                <header class="d-flex justify-content-between align-items-center px-3 py-1">
+                                  <h3 class="fw-light">รายการเครื่องจักร</h3>
+                                  <div>
+                                    <input class="form-control form-control-sm d-none" type="file" id="ImportMcFile"
+                                      style="width: 300px"
+                                      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                                    <button
+                                      class="btn btn-primary btn-sm me-2 d-flex float-start justify-content-center align-items-center"
+                                      id="DownloadMcBtn" type="button" style="color: rgb(255, 255, 255)">
+                                      ดาวน์โหลดข้อมูลเครื่องจักร
+                                    </button>
+                                    <button
+                                      class="btn btn-dark btn-sm me-2 d-flex float-start justify-content-center align-items-center"
+                                      id="ImportMcBtn" type="button" style="color: rgb(255, 255, 255)">
+                                      อัปโหลดข้อมูลเครื่องจักร
+                                    </button>
+                                    <button
+                                      class="btn btn-info btn-sm d-flex float-end justify-content-center align-items-center"
+                                      id="AddMcBtn" type="button" data-bs-toggle="modal" data-bs-target="#modalMcDetail"
+                                      style="color: rgb(255, 255, 255)">
+                                      <i class="fa fa-plus"></i>&nbsp;เพิ่มเครื่องจักร
+                                    </button>
+                                  </div>
+
+                                </header>
+                                <div class="table-responsive text-center box-shadow mt-3">
+                                  <table class="table table-sm" id="tbMc">
+                                    <thead>
+                                      <tr>
+                                        <th>index</th>
+                                        <th>section</th>
+                                        <th>M/C &amp; EQpt. Name</th>
+                                        <th>action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <!--  -->
+                            <div class="tab-pane fade p-3" role="tabpanel" id="problem-tab">
+                              <form>
+                                <div>
+                                  <header class="d-flex justify-content-between align-items-center px-3 py-1">
+                                    <h3 class="fw-light">รายการปัญหา</h3>
+                                  </header>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <h5 class="fw-light">
+                                        ปัญหาของชิ้นงานและแม่พิมพ์
+                                      </h5>
+                                    </div>
+                                    <div class="col-3">
+                                      <input class="form-control" id="ProbNo_" type="number" placeholder="หมายเลข..." />
+                                    </div>
+                                    <div class="col">
+                                      <input class="form-control" id="Prob_" type="text" placeholder="หัวข้อ..." />
+                                    </div>
+                                    <div class="col-auto">
+                                      <button class="btn btn-info float-end" id="AddProbBtn" type="button">
+                                        <i class="fa fa-plus m-1"></i>เพิ่มปัญหา
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div class="table-responsive text-center box-shadow mt-3">
+                                    <table class="table table-sm" id="tbProb">
+                                      <thead>
+                                        <tr>
+                                          <th>no</th>
+                                          <th>Problem</th>
+                                          <th>action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>1</td>
+                                          <td>ชิ้นงานมีครีบ</td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditProbBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelProbBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1" id="DelProbBtn"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>2</td>
+                                          <td>ชิ้นงานยุบ, ปูด, โก่ง, งอ</td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditProbBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelProbBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>3</td>
+                                          <td>ชิ้นงานมีรอยเบียน. เยิน</td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditProbBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelProbBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>4</td>
+                                          <td>ชิ้นงานมีคราบน้ำ, น้ำมัน</td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditProbBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelProbBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="row mt-2">
+                                    <div class="col-12">
+                                      <h5 class="fw-light">
+                                        เตรียมการแม่พิมพ์
+                                      </h5>
+                                    </div>
+                                    <div class="col-3">
+                                      <input class="form-control" id="PrepNo_" type="text" placeholder="ตัวอักษร..." />
+                                    </div>
+                                    <div class="col">
+                                      <input class="form-control" id="Prep_" type="text" placeholder="หัวข้อ..." />
+                                    </div>
+                                    <div class="col-auto">
+                                      <button class="btn btn-primary float-end" id="AddPrepBtn" type="button">
+                                        <i class="fa fa-plus"></i>เพิ่มรายการ
+                                      </button>
+                                    </div>
+                                  </div>
+                                  <div class="table-responsive text-center box-shadow mt-3">
+                                    <table class="table table-sm" id="tbPrep">
+                                      <thead>
+                                        <tr>
+                                          <th>no</th>
+                                          <th>Problem</th>
+                                          <th>action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>A</td>
+                                          <td>
+                                            ล้างแม่พิมพ์: หลังฉีดงานเสร็จ
+                                          </td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditPrepBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelPrepBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1" id="DelProbBtn-1"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>B</td>
+                                          <td>ล้างแม่พิมพ์: ตามวาระ(Shot)</td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditPrepBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelPrepBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>C</td>
+                                          <td>ครบกำหนด PREVENTIVE</td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditPrepBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelPrepBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>D</td>
+                                          <td>ปัญหาเกิดจากเครื่องจักร</td>
+                                          <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                              <button class="btn btn-warning" id="EditPrepBtn" type="button"
+                                                data-bs-target="#modalProblemDetail" data-bs-toggle="modal">
+                                                <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                class="btn btn-danger ms-1" id="DelPrepBtn" type="button"
+                                                data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                <i class="fa fa-remove m-1"></i>ลบ
+                                              </button>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <!--  -->
+                            <div class="tab-pane fade p-3" role="tabpanel" id="check-tab">
+                              <form>
+                                <div>
+                                  <header class="d-flex justify-content-between align-items-center px-3 py-1 mb-2">
+                                    <h3 class="fw-light">รายการตรวจสอบ</h3>
+                                    <div class="col-6">
+                                      <select class="form-select" id="CheckTypeSelect">
+                                        <option value="1" selected="">
+                                          การตรวจเช็คก่อนลง Mold
+                                        </option>
+                                        <option value="2">
+                                          Point Check
+                                          (Corrective/Repair/Cleaning)
+                                        </option>
+                                        <option value="4">
+                                          Point Check (Preventive)
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </header>
+                                  <div id="CheckMoldDiv" class="p-1">
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <h5 class="fw-light">
+                                          รายละเอียดการตรวจเช็คก่อนลง MOLD
+                                        </h5>
+                                      </div>
+                                      <div class="col-3">
+                                        <input class="form-control" id="CheckMoldNo_" type="number"
+                                          placeholder="หมายเลข..." />
+                                      </div>
+                                      <div class="col">
+                                        <input class="form-control" id="CheckMold_" type="text"
+                                          placeholder="รายการ..." />
+                                      </div>
+                                      <div class="col-auto">
+                                        <button class="btn btn-primary float-end" id="AddCheckMoldDownBtn"
+                                          type="button">
+                                          <i class="fa fa-plus n-1"></i>เพิ่มรายการ
+                                        </button>
+                                      </div>
+                                    </div>
+                                    <div class="table-responsive text-center box-shadow mt-3">
+                                      <table class="table table-sm" id="tbCheckMD">
+                                        <thead>
+                                          <tr>
+                                            <th>no</th>
+                                            <th>checklist</th>
+                                            <th>action</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>ชิ้นงานมีครีบ</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditMoldDownBtn" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-2" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1" id="DelProbBtn-3"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>ชิ้นงานยุบ, ปูด, โก่ง, งอ</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-2" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-4" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>ชิ้นงานมีรอยเบียน. เยิน</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-3" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-5" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>4</td>
+                                            <td>ชิ้นงานมีคราบน้ำ, น้ำมัน</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-4" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-6" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="CheckRepairDiv" class="p-1">
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <h5 class="fw-light">
+                                          Point Check
+                                          (Corrective/Repair/Cleaning)
+                                        </h5>
+                                      </div>
+                                      <div class="col-3">
+                                        <input class="form-control" id="CheckRepairNo_" type="number"
+                                          placeholder="หมายเลข..." />
+                                      </div>
+                                      <div class="col">
+                                        <input class="form-control" id="CheckRepair_" type="text"
+                                          placeholder="รายการ..." />
+                                      </div>
+                                      <div class="col-auto">
+                                        <button class="btn btn-primary float-end" id="AddCheckRepairBtn" type="button">
+                                          <i class="fa fa-plus n-1"></i>เพิ่มรายการ
+                                        </button>
+                                      </div>
+                                    </div>
+                                    <div class="table-responsive text-center box-shadow mt-3">
+                                      <table class="table table-sm" id="tbCheckRepair">
+                                        <thead>
+                                          <tr>
+                                            <th>no</th>
+                                            <th>checklist</th>
+                                            <th>action</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>ชิ้นงานมีครีบ</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-5" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-7" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1" id="DelProbBtn-8"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>ชิ้นงานยุบ, ปูด, โก่ง, งอ</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-6" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-9" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>ชิ้นงานมีรอยเบียน. เยิน</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-7" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-10" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>4</td>
+                                            <td>ชิ้นงานมีคราบน้ำ, น้ำมัน</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-8" type="button"
+                                                  data-bs-target="#modalCheckDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-11" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div id="CheckPreventiveDiv" class="p-1">
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <h5 class="fw-light">
+                                          Point Check (Preventive)
+                                        </h5>
+                                      </div>
+                                      <div class="col">
+                                        <input class="form-control" id="CheckPreventTopic_" type="text"
+                                          placeholder="หัวข้อ..." />
+                                      </div>
+                                      <div class="col-auto">
+                                        <button class="btn btn-info float-end" id="AddCheckPreventTopicBtn"
+                                          type="button">
+                                          <i class="fa fa-plus n-1"></i>เพิ่มรายการ
+                                        </button>
+                                      </div>
+                                    </div>
+                                    <div class="table-responsive text-center box-shadow mt-3">
+                                      <table class="table table-sm" id="tbCheckPreventTopic">
+                                        <thead>
+                                          <tr>
+                                            <th>no</th>
+                                            <th>topic</th>
+                                            <th>action</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>1</td>
+                                            <td>
+                                              INSERT CORE และ INSERT CAVITY
+                                            </td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-9" type="button"
+                                                  data-bs-target="#modalPreventiveDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-12" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1" id="DelProbBtn-13"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>2</td>
+                                            <td>SLIDE และ ANGULAR</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-10" type="button"
+                                                  data-bs-target="#modalPreventiveDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-14" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>3</td>
+                                            <td>จุดเช็คงานในการประกอบ</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-11" type="button"
+                                                  data-bs-target="#modalPreventiveDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-15" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>4</td>
+                                            <td>ระบบดันชิ้นงาน</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-12" type="button"
+                                                  data-bs-target="#modalPreventiveDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-16" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>5</td>
+                                            <td>ระบบหล่อลื่น</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-18" type="button"
+                                                  data-bs-target="#modalPreventiveDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-23" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>6</td>
+                                            <td>HOT RUNNER (WS)</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-17" type="button"
+                                                  data-bs-target="#modalPreventiveDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-22" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>7</td>
+                                            <td>อุปกรณ์ทั่วไป</td>
+                                            <td>
+                                              <div class="btn-group btn-group-sm" role="group">
+                                                <button class="btn btn-warning" id="EditProbBtn-19" type="button"
+                                                  data-bs-target="#modalPreventiveDetail" data-bs-toggle="modal">
+                                                  <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                                  class="btn btn-danger ms-1" id="DelProbBtn-24" type="button"
+                                                  data-bs-target="#modalDelete" data-bs-toggle="modal">
+                                                  <i class="fa fa-remove m-1"></i>ลบ
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- User -->
+                      <div class="tab-pane" role="tabpanel" id="user-master">
+                        <div class="d-flex flex-column tabs">
+                          <ul class="nav nav-tabs d-flex flex-row bg-bb mt-0" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" role="tab" data-bs-toggle="tab"
+                                href="#mfg-user-tab">ทะเบียนผู้ใช้งาน</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" role="tab" data-bs-toggle="tab" href="#dm-user-tab">ทะเบียนผู้ซ่อม</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" role="tab" data-bs-toggle="tab"
+                                href="#section-tab">ทะเบียนแผนกและตำแหน่ง</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content">
+                            <div class="tab-pane fade show active p-3" role="tabpanel" id="mfg-user-tab">
+                              <div>
+                                <header class="d-flex justify-content-between align-items-center px-3 py-1">
+                                  <h3 class="fw-light">รายการผู้ใช้งาน</h3>
+                                  <button
+                                    class="btn btn-info btn-sm d-flex float-end justify-content-center align-items-center"
+                                    id="AddUserBtn" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#modalUserDetail" style="color: rgb(255, 255, 255)">
+                                    <i class="fa fa-plus"></i>&nbsp;เพิ่มผู้ใช้งาน
+                                  </button>
+                                </header>
+                                <div class="table-responsive text-center box-shadow mt-3">
+                                  <table class="table table-sm" id="tbUser">
+                                    <thead>
+                                      <tr>
+                                        <th>no</th>
+                                        <th>section</th>
+                                        <th>position</th>
+                                        <th>user no</th>
+                                        <th>name</th>
+                                        <th>email</th>
+                                        <th>username</th>
+                                        <th>password</th>
+                                        <th>QA CHECK</th>
+                                        <th>action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="tab-pane fade p-3" role="tabpanel" id="dm-user-tab">
+                              <div>
+                                <header class="d-flex justify-content-between align-items-center px-3 py-1">
+                                  <h3 class="fw-light">รายการผู้ซ่อม</h3>
+                                  <button
+                                    class="btn btn-info btn-sm d-flex float-end justify-content-center align-items-center"
+                                    id="AddDmUserBtn" type="button" style="color: rgb(255, 255, 255)">
+                                    <i class="fa fa-plus"></i>&nbsp;เพิ่มผู้ซ่อม
+                                  </button>
+                                </header>
+                                <div class="table-responsive text-center box-shadow mt-3">
+                                  <table class="table table-sm" id="tbDmUser">
+                                    <thead>
+                                      <tr>
+                                        <th>No</th>
+                                        <th>section</th>
+                                        <th>position</th>
+                                        <th>user no</th>
+                                        <th>name</th>
+                                        <th>Email</th>
+                                        <th>username</th>
+                                        <th>password</th>
+                                        <th>Alternate<br />Check</th>
+                                        <th>Alternate<br />Approve</th>
+                                        <th>action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="tab-pane fade p-3" role="tabpanel" id="section-tab">
+                              <div>
+                                <div class="row">
+                                  <div class="col">
+                                    <header
+                                      class="d-flex flex-row justify-content-between align-items-start flex-lg-column flex-xl-row px-3 py-1">
+                                      <h3 class="fw-light">รายการแผนก</h3>
+                                      <button
+                                        class="btn btn-info btn-sm d-flex float-end justify-content-center align-items-center"
+                                        id="AddSectionBtn" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#modalSectionDetail">
+                                        <i class="fa fa-plus"></i>&nbsp;เพิ่มแผนก
+                                      </button>
+                                    </header>
+                                    <div class="table-responsive text-center box-shadow mt-3">
+                                      <table class="table table-sm" id="tbSection">
+                                        <thead>
+                                          <tr>
+                                            <th>No</th>
+                                            <th>section</th>
+                                            <th>action</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <header
+                                      class="d-flex flex-row justify-content-between align-items-start flex-lg-column flex-xl-row px-3 py-1">
+                                      <h3 class="fw-light">รายการตำแหน่ง</h3>
+                                      <button
+                                        class="btn btn-info btn-sm d-flex float-end justify-content-center align-items-center"
+                                        id="AddPositionBtn" type="button" style="color: rgb(255, 255, 255)" disabled>
+                                        <i class="fa fa-plus"></i>&nbsp;เพิ่มตำแหน่ง
+                                      </button>
+                                    </header>
+                                    <div class="table-responsive text-center box-shadow mt-3">
+                                      <table class="table table-sm" id="tbPosition">
+                                        <thead>
+                                          <tr>
+                                            <th>No</th>
+                                            <th>position</th>
+                                            <th>action</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td colspan="3">
+                                              เลือกรายการแผนก
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-chevron-up"></i></a>
+  <script src="js/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/checkwidth.js"></script>
+  <script src="js/collapse.js"></script>
+  <script src="js/DateTime.js"></script>
+  <!-- <script src="https://cdn.datatables.net/v/bs5/dt-1.13.1/date-1.2.0/sb-1.4.0/sp-2.1.0/sl-1.5.0/datatables.min.js"></script> -->
+  <!-- <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
+  <script src="js/datatables.min.js"></script>
+  <script src="js/zingchart.js"></script>
+  <script src="js/Imgpreview.js"></script>
+  <script src="js/showPdf.js"></script>
+  <script src="js/SidePanel.js"></script>
+  <script src="js/theme.js"></script>
+
+  <script src="js/sweetalert2.all.min.js"></script>
+  <script src="js/user.js"></script>
+
+  <script src="js/fuctionAll.js"></script>
+  <script src="MasterSetting/Mold.js"></script>
+  <script src="MasterSetting/Part.js"></script>
+  <script src="MasterSetting/Mc.js"></script>
+  <script src="MasterSetting/Problem.js"></script>
+  <script src="MasterSetting/Check.js"></script>
+  <script src="MasterSetting/User.js"></script>
+  <script src="MasterSetting/UserDm.js"></script>
+  <script src="MasterSetting/Permission.js"></script>
+</body>
+
+</html>

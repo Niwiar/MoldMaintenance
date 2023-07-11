@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <!-- <title>HL-RepairOrder</title> -->
+    <title>HLT-Mold Maintenance</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" />
+    <link rel="stylesheet" href="css/Browallia%20New.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo&amp;display=swap" />
+    <link rel="stylesheet" href="css/JasmineUPC.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt&amp;display=swap" />
+    <link rel="stylesheet" href="css/Tahoma.css" />
+    <link rel="stylesheet" href="css/select2.min.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="fonts/fontawesome5-overrides.min.css" />
+    <link rel="stylesheet" href="css/Dashboard.css" />
+    <link rel="stylesheet" href="css/datatables.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/InputDisable.css" />
+    <link rel="stylesheet" href="css/Login-Form-Basic-icons.css" />
+    <link rel="stylesheet" href="css/Ludens---Custom-Code-Google-Map-just-the-iframe.css" />
+    <link rel="stylesheet" href="css/PageHeader.css" />
+    <link rel="stylesheet" href="css/progressBar.css" />
+    <link rel="stylesheet" href="css/ScrollBar.css" />
+    <link rel="stylesheet" href="css/Stats-icons.css" />
+    <link rel="stylesheet" href="css/StatusCard.css" />
+    <link rel="stylesheet" href="css/Style.css" />
+    <link rel="stylesheet" href="css/Theme.css" />
+</head>
+
+<body id="page-top">
+    <div id="contentWrapper">
+        <div class="modal fade" role="dialog" tabindex="-1" id="RepairLogin">
+            <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">PLEASE ENTER PASSWORD</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-4 d-flex justify-content-end align-items-center">
+                                    <label class="col-form-label">Password :</label>
+                                </div>
+                                <div class="col d-flex align-items-center">
+                                    <input class="form-control form-control-sm" type="password"
+                                        id="LoginPassword_Req" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">
+                                CLOSE</button><button class="btn btn-info" id="LoginBtn" type="button">
+                                CONFIRM
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="RepairRequestModal">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-lg-down" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row g-0" style="width: 80%">
+                            <div class="col-6">
+                                <h4 class="modal-title">ใบสั่งซ่อมแม่พิมพ์</h4>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group" id="SlipNoGroup">
+                                    <span class="input-group-text">SLIP No. DM</span><input
+                                        class="form-control form-control-sm SlipNo_Req" type="text" disabled=""
+                                        value="221122001" />
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <form id="RepairForm">
+                            <section>
+                                <div class="row">
+                                    <div class="col-12 col-md-5 col-xl-4">
+                                        <div class="row">
+                                            <div
+                                                class="col-6 col-md-12 d-flex justify-content-end align-items-center justify-content-md-center">
+                                                <label class="col-form-label fw-semibold p-0 m-0">REQUEST BY</label>
+                                            </div>
+                                            <div class="col-6 col-md-12 d-flex align-items-center" style="height: 40px">
+                                                <input class="form-control form-control-sm" type="text"
+                                                    id="Approved_Req" disabled />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-12 col-md-5 offset-md-2 offset-xl-3 d-flex flex-column justify-content-center align-items-end">
+                                        <div class="row">
+                                            <div class="col-6 d-flex justify-content-end align-items-center">
+                                                <label class="col-form-label fw-semibold p-0 m-0">DATE</label>
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-end align-items-center"
+                                                style="height: 40px">
+                                                <input class="form-control form-control-sm" id="Date_Req"
+                                                    type="datetime-local" />
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-end align-items-center">
+                                                <label class="col-form-label fw-semibold p-0 m-0">INJECTION
+                                                    SHOT</label>
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-end align-items-center"
+                                                style="height: 40px">
+                                                <input class="form-control form-control-sm" type="number"
+                                                    id="Shot_Req" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0" id="Login_ReqBtn">Mold
+                                                    Name</label>
+                                            </div>
+                                            <div class="col-12" style="height: 40px">
+                                                <input class="form-control form-control-sm" type="text"
+                                                    id="MoldName_Req" placeholder="Mold Name" style="width: 100%"
+                                                    list="MoldName_ReqOpt" />
+                                                <datalist id="MoldName_ReqOpt"></datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Mold Control
+                                                    No</label>
+                                            </div>
+                                            <div class="col-12" style="height: 40px">
+                                                <input class="form-control form-control-sm" type="text"
+                                                    id="MoldCtrl_Req" disabled="" placeholder="Mold Control No."
+                                                    style="width: 100%" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Part Name</label>
+                                            </div>
+                                            <div class="col-12" style="height: 40px">
+                                                <input class="form-control form-control-sm" type="text"
+                                                    id="PartName_Req" list="PartName_ReqOpt" placeholder="Part Name"
+                                                    style="width: 100%" />
+                                                <datalist id="PartName_ReqOpt"> </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Part No.</label>
+                                            </div>
+                                            <div class="col-12" style="height: 40px">
+                                                <input class="form-control form-control-sm" type="text" id="PartNo_Req"
+                                                    disabled="" placeholder="Part No." style="width: 100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 col-md-3">
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Machine</label>
+                                            </div>
+                                            <div class="col-12" style="height: 40px">
+                                                <input class="form-control form-control-sm" type="text" id="Mc_Req"
+                                                    list="Mc_ReqOpt" placeholder="Mc Name" style="width: 100%" />
+                                                <datalist id="Mc_ReqOpt"> </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Cavity</label>
+                                            </div>
+                                            <div class="col-12" style="height: 40px">
+                                                <input class="form-control form-control-sm" type="text" id="Cavity_Req"
+                                                    disabled="" placeholder="Cavity" style="width: 100%" />
+                                            </div>
+                                        </div>
+                                        <div class="row d-md-flex align-items-md-center">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Cooling</label>
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-start align-items-center"
+                                                style="text-align: left; height: 40px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="CoolingOilCheck"
+                                                        name="Cooling_Req" value="Oil" /><label
+                                                        class="form-check-label">Oil</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 d-flex justify-content-start align-items-center"
+                                                style="text-align: left; height: 40px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="CoolingWaterCheck"
+                                                        name="Cooling_Req" value="Water" /><label
+                                                        class="form-check-label">Water</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 d-flex justify-content-start align-items-center"
+                                                style="text-align: left; height: 40px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="CoolingBothCheck"
+                                                        name="Cooling_Req" value="Oil + Water" /><label
+                                                        class="form-check-label">Oil +
+                                                        Water</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-12 col-md-5">
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Type</label>
+                                            </div>
+                                            <div class="col-12 col-sm-6 d-flex align-items-center"
+                                                style="min-height: 35px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio"
+                                                        id="TypeConnectiveCheck" name="Type_Req" value="1" /><label
+                                                        class="form-check-label text-start">Corrective</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 d-flex align-items-center"
+                                                style="min-height: 35px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="TypeRepairCheck"
+                                                        name="Type_Req" value="2" /><label
+                                                        class="form-check-label text-start">Repair</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 d-flex align-items-center"
+                                                style="min-height: 35px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio"
+                                                        id="TypeProductionCheck" name="Type_Req" value="3" /><label
+                                                        class="form-check-label text-start"
+                                                        for="TypeConnectiveCheck-3">Cleaning</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 d-flex align-items-center"
+                                                style="min-height: 35px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio"
+                                                        id="TypePreventiveCheck" name="Type_Req" value="4" /><label
+                                                        class="form-check-label text-start">Preventive</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 d-flex align-items-center"
+                                                style="min-height: 35px">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="TypeOtherCheck"
+                                                        name="Type_Req" value="5" /><label
+                                                        class="form-check-label text-start">Other</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="row">
+                                    <div class="col-12 col-sm-5 col-xl-4 flex-row" style="
+                        text-align: left;
+                        max-height: 450px;
+                        min-height: 150px;
+                      ">
+                                        <label class="form-label"
+                                            style="text-decoration: underline">รายละเอียดการตรวจเช็คก่อน MOLD
+                                            ลง</label>
+                                        <div id="downmoldDiv"></div>
+                                        <div>
+                                            <label class="form-label" style="font-size: 12px">กำหนดการ
+                                                Injection&nbsp;</label><input class="form-control form-control-sm"
+                                                id="ScheduleInj_Req" type="datetime-local" />
+                                        </div>
+                                        <div class="mb-2">
+                                            <label class="form-label" style="font-size: 12px">กำหนดการจ่าย
+                                                Part&nbsp;</label><input class="form-control form-control-sm"
+                                                id="SchedulePart_Req" type="datetime-local" />
+                                        </div>
+                                        <button class="btn btn-success btn-sm float-end" type="button"
+                                            id="Save_MfgScheduleBtn">
+                                            บันทึก
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-12 col-md-4">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-xl-12 d-flex justify-content-center align-items-center"
+                                                        style="height: 30px">
+                                                        <label
+                                                            class="col-form-label fw-semibold p-0">ที่มาของปัญหา</label>
+                                                    </div>
+                                                    <div class="col-6 text-start d-flex justify-content-center align-items-center"
+                                                        style="height: 40px">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="SourceMCCheck" name="Source_Req"
+                                                                value="MFG" /><label
+                                                                class="form-check-label">MFG</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 text-start d-flex justify-content-center align-items-center p-0"
+                                                        style="height: 40px">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="SourceMoldCheck" name="Source_Req"
+                                                                value="MOLD" /><label
+                                                                class="form-check-label">MOLD</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-8">
+                                                <div class="row">
+                                                    <div class="col-xl-12 d-flex justify-content-center align-items-center"
+                                                        style="height: 30px">
+                                                        <label
+                                                            class="col-form-label fw-semibold p-0">ประเภทของปัญหา</label>
+                                                    </div>
+                                                    <div class="col d-flex justify-content-center align-items-center"
+                                                        style="height: 40px">
+                                                        <select class="form-select form-select-sm" id="Problem_Req"
+                                                            style="width: 100%">
+                                                            <option value="" selected="">เลือกปัญหา</option>
+                                                            <option value="1">ชิ้นงานมีครีบ (BARI)</option>
+                                                            <option value="2">
+                                                                ชิ้นงานยุบ, ปูด, โก่ง, งอ
+                                                            </option>
+                                                            <option value="3">
+                                                                PIN, SLEEVE PIN, CENTER PIN, E/P แตก, หัก, งอ,
+                                                                บิ่น, เบียด
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row text-start">
+                                            <div
+                                                class="col-12 col-md-4 col-xl-3 d-flex justify-content-center align-items-center justify-content-md-end px-0 mt-1">
+                                                <label
+                                                    class="col-form-label fw-semibold pt-1 pb-0">รายละเอียดของปัญหา</label>
+                                            </div>
+                                            <div
+                                                class="col-12 col-md-8 col-xl-9 d-lg-flex justify-content-lg-start mt-1">
+                                                <input class="form-control form-control-sm" type="text" id="Detail_Req"
+                                                    style="width: 100%" />
+                                            </div>
+                                            <div
+                                                class="col-12 col-md-4 col-xl-3 d-flex justify-content-center align-items-center justify-content-md-end px-0 mt-1">
+                                                <label
+                                                    class="col-form-label fw-semibold pt-1 pb-0">สาเหตุการเกิด</label>
+                                            </div>
+                                            <div
+                                                class="col-12 col-md-8 col-xl-9 d-lg-flex justify-content-lg-start mt-1">
+                                                <input class="form-control form-control-sm" type="text" id="Reason_Req"
+                                                    style="width: 100%" />
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-success btn-sm float-end mt-2" type="button"
+                                                    id="Edit_InprogressBtn">
+                                                    บันทึกการแก้ไข
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="row p-1 m-2 border-dash">
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">TRY DATE</label>
+                                            </div>
+                                            <div
+                                                class="col-12 text-start d-xl-flex justify-content-xl-center align-items-xl-center">
+                                                <input class="form-control form-control-sm" id="TryDate_Req"
+                                                    type="datetime-local" style="width: 100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 text-center">
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">Result</label>
+                                            </div>
+                                            <div
+                                                class="col-6 text-start d-flex justify-content-center align-items-center p-0">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="ResultOKCheck"
+                                                        name="Result_Req" value="OK" /><label
+                                                        class="form-check-label">OK</label>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-6 text-start d-flex justify-content-center align-items-center p-0">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" id="ResultNGCheck"
+                                                        name="Result_Req" value="NG" /><label
+                                                        class="form-check-label">NG</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-5">
+                                        <div class="row">
+                                            <div class="col-12 d-flex justify-content-center align-items-center"
+                                                style="height: 30px">
+                                                <label class="col-form-label fw-semibold p-0">QA CHECK BY</label>
+                                            </div>
+                                            <div
+                                                class="col-12 text-start d-xl-flex justify-content-xl-center align-items-xl-center">
+                                                <div class="input-group input-group-sm mb-1" id="QaGroup">
+                                                    <input class="form-control" type="text" id="QA_Req" disabled="" />
+                                                    <div class="dropdown" id="DpQaUser_ReqBtn">
+                                                        <button class="btn btn-primary rounded-0 rounded-end btn-sm"
+                                                            aria-expanded="false" data-bs-toggle="dropdown"
+                                                            data-bs-auto-close="outside" type="button">
+                                                            SIGN
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-end p-0">
+                                                            <input class="form-control" type="password"
+                                                                id="QaPassword_Req" placeholder="Password" /><button
+                                                                class="btn btn-info rounded-0 btn-sm" id="QaUser_ReqBtn"
+                                                                type="button">
+                                                                ลงชื่อตรวจสอบ
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown" id="DpQaUser_RejectBtn">
+                                                        <button class="btn btn-danger rounded-0 rounded-end btn-sm"
+                                                            aria-expanded="false" data-bs-toggle="dropdown"
+                                                            data-bs-auto-close="outside" type="button">
+                                                            REJECT
+                                                        </button>
+                                                        <div class="dropdown-menu dropdown-menu-end p-0">
+                                                            <input class="form-control" type="password"
+                                                                id="QaPassword_Reject" placeholder="Password" />
+                                                            <input class="form-control mb-1" type="text"
+                                                                id="QaReason_Reject" placeholder="Reason" />
+                                                            <button class="btn btn-danger rounded-0 btn-sm"
+                                                                id="QaUser_RejectBtn" type="button">
+                                                                ลงชื่อไม่ผ่านการตรวจสอบ
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label class="col-form-label fw-semibold p-0">Remark.</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <input class="form-control form-control-sm" type="text" id="Remark_Req"
+                                                    style="width: 100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto mt-1">
+                                        <div class="btn-group mt-1" role="group">
+                                            <div class="dropup btn-group" role="group" id="DpQaFile_ReqBtn">
+                                                <button class="btn btn-info btn-sm rounded-0 rounded-start"
+                                                    aria-expanded="false" data-bs-toggle="dropdown" type="button"
+                                                    data-bs-auto-close="outside" id="DpQaFile_Req">
+                                                    แนบไฟล์การตรวจสอบ
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-start py-0">
+                                                    <!-- <img id="preview-qa" class="preview-img box-shadow" /> -->
+                                                    <div class="row dp-scrollY"></div>
+                                                    <div class="btn-group btn-group-sm" role="group"
+                                                        aria-label="Basic example">
+                                                        <button class="btn btn-success btn-sm" id="QaFile_ReqBtn"
+                                                            type="button">
+                                                            แนบไฟล์การตรวจสอบ
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown btn-group float-start" role="group" id="QaHistory_Req">
+                                                <button class="btn btn-secondary btn-sm" aria-expanded="false"
+                                                    data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                    type="button">
+                                                    QA History
+                                                </button>
+                                                <div class="dropdown-menu text-nowrap">
+                                                    <div class="history-div p-2">
+                                                        <p class="fw-semibold m-0">ไม่พบประวัติ</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input class="form-control form-control-sm d-none" type="file" id="QaFile_Req"
+                                            style="width: 300px" multiple="multiple" accept="image/png, image/jpeg" />
+                                    </div>
+                                    <div class="col-auto mt-1">
+                                        <div class="alert alert-danger m-0 p-2 text-start" role="alert"
+                                            id="Dm_QaReject"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col py-1">
+                                        <div class="btn-group float-start" role="group">
+                                            <div class="dropup" id="DpInspectFile_ReqBtn" data-bs-auto-close="outside">
+                                                <button class="btn btn-info btn-sm rounded-0 rounded-start"
+                                                    aria-expanded="false" data-bs-toggle="dropdown" type="button"
+                                                    data-bs-auto-close="outside" id="DpInspectFile_Req">
+                                                    แนบไฟล์จุดตรวจสอบ
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-start py-0">
+                                                    <div class="row dp-scrollY"></div>
+                                                    <div class="btn-group btn-group-sm" role="group"
+                                                        aria-label="Basic example">
+                                                        <button class="btn btn-success btn-sm" id="InspectFile_ReqBtn"
+                                                            type="button">
+                                                            แนบไฟล์จุดตรวจสอบ
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown" id="InspectHistory_Req">
+                                                <button class="btn btn-secondary btn-sm rounded-0 rounded-end"
+                                                    aria-expanded="false" data-bs-auto-close="outside"
+                                                    data-bs-toggle="dropdown" type="button">
+                                                    Point Check Data History
+                                                </button>
+                                                <div class="dropdown-menu text-nowrap">
+                                                    <div class="history-div p-2">
+                                                        <p class="fw-semibold m-0">ไม่พบประวัติ</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input class="form-control form-control-sm d-none" type="file"
+                                            id="InspectFile_Req" multiple="multiple" style="width: 300px"
+                                            accept="image/png, image/jpeg" />
+                                        <input class="form-control form-control-sm d-none" type="file" id="File_Req"
+                                            multiple="multiple" accept="image/png, image/jpeg" />
+                                        <div class="btn-group float-end" role="group">
+                                            <div class="dropup btn-group" role="group" id="DpFile_Req">
+                                                <button class="btn btn-success btn-sm rounded-0 rounded-start"
+                                                    aria-expanded="false" data-bs-toggle="dropdown" type="button"
+                                                    data-bs-auto-close="outside" id="DpFile_ReqBtn">
+                                                    แนบไฟล์
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end p-1">
+                                                    <div class="row dp-scrollY"></div>
+                                                    <div class="btn-group btn-group-sm" role="group"
+                                                        aria-label="Basic example">
+                                                        <button class="btn btn-success btn-sm" id="File_ReqBtn"
+                                                            type="button">
+                                                            แนบไฟล์
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-warning btn-sm rounded-end" id="Check_ReqBtn"
+                                                type="button">
+                                                ผลการตรวจสอบ
+                                            </button>
+                                            <div class="dropdown btn-group" role="group" style="display: none">
+                                                <button class="btn btn-dark btn-sm rounded-0 rounded-end"
+                                                    data-bs-auto-close="outside" aria-expanded="false"
+                                                    data-bs-toggle="dropdown" type="button">
+                                                    ดาวน์โหลด
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end py-0">
+                                                    <div class="px-2">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="formCheck-37" /><label class="form-check-label"
+                                                                for="formCheck-37">ไฟล์แนบแจ้งซ่อม</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="formCheck-40" /><label class="form-check-label"
+                                                                for="formCheck-40">ไฟล์แนบการซ่อม</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="formCheck-39" /><label class="form-check-label"
+                                                                for="formCheck-39">ไฟล์แนบ QA</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="formCheck-38" /><label class="form-check-label"
+                                                                for="formCheck-38">ใบแจ้งซ่อม</label>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-dark btn-sm float-end" id="Download_ReqBtn"
+                                                        type="button">
+                                                        ดาวน์โหลด
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row border-dash p-2 my-1 mx-2" id="ReceiveGroup">
+                                    <div
+                                        class="col-8 col-sm-9 col-md-6 col-xl-8 offset-md-1 offset-xl-2 d-flex align-items-center px-0">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="OnSchedule_Req"
+                                                name="ScheduleCheck_Req" value="1" /><label class="form-check-label"
+                                                for="formCheck-37">ทำได้ตามกำหนดการ</label>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-success btn-sm float-end" type="button"
+                                            id="Save_ScheduleBtn">
+                                            บันทึก
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="col-8 col-sm-5 col-md-4 col-xl-3 offset-md-1 offset-xl-2 offset-xxl-2 d-flex align-items-center px-0">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="OffSchedule_Req"
+                                                name="ScheduleCheck_Req" value="2" /><label class="form-check-label"
+                                                for="formCheck-38">ทำไม่ได้ตามกำหนดการ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center"></div>
+                                    </div>
+                                    <div class="col-12 col-sm-7 col-md-6 col-xl-5 d-flex align-items-center px-0">
+                                        <label class="form-label m-0"
+                                            style="min-width: 150px">กำหนดการเสร็จสิ้น</label><input
+                                            class="form-control form-control-sm" id="Schedule_Req"
+                                            type="datetime-local" />
+                                    </div>
+                                    <div class="col">
+                                        <div class="dropend float-start" id="ScheduleHistory_Req">
+                                            <button class="btn btn-secondary btn-sm" aria-expanded="false"
+                                                data-bs-auto-close="outside" data-bs-toggle="dropdown" type="button">
+                                                Schedule History
+                                            </button>
+                                            <div class="dropdown-menu text-nowrap">
+                                                <div class="history-div p-2">
+                                                    <p class="fw-semibold m-0">ไม่พบประวัติ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="row pt-2" id="TechGroup">
+                                <div class="col-12 col-md-6 d-flex flex-column align-items-start py-1">
+                                    <div class="table-responsive box-shadow" style="width: 100%">
+                                        <table class="table table-sm" id="TechnicianList">
+                                            <thead>
+                                                <tr>
+                                                    <th>Technician</th>
+                                                    <th>Login time</th>
+                                                    <th>Logout time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tech A</td>
+                                                    <td>16.50</td>
+                                                    <td>17.30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tech B</td>
+                                                    <td>16.55</td>
+                                                    <td>
+                                                        <button class="btn btn-danger btn-sm" id="Signout_ReqBtn"
+                                                            type="button">
+                                                            ลงชื่อออก
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="dropend mt-1" id="SigninGroup">
+                                        <button class="btn btn-dark btn-sm" aria-expanded="false"
+                                            data-bs-auto-close="outside" data-bs-toggle="dropdown" type="button">
+                                            ลงชื่อซ่อม
+                                        </button>
+                                        <div class="dropdown-menu p-0">
+                                            <input class="form-control" type="password" id="TechPassword_Req"
+                                                placeholder="Password" /><button class="btn btn-info btn-sm float-end"
+                                                id="Signin_ReqBtn" type="button">
+                                                ลงชื่อซ่อม
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 py-1">
+                                    <div class="row mb-2" id="Dm_CheckGroup">
+                                        <div class="col-12 col-xl-10 pe-0">
+                                            <div class="input-group input-group-sm mb-1">
+                                                <span class="input-group-text">CHECKER</span><input class="form-control"
+                                                    id="Dm_CheckUser_" type="text" disabled="" />
+                                                <input class="form-control" id="Dm_CheckTime_" type="datetime-local"
+                                                    disabled="" />
+                                            </div>
+                                            <div class="input-group input-group-sm" id="Dm_CheckAltGroup">
+                                                <span class="input-group-text">ALT-CHECKER</span><input
+                                                    class="form-control" id="Dm_AltCheckUser_" type="text"
+                                                    disabled="" /><input class="form-control" type="datetime-local"
+                                                    id="Dm_AltCheckTime_" disabled="" style="width: 40px" />
+                                            </div>
+                                        </div>
+                                        <div class="col-auto d-flex flex-row justify-content-start align-items-center">
+                                            <div class="btn-group my-1" role="group">
+                                                <div class="dropdown btn-group DM_DpCheck_ReqBtn" role="group">
+                                                    <button class="btn btn-danger btn-sm" aria-expanded="false"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        type="button">
+                                                        REJECT
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-end p-1">
+                                                        <form id="Dm_CheckRejectForm">
+                                                            <input class="form-control mb-1" type="password"
+                                                                id="Dm_CheckRejectPassword_Req"
+                                                                placeholder="Password" />
+                                                            <input class="form-control mb-1" type="text"
+                                                                id="Dm_CheckRejectReason_Req" placeholder="Reason" />
+                                                            <button class="btn btn-danger btn-sm float-end"
+                                                                id="Dm_CheckReject_ReqBtn" type="button">
+                                                                ลงชื่อไม่ผ่านการตรวจสอบ
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown btn-group DM_DpCheck_ReqBtn" role="group">
+                                                    <button class="btn btn-primary btn-sm" aria-expanded="false"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        type="button">
+                                                        SIGN
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-end p-1">
+                                                        <form id="Dm_CheckUserForm">
+                                                            <input class="form-control mb-1" type="password"
+                                                                id="Dm_CheckPassword_Req" placeholder="Password" />
+                                                            <button class="btn btn-info btn-sm float-end"
+                                                                id="Dm_CheckUser_ReqBtn" type="button">
+                                                                ลงชื่อตรวจสอบ
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown btn-group float-start" role="group"
+                                                    id="Dm_CheckHistory_Req">
+                                                    <button class="btn btn-secondary btn-sm" aria-expanded="false"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        type="button">
+                                                        Check History
+                                                    </button>
+                                                    <div class="dropdown-menu text-nowrap"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger mt-2 text-start" role="alert" id="Dm_CheckReject">
+                                    </div>
+                                    <div class="row mb-3" id="Dm_ApproveGroup">
+                                        <div class="col-12 col-xl-10 pe-0">
+                                            <div class="input-group input-group-sm mb-1">
+                                                <span class="input-group-text">APPROVE</span><input class="form-control"
+                                                    id="Dm_ApproveUser_" type="text" disabled="" /><input
+                                                    class="form-control" id="Dm_ApproveTime_" type="datetime-local"
+                                                    disabled="" />
+                                            </div>
+                                            <div class="input-group input-group-sm" id="Dm_ApproveAltGroup">
+                                                <span class="input-group-text">ALT-APPROVE</span><input
+                                                    class="form-control" id="Dm_AltApproveUser_" type="text"
+                                                    disabled="" /><input class="form-control" id="Dm_AltApproveTime_"
+                                                    type="datetime-local" disabled="" style="width: 40px" />
+                                            </div>
+                                        </div>
+                                        <div class="col-auto d-flex flex-row justify-content-start align-items-center">
+                                            <div class="btn-group btn-group-sm my-1" role="group">
+                                                <div class="dropdown btn-group DM_DpApprove_ReqBtn" role="group">
+                                                    <button class="btn btn-danger btn-sm" aria-expanded="false"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        type="button">
+                                                        REJECT
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-end p-1">
+                                                        <form id="Dm_ApproveRejectForm">
+                                                            <input class="form-control mb-1" type="password"
+                                                                id="Dm_ApproveRejectPassword_Req"
+                                                                placeholder="Password" />
+                                                            <input class="form-control mb-1" type="text"
+                                                                id="Dm_ApproveRejectReason_Req" placeholder="Reason" />
+                                                            <button class="btn btn-danger btn-sm float-end"
+                                                                id="Dm_ApproveReject_ReqBtn" type="button">
+                                                                ลงชื่อไม่อนุมัติ
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown btn-group DM_DpApprove_ReqBtn" role="group">
+                                                    <button class="btn btn-success btn-sm" aria-expanded="false"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        type="button">
+                                                        SIGN
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-end p-1">
+                                                        <form id="Dm_ApproveUserForm">
+                                                            <input class="form-control mb-1" type="password"
+                                                                id="Dm_ApprovePassword_Req"
+                                                                placeholder="Password" /><button
+                                                                class="btn btn-info btn-sm float-end"
+                                                                id="Dm_ApproveUser_ReqBtn" type="button">
+                                                                ลงชื่ออนุมัติ
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown btn-group float-start" role="group"
+                                                    id="Dm_ApproveHistory_Req">
+                                                    <button class="btn btn-secondary btn-sm" aria-expanded="false"
+                                                        data-bs-auto-close="outside" data-bs-toggle="dropdown"
+                                                        type="button">
+                                                        Approve History
+                                                    </button>
+                                                    <div class="dropdown-menu text-nowrap">
+                                                        <div class="history-div p-2">
+                                                            <p class="fw-semibold m-0">ไม่พบประวัติ</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger mt-2 text-start" role="alert" id="Dm_ApproveReject">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between align-items-center">
+                        <div>
+                            <form>
+                                <p id="NoteTextDiv" class="m-0">
+                                    <span class="text-danger"
+                                        style="text-decoration: underline">**หมายเหตุ</span>&nbsp;ต้องกรอกข้อมูลให้ครบทุกช่องจึงจะสามารถส่งคำสั่งซ่อมได้
+                                </p>
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-primary ms-3" id="PrintTag_ReqBtn" type="button">
+                                        PRINT TAG
+                                    </button>
+                                    <button class="btn btn-primary ms-3" id="PrintOrder_ReqBtn" type="button">
+                                        PRINT ใบแจ้งซ่อม
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-light" id="Cancel_ReqBtn" type="button" data-bs-dismiss="modal">
+                                ยกเลิก</button><button class="btn btn-info" id="Submit_ReqBtn" type="button">
+                                ส่งคำสั่งซ่อม
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="PointCheckRepair">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-lg-down" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4 class="modal-title">ใบสั่งซ่อมแม่พิมพ์</h4>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <span class="input-group-text">SLIP No. DM</span><input
+                                        class="form-control SlipNo_Req" type="text" disabled="" value="2208938" />
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div id="RepairCheckForm">
+                            <section>
+                                <div class="row">
+                                    <div
+                                        class="col-12 col-sm-8 col-lg-9 d-flex flex-column justify-content-center align-items-start">
+                                        <label class="form-label mb-1">รายละเอียดการแก้ไข</label><input
+                                            class="form-control" type="text" id="CheckDetail_Req" />
+                                    </div>
+                                    <div class="col d-flex flex-column justify-content-center align-items-start">
+                                        <label class="form-label mb-1">ใบเบิก SPARE PART</label><input
+                                            class="form-control" type="text" id="SparePart_Req"
+                                            placeholder="SPARE PART SLIP." />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-sm-3 col-xl-2">
+                                        <label class="col-form-label">เวลาที่เริ่มตรวจเช็ค<input
+                                                class="form-control form-control-sm" type="text" id="StartCheck_Req"
+                                                value="8/10/2022 15.53 น." disabled /></label>
+                                        <button class="btn btn-sm btn-info float-start my-1" id="RepairFinish_Btn">
+                                            ซ่อมเสร็จสิ้น
+                                        </button>
+                                    </div>
+                                    <div class="col-6 col-sm-3 col-xl-2">
+                                        <label class="col-form-label">เวลาที่ตรวจเช็คเสร็จ<input
+                                                class="form-control form-control-sm" type="text" id="StopCheck_Req"
+                                                value="8/10/2022 17.32 น." disabled /></label>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3 col-xl-2">
+                                        <label class="col-form-label">รวมเวลาตรวจเช็ค<input
+                                                class="form-control form-control-sm" type="text" id="TimeCheck_Req"
+                                                value="1 ชั่วโมง 77 นาที" disabled /></label>
+                                    </div>
+                                    <div class="col offset-xl-2 pt-2">
+                                        <select class="form-select form-select-sm mb-2" id="PointCheck_Req">
+                                            <option value="" selected>การตรวจเช็คปัจจุบัน</option>
+                                        </select>
+                                        <div>
+                                            <button class="btn btn-sm btn-info float-end my-1" id="SavePointcheck_Btn">
+                                                บันทึกการแก้ไข
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <div class="btn-group float-end my-1" role="group">
+                                                <div class="dropdown" id="DpCheckFile_ReqBtn">
+                                                    <button class="btn btn-success btn-sm rounded-0 rounded-start"
+                                                        aria-expanded="false" data-bs-toggle="dropdown" type="button"
+                                                        data-bs-auto-close="outside" id="DpCheckFile_Req">
+                                                        แนบไฟล์การซ่อม
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-end py-0">
+                                                        <div class="row dp-scrollY"></div>
+                                                        <div class="btn-group btn-group-sm" role="group"
+                                                            aria-label="Basic example">
+                                                            <button class="btn btn-success btn-sm" id="CheckFile_ReqBtn"
+                                                                type="button">
+                                                                แนบไฟล์การซ่อม
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown" id="RepairHistory_Req">
+                                                    <button class="btn btn-secondary btn-sm rounded-0 rounded-end"
+                                                        aria-expanded="false" data-bs-auto-close="outside"
+                                                        data-bs-toggle="dropdown" type="button">
+                                                        Repair History
+                                                    </button>
+                                                    <div class="dropdown-menu text-nowrap">
+                                                        <div class="history-div p-2">
+                                                            <p class="fw-semibold m-0">ไม่พบประวัติ</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input class="form-control form-control-sm d-none" type="file"
+                                                id="CheckFile_Req" multiple="multiple" style="width: 300px"
+                                                accept="image/png, image/jpeg" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="text-start">
+                                            ใบเตรียมการแม่พิมพ์ (Point Check
+                                            <span id="CheckListHead">Repair</span>)
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="row" id="RepairCheckList" style="font-size: 12px">
+                                    <div class="col">
+                                        <p class="text-start mb-1" style="font-weight: bold">
+                                            รายละเอียดในการตรวจเช็คและประกอบ
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="text-start">&nbsp;</p>
+                                    </div>
+                                </div>
+                                <div class="row" id="PreventiveCheckList" style="font-size: 12px">
+                                    <div class="col">
+                                        <p class="text-start my-2" style="font-weight: bold">
+                                            รายละเอียดในการตรวจเช็ค
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <p class="text-start my-2">&nbsp;</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-light" type="button" data-bs-dismiss="modal">
+                            ปิด</button><button class="btn btn-info" id="CheckSubmit_ReqBtn" type="button">
+                            บันทึก
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="RepairDocument">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-lg-down" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4 class="modal-title">ใบสั่งซ่อมแม่พิมพ์</h4>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <span class="input-group-text">SLIP No. DM</span><input
+                                        class="form-control SlipNo_Req" type="text" disabled="" value="2208938" />
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <!-- <iframe id="pdfDoc" class="d-flex justify-content-center align-items-center mx-auto" style="width: 100%;height:880px;" frameborder="0" src=""></iframe> -->
+                        <object data="" type="application/pdf" style="width: 100%; height: 880px" id="pdfDoc"
+                            title="RepairDoc"></object>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-light" type="button" data-bs-dismiss="modal">
+                            ปิด
+                        </button>
+                        <button class="btn btn-info" type="button" id="dol_Btn">
+                            ดาวน์โหลด
+                        </button>
+                        <!-- <button class="btn btn-info" type="button" id="print_Btn">พิมพ์</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid m-0 p-0 relative">
+            <div class="row m-0 p-0" id="header">
+                <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center px-0 py-2"
+                    id="header-logo">
+                    <a href="/">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img id="logo" src="img/logo.png" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col p-0">
+                    <nav class="navbar navbar-light navbar-expand d-flex nav-bar-top"
+                        style="background: var(--bs-card-bg)">
+                        <div class="container-fluid">
+                            <ul class="navbar-nav d-flex flex-shrink-0 justify-content-center align-items-center">
+                                <li class="nav-item">
+                                    <div>
+                                        <h3 id="currentDate">16/10/2022</h3>
+                                        <p id="currentDay" class="m-0">Monday</p>
+                                    </div>
+                                </li>
+                                <li class="nav-item border-right"></li>
+                                <li class="nav-item">
+                                    <div>
+                                        <h3 id="currentTime">13:15:57</h3>
+                                        <p class="m-0">Current Time</p>
+                                    </div>
+                                </li>
+                                <li class="nav-item border-right"></li>
+                                <li class="nav-item">
+                                    <h2 class="d-none d-lg-block fw-bold">Mold Maintenance System</h2>
+                                </li>
+                            </ul>
+                            <div class="row">
+                                <div class="col-12text-end">
+                                    <h5 id="Username"></h5>
+                                    <p class="m-0">
+                                        <a href="/user/logout">Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 col-lg-2 p-0" id="sidebar">
+                    <ul
+                        class="nav nav-justified d-flex flex-row justify-content-center align-items-center flex-lg-column">
+                        <li class="nav-item focus m-0" id="MoldMaintenanceNav">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/"><i
+                                    class="fa fa-calendar-check-o"></i>
+                                <p class="m-0">Mold Maintenance List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item m-0" id="MoldPmNav"><a
+                                class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/moldpm"><i class="fa fa-list-alt"></i>
+                                <p class="m-0">Mold Actual Control</p>
+                            </a></li>
+                        <li class="nav-item m-0" id="PerformanceNav" style="display: none">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/performance"><i class="fas fa-chart-line"></i>
+                                <p class="m-0">Performance</p>
+                            </a>
+                        </li>
+                        <li class="nav-item m-0" id="ReportNav" style="display: none">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/report_dm"><i class="far fa-file-alt"></i>
+                                <p class="m-0">Report</p>
+                            </a>
+                        </li>
+                        <li class="nav-item m-0" id="SettingNav" style="display: none">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/setting"><i class="fa fa-gear"></i>
+                                <p class="m-0">Setting</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-10 p-0">
+                    <div id="content" style="min-height: 90vh; padding: 0px; padding-top: 0px">
+                        <div class="container p-3 pe-2" style="min-height: 85vh; max-width: 100vw">
+                            <div class="row mb-2 mt-0">
+                                <div class="col text-left mx-auto">
+                                    <h5 class="fw-bold">Mold Maintenance List</h5>
+                                </div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col-12 mb-3">
+                                    <div class="row w-100">
+                                        <div class="col-auto">
+                                            <a class="btn btn-info float-end" href="/repair-view">
+                                                <i class="fa fa-th-large icon-ring p-1"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <!-- <select class="form-select" id="Section_Filter" style="width: 100%">
+                                                <option value="ALL" selected="">
+                                                    Please select section..
+                                                </option>
+                                            </select> -->
+                                            <select class="form-select" multiple for="1" id="Section_Filter"
+                                                style="width: 100%">
+                                                <option value="ALL" selected="">
+                                                    Please select section..
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-request float-end" id="Repair_ReqBtn" type="button">
+                                                Request<i class="fa fa-warning icon-ring p-1"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive text-center box-shadow my-2">
+                                        <table class="table table-hover table-sm" id="RepairOrderList">
+                                            <thead>
+                                                <tr>
+                                                    <th>Status</span></th>
+                                                    <th>Plan INJ</th>
+                                                    <th>DEPT.</th>
+                                                    <th>MOLD Name</th>
+                                                    <th>SLIP No. DM</th>
+                                                    <th>Trouble</th>
+                                                    <th>Request<br>By</th>
+                                                    <th>Repair<br>By</th>
+                                                    <th>Request<br>Time</th>
+                                                    <th>Finish<br>Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center align-items-start">
+                                    <div class="box-shadow w-100">
+                                        <div id="statusBoard" class="row m-0">
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-request"></i> -->
+                                                        <span class="d-block status status-request">REQUEST</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-receive"></i> -->
+                                                        <span class="d-block status status-receive">RECEIVE</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-repair"></i> -->
+                                                        <span class="d-block status status-repair">IN PROGRESS</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-check"></i> -->
+                                                        <span class="d-block status status-check">WAIT CHECK</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-approve"></i> -->
+                                                        <span class="d-block status status-approve">WAIT APPROVE</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-result"></i> -->
+                                                        <span class="d-block status status-result">WAIT RESULT</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-result-alt"></i> -->
+                                                        <span class="d-block status status-result-alt">WAIT
+                                                            RESULT</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col status-card my-1 px-1">
+                                                <div class="card">
+                                                    <div
+                                                        class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                        <!-- <i class="fa fa-square d-block status status-finish"></i> -->
+                                                        <span class="d-block status status-finish ">FINISH</span>
+                                                        <p class="card-text">0
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notify-box" style="display: none;">
+                    <div class="dropup float-start" role="group">
+                        <button class="btn btn-warning btn-lg" aria-expanded="false" data-bs-auto-close="true"
+                            data-bs-toggle="dropdown" type="button">
+                            <span class="count-notify-box d-flex justify-content-center align-items-center"></span>
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu text-nowrap p-0"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor">
+            <path
+                d="M416 352c-8.188 0-16.38-3.125-22.62-9.375L224 173.3l-169.4 169.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25C432.4 348.9 424.2 352 416 352z">
+            </path>
+        </svg>
+    </a>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/checkwidth.js"></script>
+    <script src="js/collapse.js"></script>
+    <script src="js/DateTime.js"></script>
+    <!-- <script src="https://cdn.datatables.net/v/bs5/dt-1.13.1/date-1.2.0/sb-1.4.0/sp-2.1.0/sl-1.5.0/datatables.min.js"></script> -->
+    <script src="js/datatables.min.js"></script>
+    <script src="js/zingchart.js"></script>
+    <!-- <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
+    <script src="js/select2.full.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/Imgpreview.js"></script>
+    <script src="js/showPdf.js"></script>
+    <script src="js/SidePanel.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/socket.io.min.js"></script>
+    <script src="js/sockethost.js"></script>
+
+    <script src="js/fuctionAll.js"></script>
+    <script src="Main/RepairOrder.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+#header {
+  padding: 0.5rem;
+  background-color: var(--header-main);
+  width: 100%;
+  height: 100%;
+  min-height: 80px;
+  max-height: 180px;
+  border-top: #1469ca 3px solid;
+}
+
+#header-logo {
+  background-color: var(--header-sub);
+}
+
+#logo {
+  max-width: 200px;
+  width: 80%;
+  min-width: 150px;
+}
+
+#logo2 {
+  max-width: 350px;
+  width: 90%;
+  min-width: 150px;
+}
+
+#header h3 {
+  font-family: "Tahoma";
+  color: var(--header-font-main);
+}
+
+#header h5 {
+  font-family: "Tahoma";
+  color: var(--header-font-highlight);
+}
+
+#header p {
+  font-size: 24px;
+}
+
+#header p{
+  font-family: "Tahoma";
+  color: var(--header-font-sub);
+} #header h2 {
+  font-family: "exo";
+  color: var(--header-font-software);
+}
+
+#header a, #header i {
+  color: var(--header-font-link);
+}
+
+#header a:hover {
+  color: var(--header-font-link);
+}
+
+#sidebar {
+  background-color: var(--sidebar-main);
+  border-bottom: var(--sidebar-sub) 4px solid;
+  border-top: var(--sidebar-sub) 5px solid;
+}
+
+#sidebar .nav .nav-item {
+  width: 100%;
+}
+
+#sidebar .nav .nav-item .nav-link {
+  height: 10vw;
+  min-height: 80px;
+  max-height: 120px;
+}
+
+#sidebar .nav .nav-item .nav-link p, #sidebar .nav .nav-item .nav-link i {
+  color: var(--sidebar-font);
+}
+
+#sidebar .nav .nav-item .nav-link i {
+  font-size: 24px;
+  padding-bottom: 5px;
+}
+
+#sidebar .nav .nav-item .nav-link:hover {
+  background-color: var(--sidebar-highlight);
+}
+
+#sidebar .nav .nav-item .nav-link p, #sidebar .nav .nav-item .nav-link i {
+  color: var(--sidebar-font);
+}
+
+#sidebar .nav .nav-item.focus {
+  background-color: var(--sidebar-focus);
+}
+
+.border-right {
+  border-right: 3px solid #7b7e8194 !important;
+  height: 50px;
+}
+

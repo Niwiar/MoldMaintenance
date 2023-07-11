@@ -1,0 +1,46 @@
+#MoldActualList td:nth-child(10), #MoldActualList td:nth-child(11), #OtherActGroup span:first-child {
+  background-color: #c5f1c3;
+}
+
+#MoldActualList td:nth-child(4), #MoldActualList td:nth-child(5), #CleanActGroup span:first-child {
+  background-color: #90dbe6;
+}
+
+#MoldActualList td:nth-child(6), #MoldActualList td:nth-child(7), #PreventiveActGroup span:first-child {
+  background-color: #eacff8;
+}
+
+#MoldActualList td:nth-child(8), #MoldActualList td:nth-child(9), #CumulativeActGroup span:first-child {
+  background-color: #f4f0cf;
+}
+
+#OtherActGroup span:not(:first-child),#CleanActGroup span:not(:first-child), #PreventiveActGroup span:not(:first-child), #CumulativeActGroup span:not(:first-child) {
+  background-color: #e9ecef;
+  border-left: none;
+  border-right: none;
+}
+
+.actual-shot {
+  border-right: none;
+}
+
+.plan-shot {
+  border-left: none;
+}
+
+.text-alert {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.text-warn {
+  font-size: 16px;
+  font-weight: bold;
+  color: #155df8;
+}
+
+.dropdown i {
+  color: var(--font-sub);
+}
+

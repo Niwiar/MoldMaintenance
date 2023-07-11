@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>HLT-Performance</title>
+  <!-- <title>HL-RepairOrder</title> -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" />
+  <link rel="stylesheet" href="css/Browallia%20New.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo&amp;display=swap" />
+  <link rel="stylesheet" href="css/JasmineUPC.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt&amp;display=swap" />
+  <link rel="stylesheet" href="css/Tahoma.css" />
+  <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="fonts/font-awesome.min.css" />
+  <link rel="stylesheet" href="fonts/fontawesome5-overrides.min.css" />
+  <link rel="stylesheet" href="css/select2.min.css" />
+  <link rel="stylesheet" href="css/Dashboard.css" />
+  <link rel="stylesheet" href="css/datatables.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/InputDisable.css" />
+  <link rel="stylesheet" href="css/Login-Form-Basic-icons.css" />
+  <link rel="stylesheet" href="css/Ludens---Custom-Code-Google-Map-just-the-iframe.css" />
+  <link rel="stylesheet" href="css/PageHeader.css" />
+  <link rel="stylesheet" href="css/progressBar.css" />
+  <link rel="stylesheet" href="css/ScrollBar.css" />
+  <link rel="stylesheet" href="css/Stats-icons.css" />
+  <link rel="stylesheet" href="css/StatusCard.css" />
+  <link rel="stylesheet" href="css/Style.css" />
+  <link rel="stylesheet" href="css/Theme.css" />
+</head>
+
+<body id="page-top">
+  <div id="contentWrapper">
+    <div class="container-fluid m-0 p-0">
+      <div class="row m-0 p-0" id="header">
+        <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center px-0 py-2" id="header-logo">
+          <a href="/">
+            <div class="d-flex justify-content-center align-items-center">
+              <img id="logo" src="img/logo.png" />
+            </div>
+          </a>
+        </div>
+        <div class="col p-0">
+          <nav class="navbar navbar-light navbar-expand d-flex nav-bar-top" style="background: var(--bs-card-bg)">
+            <div class="container-fluid">
+              <ul class="navbar-nav d-flex flex-shrink-0 justify-content-center align-items-center">
+                <li class="nav-item">
+                  <div>
+                    <h3 id="currentDate">16/10/2022</h3>
+                    <p id="currentDay" class="m-0">Monday</p>
+                  </div>
+                </li>
+                <li class="nav-item border-right"></li>
+                <li class="nav-item">
+                  <div>
+                    <h3 id="currentTime">13:15:57</h3>
+                    <p class="m-0">Current Time</p>
+                  </div>
+                </li>
+                <li class="nav-item border-right"></li>
+                <li class="nav-item">
+                  <h2 class="d-none d-lg-block fw-bold">Mold Maintenance System</h2>
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col-12text-end">
+                  <h5 id="Username"></h5>
+                  <p class="m-0">
+                    <a href="/user/logout">Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row m-0">
+        <div class="col-12 col-lg-2 p-0" id="sidebar">
+          <ul class="nav nav-justified d-flex flex-row justify-content-center align-items-center flex-lg-column">
+            <li class="nav-item m-0" id="MoldMaintenanceNav">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/"><i
+                  class="fa fa-calendar-check-o"></i>
+                <p class="m-0">Mold Maintenance List</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="MoldPmNav"><a
+                class="nav-link d-flex flex-column justify-content-center align-items-center" href="/moldpm"><i
+                  class="fa fa-list-alt"></i>
+                <p class="m-0">Mold Actual Control</p>
+              </a></li>
+            <li class="nav-item focus m-0" id="PerformanceNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/performance"><i
+                  class="fas fa-chart-line"></i>
+                <p class="m-0">Performance</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="ReportNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/report_dm"><i
+                  class="far fa-file-alt"></i>
+                <p class="m-0">Report</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="SettingNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/setting"><i
+                  class="fa fa-gear"></i>
+                <p class="m-0">Setting</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-10 p-0">
+          <div id="content" class="py-3" style="min-height: 90vh">
+            <div class="container-fluid">
+              <div class="row mb-2 mt-0">
+                <div class="col text-left mx-auto">
+                  <h5 class="fw-bold">Die Making Performance</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <form>
+                    <div class="row mb-2">
+                      <div class="col-2 col-lg-1 col-sm-2 d-flex justify-content-start align-items-center">
+                        <a class="btn btn-info float-end" href="/performance-view">
+                          <i class="fa fa-th-large icon-ring p-1"></i>
+                        </a>
+                      </div>
+                      <div class="col-2 d-flex justify-content-end align-items-center">
+                        <label class="col-form-label">Filter :</label>
+                      </div>
+                      <div class="col-4 col-lg-2 col-sm-4 d-flex justify-content-end align-items-center">
+                        <select class="form-select" id="PerformanceFilter_">
+                          <option value="1" selected="">Daily</option>
+                          <option value="2">Weekly</option>
+                          <option value="3">Select date</option>
+                        </select>
+                      </div>
+                      <div class="col-4 offset-4 offset-lg-0 d-flex justify-content-end align-items-center">
+                        <select class="form-select" multiple id="User_Filter1"></select>
+                      </div>
+                      <div class="col-4 col-lg-3 col-sm-4 d-flex justify-content-end align-items-center">
+                        <button class="btn btn-dark btn-sm" id="PerformanceDownloadBtn" type="button">
+                          Download
+                        </button>
+                      </div>
+
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-4 col-lg-3 d-flex justify-content-end">
+                        <label class="col-form-label">Date :</label>
+
+                      </div>
+                      <div class="col-auto">
+                        <input class="form-control" id="PerformanceFromDate_" type="date" />
+                      </div>
+
+                      <div class="col-12 col-lg-6">
+                        <div class="row">
+                          <div class="col-4 col-lg-auto d-flex justify-content-end">
+                            <label class="col-form-label">To :</label>
+                          </div>
+                          <div class="col-auto">
+                            <input class="form-control" id="PerformanceToDate_" type="datetime-local" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div id="PerformanceChart1" class="box-shadow mt-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-chevron-up"></i></a>
+  <script src="js/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/checkwidth.js"></script>
+  <script src="js/collapse.js"></script>
+  <script src="js/DateTime.js"></script>
+  <script src="js/datatables.min.js"></script>
+  <!-- <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
+  <script src="js/zingchart.js"></script>
+  <script src="js/sweetalert2.all.min.js"></script>
+  <script src="js/select2.full.min.js"></script>
+
+  <script src="js/Imgpreview.js"></script>
+  <script src="js/showPdf.js"></script>
+  <script src="js/SidePanel.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/user.js"></script>
+
+  <script src="js/fuctionAll.js"></script>
+  <script src="Dm/Performance.js"></script>
+</body>
+
+</html>

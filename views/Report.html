@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>HLT-Report</title>
+  <!-- <title>HL-RepairOrder</title> -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" />
+  <link rel="stylesheet" href="css/Browallia%20New.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo&amp;display=swap" />
+  <link rel="stylesheet" href="css/JasmineUPC.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt&amp;display=swap" />
+  <link rel="stylesheet" href="css/Tahoma.css" />
+  <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="fonts/font-awesome.min.css" />
+  <link rel="stylesheet" href="fonts/fontawesome5-overrides.min.css" />
+  <link rel="stylesheet" href="css/Dashboard.css" />
+  <link rel="stylesheet"
+    href="https://cdn.datatables.net/v/bs5/dt-1.13.1/date-1.2.0/sb-1.4.0/sp-2.1.0/sl-1.5.0/datatables.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/InputDisable.css" />
+  <link rel="stylesheet" href="css/Login-Form-Basic-icons.css" />
+  <link rel="stylesheet" href="css/Ludens---Custom-Code-Google-Map-just-the-iframe.css" />
+  <link rel="stylesheet" href="css/PageHeader.css" />
+  <link rel="stylesheet" href="css/progressBar.css" />
+  <link rel="stylesheet" href="css/ScrollBar.css" />
+  <link rel="stylesheet" href="css/Stats-icons.css" />
+  <link rel="stylesheet" href="css/StatusCard.css" />
+  <link rel="stylesheet" href="css/Style.css" />
+  <link rel="stylesheet" href="css/Theme.css" />
+</head>
+
+<body id="page-top">
+  <div id="contentWrapper">
+    <!-- Report Daily Detail -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalDaily">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modalTitle">แก้ไขข้อมูลการบำรุงรักษาแม่พิมพ์ประจำวัน</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="DailyForm">
+              <div>
+                <div class="row">
+                  <div class="col-3 ">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">ชื่อแม่พิมพ์ :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="MoldName_Req" placeholder="Mold Name"
+                      style="width: 100%" list="MoldName_ReqOpt" />
+                    <datalist id="MoldName_ReqOpt"></datalist>
+                  </div>
+                  <div class="col-2 text-end">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">Cavity :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="Cavity_Req" disabled=""
+                      placeholder="Cavity" style="width: 100%" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">หมายเลขควบคุมแม่พิมพ์
+                      :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="MoldCtrl_Req" disabled=""
+                      placeholder="Mold Control No." style="width: 100%" />
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-3 ">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">ชื่อชิ้นงาน :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="PartName_Req" list="PartName_ReqOpt"
+                      placeholder="Part Name" style="width: 100%" />
+                    <datalist id="PartName_ReqOpt">
+                    </datalist>
+                  </div>
+                  <div class="col-2 text-end d-flex justify-content-end align-items-center">
+                    <label class="col-form-label">หมายเลขชิ้นงาน :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="PartNo_Req" disabled=""
+                      placeholder="Part No." style="width: 100%" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-3">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">ประเภทของปัญหา :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <select class="form-select form-select-sm" id="Problem_Req" style="width: 100%">
+                      <option value="" selected="">เลือกปัญหา</option>
+                      <option value="1">ชิ้นงานมีครีบ (BARI)</option>
+                      <option value="2">
+                        ชิ้นงานยุบ, ปูด, โก่ง, งอ
+                      </option>
+                      <option value="3">
+                        PIN, SLEEVE PIN, CENTER PIN, E/P แตก, หัก, งอ,
+                        บิ่น, เบียด
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">สาเหตุ :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="Cause_" />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-3">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">มาตรการแก้ไข :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="FixDetail_" />
+                  </div>
+                </div>
+              </div>
+              <div class="row py-2">
+                <div class="col-6 col-sm-12 col-md-6">
+                  <div class="row">
+                    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 30px">
+                      <label class="col-form-label fw-semibold p-0">ประเภทงาน</label>
+                    </div>
+                    <div class="col-6 text-start d-flex align-items-center" style="height: 40px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="TypeConnectiveCheck" name="Type_Req"
+                          value="1" /><label class="form-check-label text-start"
+                          for="TypeConnectiveCheck">Corrective</label>
+                      </div>
+                    </div>
+                    <div class="col-6 text-start d-flex align-items-center" style="height: 40px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="TypeRepairCheck" name="Type_Req"
+                          value="2" /><label class="form-check-label text-start" for="TypeRepairCheck">Repair</label>
+                      </div>
+                    </div>
+                    <div class="col-6 text-start d-flex align-items-center" style="height: 40px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="TypeProductionCheck" name="Type_Req"
+                          value="3" /><label class="form-check-label text-start"
+                          for="TypeProductionCheck">Cleaning</label>
+                      </div>
+                    </div>
+                    <div class="col-6 text-start d-flex align-items-center" style="height: 40px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="TypePreventiveCheck" name="Type_Req"
+                          value="4" /><label class="form-check-label text-start"
+                          for="TypePreventiveCheck">Preventive</label>
+                      </div>
+                    </div>
+                    <div class="col-6 text-start d-flex align-items-center" style="height: 40px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="TypeOtherCheck" name="Type_Req"
+                          value="5" /><label class="form-check-label text-start" for="TypePreventiveCheck">Other</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12 col-md-6" style="border-left: 2px dashed rgba(92, 92, 92, 0.521);">
+                  <div class="row">
+                    <div class="col-sm-12 col-xl-12 d-flex justify-content-center align-items-center"
+                      style="height: 30px">
+                      <label class="col-form-label fw-semibold p-0">ที่มาของปัญหา</label>
+                    </div>
+                    <div class="col-6 text-start d-flex justify-content-center align-items-center" style="height: 40px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="SourceMCCheck" name="Source_Req"
+                          value="MFG" /><label class="form-check-label" for="SourceMCCheck">MFG</label>
+                      </div>
+                    </div>
+                    <div class="col-6 text-start d-flex justify-content-center align-items-center p-0"
+                      style="height: 40px">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="SourceMoldCheck" name="Source_Req"
+                          value="MOLD" /><label class="form-check-label" for="SourceMoldCheck">MOLD</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="DailySubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Monthly Detail -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalMonthly">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="MonthlyTitle">แก้ไขมาตรการแก้ไขแม่พิมพ์ </h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="MonthlyForm">
+              <div>
+                <div class="row">
+                  <div class="col-4"></div>
+                  <div class="col-3">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">วันที่แก้ไข :</label>
+                  </div>
+                  <div class="col-5 d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="datetime-local" id="M_RepairDate_" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">สาเหตุที่เกิด :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="M_Cause_" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">มาตรการแก้ไข :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="M_FixDetail_" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3 ">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">ผู้รับผิดชอบ :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="M_ResponsibleUser_Ip" placeholder=""
+                      style="width: 100%" list="M_ResponsibleUser_" />
+                    <datalist id="M_ResponsibleUser_"></datalist>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="MonthlySubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Report PO Detail -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modalPo">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="PoTitle">แก้ไขตารางควบคุมใบสั่งซ่อม</h4>
+            <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="PoForm">
+              <div>
+                <div class="row">
+                  <div class="col-4">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">Control NO. Hat
+                      :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="NoHat_" />
+                  </div>
+                </div>
+                <div class="row mb-1">
+                  <div class="col-4">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">AS400 เทียบ LIST
+                      :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="AS400_" />
+                  </div>
+                </div>
+                <div class="row mb-1">
+                  <div class="col-4">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">หัวหน้า :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="MgLeader_" />
+                  </div>
+                </div>
+                <div class="row mb-1">
+                  <div class="col-4">
+                    <label class="col-form-label d-flex justify-content-end align-items-center">ผู้จัดการแผนก :</label>
+                  </div>
+                  <div class="col d-flex justify-content-center align-items-center">
+                    <input class="form-control form-control-sm" type="text" id="MgMgr_" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light no" type="button" data-bs-dismiss="modal">
+              ปิด</button><button class="btn btn-info" id="PoSubmitBtn" type="button"
+              style="--bs-success-rgb: 120, 120, 120">
+              บันทึก
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid m-0 p-0">
+      <div class="row m-0 p-0" id="header">
+        <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center px-0 py-2" id="header-logo">
+          <a href="/">
+            <div class="d-flex justify-content-center align-items-center">
+              <img id="logo" src="img/logo.png" />
+            </div>
+          </a>
+        </div>
+        <div class="col p-0">
+          <nav class="navbar navbar-light navbar-expand d-flex nav-bar-top" style="background: var(--bs-card-bg)">
+            <div class="container-fluid">
+              <ul class="navbar-nav d-flex flex-shrink-0 justify-content-center align-items-center">
+                <li class="nav-item">
+                  <div>
+                    <h3 id="currentDate">16/10/2022</h3>
+                    <p id="currentDay" class="m-0">Monday</p>
+                  </div>
+                </li>
+                <li class="nav-item border-right"></li>
+                <li class="nav-item">
+                  <div>
+                    <h3 id="currentTime">13:15:57</h3>
+                    <p class="m-0">Current Time</p>
+                  </div>
+                </li>
+                <li class="nav-item border-right"></li>
+                <li class="nav-item">
+                  <h2 class="d-none d-lg-block fw-bold">Mold Maintenance System</h2>
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col-12text-end">
+                  <h5 id="Username"></h5>
+                  <p class="m-0">
+                    <a href="/user/logout">Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="row m-0">
+        <div class="col-12 col-lg-2 p-0" id="sidebar">
+          <ul class="nav nav-justified d-flex flex-row justify-content-center align-items-center flex-lg-column">
+            <li class="nav-item m-0" id="MoldMaintenanceNav">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/"><i
+                  class="fa fa-calendar-check-o"></i>
+                <p class="m-0">Mold Maintenance List</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="MoldPmNav"><a
+                class="nav-link d-flex flex-column justify-content-center align-items-center" href="/moldpm"><i
+                  class="fa fa-list-alt"></i>
+                <p class="m-0">Mold Actual Control</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="PerformanceNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/performance"><i
+                  class="fas fa-chart-line"></i>
+                <p class="m-0">Performance</p>
+              </a>
+            </li>
+            <li class="nav-item focus m-0" id="ReportNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/report_dm"><i
+                  class="far fa-file-alt"></i>
+                <p class="m-0">Report</p>
+              </a>
+            </li>
+            <li class="nav-item m-0" id="SettingNav" style="display: none">
+              <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/setting"><i
+                  class="fa fa-gear"></i>
+                <p class="m-0">Setting</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-10 p-0">
+          <div id="content" class="py-3" style="min-height: 90vh">
+            <div class="container-fluid">
+              <div class="row mb-2 mt-0">
+                <div class="col text-left mx-auto">
+                  <h5 class="fw-bold">Report</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div>
+                    <form class="mb-2">
+                      <div class="row mb-1">
+                        <div class="col-3 d-flex justify-content-end align-items-center">
+                          <label class="col-form-label">ชนิดรายงาน :</label>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center align-items-center">
+                          <select class="form-select" id="ReportFilter_">
+                            <option value="1" selected="">รายงานการบำรุงรักษาแม่พิมพ์ประจำวัน</option>
+                            <option value="2">บันทึกการเกิดปัญหาแม่พิมพ์ประจำเดือน</option>
+                            <option value="3">ประวัติการบำรุงรักษาแม่พิมพ์</option>
+                            <option value="4">ตารางควบคุมใบสั่งซ่อม</option>
+                          </select>
+                        </div>
+                        <div class="col d-flex justify-content-end align-items-center">
+                          <button class="btn btn-dark" id="ReportDownloadBtn_" type="button">
+                            ดาวน์โหลด
+                          </button>
+                        </div>
+                      </div>
+                      <div class="mb-2" id="boxOfDateType_1">
+                        <div class="row mb-1">
+                          <div class="col-3 d-flex justify-content-end align-items-center">
+                            <label class="col-form-label">วันที่ :</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <input class="form-control report-date" id="ReportDateFrom_1" type="datetime-local"
+                              value="2023-01-01 00:00" />
+                          </div>
+                          <div class="col-auto d-flex justify-content-center align-items-center">
+                            <label class="col-form-label">ถึง</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <input class="form-control report-date ip-date-to" id="ReportDateTo_1"
+                              value="2023-01-01 01:00" type="datetime-local" />
+                          </div>
+
+                        </div>
+                        <div class="row">
+                          <div class="col-3 d-flex justify-content-end align-items-center">
+                            <label class="col-form-label">ประเภทงาน :</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <select class="form-select form-select-sm" id="Dp_Type" style="width: 100%">
+                              <option value="" selected="">All Type</option>
+                              <option value="1">Corrective</option>
+                              <option value="2">Repair</option>
+                              <option value="3">Cleaning</option>
+                              <option value="4">Preventive</option>
+                            </select>
+                          </div>
+                          <div class="col-auto d-flex justify-content-center align-items-center">
+                            <label class="col-form-label">ส่วนงาน :</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <select class="form-select form-select-sm section-dp" id="Dp_Section" style="width: 100%">
+                              <option value="" selected="">All</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-2" id="boxOfDateType_2">
+                        <div class="row mb-1">
+                          <div class="col-3 d-flex justify-content-end align-items-center">
+                            <label class="col-form-label">เดือน :</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <input class="form-control" id="ReportDateFrom_2" type="month" />
+                          </div>
+                          <div class="col-auto d-flex justify-content-center align-items-center">
+                            <label class="col-form-label">ส่วนงาน</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <select class="form-select form-select-sm section-dp" id="Dp_SectionM" style="width: 100%">
+                              <option value="" selected="">All</option>
+                            </select>
+                          </div>
+                          <div class="col-3 d-none">
+                            <input class="form-control report-date ip-date-to" id="ReportDateTo_2"
+                              value="2023-01-01 01:00" type="datetime-local" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-2" id="boxOfDateType_3">
+                        <div class="row mb-1">
+                          <div class="col-3 d-flex justify-content-end align-items-center">
+                            <label class="col-form-label">วันที่ :</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <input class="form-control report-date" id="ReportDateFrom_3" type="datetime-local"
+                              value="2023-01-01 00:00" />
+                          </div>
+                          <div class="col-auto d-flex justify-content-center align-items-center">
+                            <label class="col-form-label">ถึง</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <input class="form-control report-date ip-date-to" id="ReportDateTo_3"
+                              value="2023-01-01 01:00" type="datetime-local" />
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="mb-2" id="boxOfDateType_4">
+                        <div class="row mb-1">
+                          <div class="col-3 d-flex justify-content-end align-items-center">
+                            <label class="col-form-label">วันที่ :</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <input class="form-control report-date" id="ReportDateFrom_4" type="datetime-local"
+                              value="2023-01-01 00:00" />
+                          </div>
+                          <div class="col-auto d-flex justify-content-center align-items-center">
+                            <label class="col-form-label">ถึง</label>
+                          </div>
+                          <div class="col-3 d-flex justify-content-center align-items-center">
+                            <input class="form-control report-date ip-date-to" id="ReportDateTo_4"
+                              value="2023-01-01 01:00" type="datetime-local" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3 d-flex justify-content-end align-items-center">
+                          <label class="col-form-label">หมายเลขควบคุมเอกสาร :</label>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center align-items-center">
+                          <input class="form-control " id="ReportCode" type="text" />
+                        </div>
+                        <div class="col-auto d-flex justify-content-center align-items-center">
+                          <label class="col-form-label">วันที่มีผล :</label>
+                        </div>
+                        <div class="col-3 d-flex justify-content-center align-items-center">
+                          <input class="form-control " id="ReportDateEff" type="date" />
+                        </div>
+                        <div class="col-auto d-flex justify-content-center align-items-center">
+                          <button class="btn btn-info" type="button"
+                            id="ReportNoSaveBtn">บันทึกหมายเลขควบคุมเอกสาร</button>
+
+                        </div>
+                      </div>
+                    </form>
+                    <div id="DailyReport" class="card-content box-shadow p-3 mt-3">
+                      <p class="report-title">รายงานการบำรุงรักษาแม่พิมพ์ประจำวัน</p>
+                      <div class="table-responsive text-nowrap text-center box-shadow mt-3">
+                        <table class="table table-sm" id="DailyReportTable">
+                          <thead>
+                            <tr>
+                              <th>เลขที่<br />ใบแจ้ง</th>
+                              <th>ผู้แจ้ง</th>
+                              <th>ผู้ซ่อม</th>
+                              <th>จำนวน<br />Shot</th>
+                              <th>ประเภทงาน</th>
+                              <th>ชื่อชิ้นงาน</th>
+                              <th>ชื่อแม่พิมพ์</th>
+                              <th>ส่วนงาน</th>
+                              <th>ที่มาของ<br />ปัญหา</th>
+                              <th>ประเภทของ<br />ปัญหา</th>
+                              <th>วัน/เวลา<br />แจ้ง</th>
+                              <th>อาการ/ปัญหา</th>
+                              <th>สาเหตุ</th>
+                              <th>การแก้ไข</th>
+                              <th>วัน/เวลา<br />เสร็จสิ้น</th>
+                              <th>เวลาที่ใช้</th>
+                              <th>วัน/เวลา<br />Injection</th>
+                              <th>จัดการข้อมูล</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>19-Oct-22</td>
+                              <td>T20 SKULL CAP ST R/L</td>
+                              <td>0AT221</td>
+                              <td>1200</td>
+                              <td>SUDLOH</td>
+                              <td>1</td>
+                              <td>ขัดรอยยุบ</td>
+                              <td>-</td>
+                              <td>3000</td>
+                              <td>20/10/2022</td>
+                              <td>SUDTEA</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                              <td>-</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div id="MonthlyReport" class="card-content box-shadow p-3 mt-3">
+                      <p class="report-title">
+                        บันทึกการเกิดปัญหาแม่พิมพ์ DC./PO. ประจำปี 2565
+                      </p>
+                      <div class="row m-1 report-collapse-box">
+                        <div class="col-6 col-lg-5 col-xl-4 p-2">
+                          <p class="report-subtitle mb-2">ปัญหาของแม่พิมพ์</p>
+                          <div class="table-responsive text-nowrap text-center box-shadow">
+                            <table class="table table-sm" id="MonthlyProblemTable">
+                              <thead>
+                                <tr>
+                                  <th>ลำดับ</th>
+                                  <th>ปัญหาแม่พิมพ์</th>
+                                  <th>จำนวนครั้ง</th>
+                                  <th>%</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col p-2">
+                          <p class="report-subtitle mb-2">
+                            กราฟแสดงปัญหาของงานประจำเดือน&nbsp;<span class="MonthlyReportMonth"></span>
+                          </p>
+                          <div id="MonthlyProblemGraph" class="box-shadow"></div>
+                        </div>
+                      </div>
+                      <div class="row m-1 report-collapse-box">
+                        <div class="col p-2">
+                          <p class="report-subtitle mb-2">
+                            ชื่อแม่พิมพ์และอาการที่เกิดปัญหา
+                          </p>
+                          <div class="table-responsive text-nowrap text-center box-shadow">
+                            <table class="table table-sm" id="MonthlyMoldProblemTable">
+                              <thead>
+                                <tr>
+                                  <th>ลำดับ</th>
+                                  <th>ชื่อแม่พิมพ์</th>
+                                  <th>วันที่เกิดปัญหา</th>
+                                  <th>อาการที่เกิด/ปัญหา</th>
+                                  <th>จำนวน/ครั้ง</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>-</td>
+                                  <td>T20 SKULL CAP ST R/L</td>
+                                  <td>ชิ้นงานมีครีบ (BARI)<br /></td>
+                                  <td>8</td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>-</td>
+                                  <td>T00 COVER BASE RH-R</td>
+                                  <td>ชิ้นงานยุบ, ปูด, โก่ง, งอ<br /></td>
+                                  <td>25</td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>-</td>
+                                  <td>TLA RADOME#2</td>
+                                  <td>ชิ้นงานมีรอยเบียด, เยิน<br /></td>
+                                  <td>13</td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td>-</td>
+                                  <td>TM0 HOUSING R/L</td>
+                                  <td>ชิ้นงานมีคราบน้ำ, น้ำมัน<br /></td>
+                                  <td>2</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row m-1 report-collapse-box">
+                        <div class="col p-2">
+                          <p class="report-subtitle mb-2">
+                            มาตรการแก้ไขแม่พิมพ์ (จากที่เกิดปัญหาบ่อย)
+                          </p>
+                          <div class="table-responsive text-nowrap text-center box-shadow">
+                            <table class="table table-sm" id="MonthlyFixTable">
+                              <thead>
+                                <tr>
+                                  <th>ลำดับ</th>
+                                  <th>ชื่อแม่พิมพ์</th>
+                                  <th>วันที่แก้ไข</th>
+                                  <th>สาเหตุที่เกิดอย่างแท้จริง</th>
+                                  <th>มาตรการแก้ไข</th>
+                                  <th>ผู้รับผิดชอบ</th>
+                                  <th>จัดการข้อมูล</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>-</td>
+                                  <td>20/10/2022</td>
+                                  <td>ชิ้นงานมีครีบ (BARI)<br /></td>
+                                  <td>-<br /></td>
+                                  <td>-</td>
+                                  <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                      <button class="btn btn-warning" id="EditMfgUserBtn-1" type="button"
+                                        data-bs-target="#modalMoldFixDetail" data-bs-toggle="modal">
+                                        <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                        class="btn btn-danger ms-1" id="DeleteMfgUserBtn-1" type="button"
+                                        data-bs-target="#modalDel" data-bs-toggle="modal">
+                                        <i class="fa fa-remove m-1"></i>ลบ
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>-</td>
+                                  <td>25/10/2022</td>
+                                  <td>ชิ้นงานยุบ, ปูด, โก่ง, งอ<br /></td>
+                                  <td>-<br /></td>
+                                  <td>-</td>
+                                  <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                      <button class="btn btn-warning" id="EditMfgUserBtn-2" type="button"
+                                        data-bs-target="#modalMoldFixDetail" data-bs-toggle="modal">
+                                        <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                        class="btn btn-danger ms-1" id="DeleteMfgUserBtn-2" type="button"
+                                        data-bs-target="#modalDel" data-bs-toggle="modal">
+                                        <i class="fa fa-remove m-1"></i>ลบ
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>-</td>
+                                  <td>25/10/2022</td>
+                                  <td>ชิ้นงานมีรอยเบียด, เยิน<br /></td>
+                                  <td>-<br /></td>
+                                  <td>-</td>
+                                  <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                      <button class="btn btn-warning" id="EditMfgUserBtn-3" type="button"
+                                        data-bs-target="#modalMoldFixDetail" data-bs-toggle="modal">
+                                        <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                        class="btn btn-danger ms-1" id="DeleteMfgUserBtn-3" type="button"
+                                        data-bs-target="#modalDel" data-bs-toggle="modal">
+                                        <i class="fa fa-remove m-1"></i>ลบ
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td>-</td>
+                                  <td>25/10/2022</td>
+                                  <td>ชิ้นงานมีคราบน้ำ, น้ำมัน<br /></td>
+                                  <td>-<br /></td>
+                                  <td>-</td>
+                                  <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                      <button class="btn btn-warning" id="EditMfgUserBtn-4" type="button"
+                                        data-bs-target="#modalMoldFixDetail" data-bs-toggle="modal">
+                                        <i class="fa fa-pencil-square-o m-1"></i>แก้ไข</button><button
+                                        class="btn btn-danger ms-1" id="DeleteMfgUserBtn-4" type="button"
+                                        data-bs-target="#modalDel" data-bs-toggle="modal">
+                                        <i class="fa fa-remove m-1"></i>ลบ
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row m-1">
+                        <div class="col-6 col-lg-5 col-xl-4 p-2">
+                          <p class="report-subtitle mb-2">
+                            เตรียมการแม่พิมพ์
+                          </p>
+                          <div class="table-responsive text-nowrap text-center box-shadow">
+                            <table class="table table-sm" id="MonthlyPrepareTable">
+                              <thead>
+                                <tr>
+                                  <th>ลำดับ</th>
+                                  <th>เตรียมการแม่พิมพ์</th>
+                                  <th>จำนวนครั้ง</th>
+                                  <th>%</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col p-2">
+                          <p class="report-subtitle mb-2">
+                            กราฟแสดงการเตรียมการแม่พิมพ์ ประจำเดือน&nbsp;<span class="MonthlyReportMonth"></span>
+                          </p>
+                          <div id="MonthlyPrepareGraph" class="box-shadow"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="SAReport" class="card-content box-shadow p-3 mt-3">
+                      <p class="report-title">ประวัติการบำรุงรักษาแม่พิมพ์</p>
+                      <div class="table-responsive text-nowrap text-center box-shadow mt-3">
+                        <table class="table table-sm" id="SaTable">
+                          <thead>
+                            <tr>
+                              <th>เลขที่<br />ใบแจ้ง</th>
+                              <th>จำนวน<br />Shot</th>
+                              <th>ประเภทงาน</th>
+                              <th>ชื่อชิ้นงาน</th>
+                              <th>หมายเลข<br />ชิ้นงาน</th>
+                              <th>ชื่อแม่พิมพ์</th>
+                              <th>ชื่อเครื่องจักร</th>
+                              <th>ส่วนงาน</th>
+                              <th>ที่มาของ<br />ปัญหา</th>
+                              <th>ประเภทของ<br />ปัญหา</th>
+                              <th>อาการ / ปัญหา</th>
+                              <th>สาเหตุ</th>
+                              <th>การแก้ไข</th>
+                              <th>ผลการทดลองผลิต</th>
+                              <th>วัน/เวลา<br />Injection</th>
+                              <th>วัน/เวลา<br />แจ้ง</th>
+                              <th>ผู้แจ้ง</th>
+                              <th>วัน/เวลา<br />รับงาน</th>
+                              <th>ผู้รับงาน</th>
+                              <th>วัน/เวลา<br />เริ่มทำงาน</th>
+                              <th>ผู้ทำงาน</th>
+                              <th>วัน/เวลา<br />แก้ไขเสร็จสิ้น</th>
+                              <th>เวลาที่ใช้<br />ในการแก้ไข</th>
+                              <th>วัน/เวลา<br />ตรวจสอบ</th>
+                              <th>ผู้ตรวจสอบ</th>
+                              <th>วัน/เวลา<br />อนุมัติ</th>
+                              <th>ผู้อนุมัติ</th>
+                              <th>วัน/เวลา<br />จบงาน</th>
+                              <th>เวลาที่ใช้</th>
+                              <th>ชื่อQAผู้ตรวจสอบ</th>
+                              <th>จัดการข้อมูล</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div id="POReport" class="card-content box-shadow p-3 mt-3">
+                      <p class="report-title">ตารางควบคุมใบสั่งซ่อม</p>
+                      <form>
+                        <div class="row">
+                          <form id="PoLeaderForm">
+                            <div class="col text-end d-flex justify-content-center align-items-center">
+                              <label class="col-form-label">หัวหน้า :</label>
+                            </div>
+                            <div class="col d-flex justify-content-center align-items-center">
+                              <input class="form-control" id="IP_Leader" type="text" value="" />
+                            </div>
+                            <div class="col text-end d-flex justify-content-center align-items-center">
+                              <label class="col-form-label">ผู้จัดการแผนก :</label>
+                            </div>
+                            <div class="col d-flex justify-content-center align-items-center">
+                              <input class="form-control" id="IP_MGR" type="text" value="" />
+                            </div>
+                          </form>
+                          <div class="col d-flex justify-content-center align-items-center">
+                            <button class="btn btn-success" id="PoReportLeaderBtn" type="button">
+                              บันทึก
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                      <div class="table-responsive text-nowrap text-center box-shadow mt-3">
+                        <table class="table table-sm" id="PoReportTable">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>วันที่แจ้งซ่อม</th>
+                              <th>เลขที่<br />ใบแจ้ง</th>
+                              <th>แผนกที่แจ้ง</th>
+                              <th>DWG no.(PART NO)<br />ที่มีการผลิตครั้งแรก</th>
+                              <th>ชื่อชิ้นงาน</th>
+                              <th>MACHINE</th>
+                              <th>เวลาที่แจ้ง</th>
+                              <th>Control NO.<br />HAT</th>
+                              <th>AS400<br />เปรียบเทียบ<br />List</th>
+                              <th>รายละเอียดของปัญหา</th>
+                              <th>เอกสารแนบ</th>
+                              <th>ผู้แจ้ง</th>
+                              <th>หัวหน้า</th>
+                              <th>ผู้จัดการแผนก</th>
+                              <th>รายละเอียดการแก้ไข</th>
+                              <th>วันดำเนินการ<br />ใบสั่งซ่อมแม่พิมพ์</th>
+                              <th>ผลการตัดสิน<br />ใบสั่งซ่อมแม่พิมพ์</th>
+                              <th>REMARK</th>
+                              <th>จัดการข้อมูล</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-chevron-up"></i></a>
+  <script src="js/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="js/checkwidth.js"></script>
+  <script src="js/collapse.js"></script>
+  <script src="js/DateTime.js"></script>
+  <!-- <script src="https://cdn.datatables.net/v/bs5/dt-1.13.1/date-1.2.0/sb-1.4.0/sp-2.1.0/sl-1.5.0/datatables.min.js"></script> -->
+  <script src="js/datatables.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" type="module"></script> -->
+  <!-- <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
+  <script src="js/zingchart.js"></script>
+  <script src="js/sweetalert2.all.min.js"></script>
+  <script src="js/Imgpreview.js"></script>
+  <script src="js/showPdf.js"></script>
+  <script src="js/SidePanel.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/user.js"></script>
+
+  <script src="js/fuctionAll.js"></script>
+  <script src="Dm/Report.js"></script>
+  <script src="Dm/ReportTable.js"></script>
+
+</body>
+
+</html>

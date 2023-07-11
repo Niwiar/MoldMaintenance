@@ -1,0 +1,17 @@
+.form-control:disabled {
+  --bs-bg-opacity: 1;
+  /* background-color: white; */
+}
+
+.form-check-input:disabled{
+  background-color: #d7d7d7;
+  opacity: .7;
+}
+
+.form-check-input:checked:disabled {
+  background-color: #3459e6;
+  border-color: #3459e6;
+  opacity: .5;
+
+}
+

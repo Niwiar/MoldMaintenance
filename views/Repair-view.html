@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <!-- <title>HL-RepairOrder</title> -->
+    <title>HLT-Mold Maintenance</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" />
+    <link rel="stylesheet" href="css/Browallia%20New.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo&amp;display=swap" />
+    <link rel="stylesheet" href="css/JasmineUPC.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt&amp;display=swap" />
+    <link rel="stylesheet" href="css/Tahoma.css" />
+    <link rel="stylesheet" href="css/select2.min.css" />
+    <link rel="stylesheet" href="fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="fonts/fontawesome5-overrides.min.css" />
+    <link rel="stylesheet" href="css/Dashboard.css" />
+    <link rel="stylesheet" href="css/datatables.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/InputDisable.css" />
+    <link rel="stylesheet" href="css/Login-Form-Basic-icons.css" />
+    <link rel="stylesheet" href="css/Ludens---Custom-Code-Google-Map-just-the-iframe.css" />
+    <link rel="stylesheet" href="css/PageHeader.css" />
+    <link rel="stylesheet" href="css/progressBar.css" />
+    <link rel="stylesheet" href="css/ScrollBar.css" />
+    <link rel="stylesheet" href="css/Stats-icons.css" />
+    <link rel="stylesheet" href="css/StatusCard.css" />
+    <link rel="stylesheet" href="css/Style.css" />
+    <link rel="stylesheet" href="css/Theme.css" />
+</head>
+
+<body id="page-top">
+    <div id="contentWrapper">
+        <div class="container-fluid m-0 p-0">
+            <div class="row m-0 p-0" id="header">
+                <div class="col-12 col-lg-2 d-flex justify-content-center align-items-center px-0 py-2"
+                    id="header-logo">
+                    <a href="/">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img id="logo" src="img/logo.png" />
+                        </div>
+                    </a>
+                </div>
+                <div class="col p-0">
+                    <nav class="navbar navbar-light navbar-expand d-flex nav-bar-top"
+                        style="background: var(--bs-card-bg)">
+                        <div class="container-fluid">
+                            <ul class="navbar-nav d-flex flex-shrink-0 justify-content-center align-items-center">
+                                <li class="nav-item">
+                                    <div>
+                                        <h3 id="currentDate">16/10/2022</h3>
+                                        <p id="currentDay" class="m-0">Monday</p>
+                                    </div>
+                                </li>
+                                <li class="nav-item border-right"></li>
+                                <li class="nav-item">
+                                    <div>
+                                        <h3 id="currentTime">13:15:57</h3>
+                                        <p class="m-0">Current Time</p>
+                                    </div>
+                                </li>
+                                <li class="nav-item border-right"></li>
+                                <li class="nav-item">
+                                    <h2 class="d-none d-lg-block fw-bold">Mold Maintenance System</h2>
+                                </li>
+                            </ul>
+                            <div class="row">
+                                <div class="col-12text-end">
+                                    <h5 id="Username"></h5>
+                                    <p class="m-0">
+                                        <a href="/user/logout">Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 col-lg-2 p-0" id="sidebar">
+                    <ul
+                        class="nav nav-justified d-flex flex-row justify-content-center align-items-center flex-lg-column">
+                        <li class="nav-item focus m-0" id="MoldMaintenanceNav">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="/"><i
+                                    class="fa fa-calendar-check-o"></i>
+                                <p class="m-0">Mold Maintenance List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item m-0" id="MoldPmNav">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/moldpm"><i class="fa fa-list-alt"></i>
+                                <p class="m-0">Mold Actual Control</p>
+                            </a>
+                        </li>
+                        <li class="nav-item m-0" id="PerformanceNav" style="display: none">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/performance"><i class="fas fa-chart-line"></i>
+                                <p class="m-0">Performance</p>
+                            </a>
+                        </li>
+                        <li class="nav-item m-0" id="ReportNav" style="display: none">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/report_dm"><i class="far fa-file-alt"></i>
+                                <p class="m-0">Report</p>
+                            </a>
+                        </li>
+                        <li class="nav-item m-0" id="SettingNav" style="display: none">
+                            <a class="nav-link d-flex flex-column justify-content-center align-items-center"
+                                href="/setting"><i class="fa fa-gear"></i>
+                                <p class="m-0">Setting</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-10 p-0">
+                    <div id="content" style="min-height: 90vh; padding: 0px; padding-top: 0px">
+                        <div class="container p-3 pe-2" style="min-height: 85vh; max-width: 100vw">
+                            <div class="row g-0">
+                                <div class="col-12 col-lg-6 mb-3 pe-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="row w-100">
+                                                <div class="col-auto">
+                                                    <a class="btn btn-info float-end" href="/">
+                                                        <i class="fa fa-th-list icon-ring p-1"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col">
+                                                    <select class="form-select" multiple for="1" id="Section1_Filter"
+                                                        style="width: 100%">
+                                                        <option value="ALL" selected="">
+                                                            Please select section..
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive text-center box-shadow view my-2">
+                                                <table class="table table-hover table-sm view-table" id="RepairOrder1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Status</th>
+                                                            <th>Plan INJ</th>
+                                                            <th>MOLD Name</th>
+                                                            <th>Trouble</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center align-items-start">
+                                            <div class="box-shadow w-100">
+                                                <div id="statusBoard1" class="row row-cols-4 m-0">
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-request"></i> -->
+                                                                <span
+                                                                    class="d-block status status-request">REQUEST</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-receive"></i> -->
+                                                                <span
+                                                                    class="d-block status status-receive">RECEIVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-repair"></i> -->
+                                                                <span class="d-block status status-repair">IN
+                                                                    PROGRESS</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-check"></i> -->
+                                                                <span class="d-block status status-check">WAIT
+                                                                    CHECK</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-approve"></i> -->
+                                                                <span class="d-block status status-approve">WAIT
+                                                                    APPROVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result"></i> -->
+                                                                <span class="d-block status status-result">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result-alt"></i> -->
+                                                                <span class="d-block status status-result-alt">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-finish"></i> -->
+                                                                <span
+                                                                    class="d-block status status-finish ">FINISH</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 mb-3 pe-3">
+                                    <div class="row">
+                                        <div class="col-12 ">
+                                            <div class="row w-100">
+                                                <div class="col">
+                                                    <select class="form-select" multiple for="2" id="Section2_Filter"
+                                                        style="width: 100%">
+                                                        <option value="ALL" selected="">
+                                                            Please select section..
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive text-center box-shadow my-2">
+                                                <table class="table table-hover table-sm view-table" id="RepairOrder2">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Status</th>
+                                                            <th>Plan INJ</th>
+                                                            <th>MOLD Name</th>
+                                                            <th>Trouble</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center align-items-start">
+                                            <div class="box-shadow w-100">
+                                                <div id="statusBoard2" class="row row-cols-4 m-0">
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-request"></i> -->
+                                                                <span
+                                                                    class="d-block status status-request">REQUEST</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-receive"></i> -->
+                                                                <span
+                                                                    class="d-block status status-receive">RECEIVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-repair"></i> -->
+                                                                <span class="d-block status status-repair">IN
+                                                                    PROGRESS</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-check"></i> -->
+                                                                <span class="d-block status status-check">WAIT
+                                                                    CHECK</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-approve"></i> -->
+                                                                <span class="d-block status status-approve">WAIT
+                                                                    APPROVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result"></i> -->
+                                                                <span class="d-block status status-result">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result-alt"></i> -->
+                                                                <span class="d-block status status-result-alt">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-finish"></i> -->
+                                                                <span
+                                                                    class="d-block status status-finish ">FINISH</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 mb-3 pe-3">
+                                    <div class="row">
+                                        <div class="col-12 ">
+                                            <div class="row w-100">
+                                                <div class="col">
+                                                    <select class="form-select" multiple for="3" id="Section3_Filter"
+                                                        style="width: 100%">
+                                                        <option value="ALL" selected="">
+                                                            Please select section..
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive text-center box-shadow my-2">
+                                                <table class="table table-hover table-sm view-table" id="RepairOrder3">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Status</th>
+                                                            <th>Plan INJ</th>
+                                                            <th>MOLD Name</th>
+                                                            <th>Trouble</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center align-items-start">
+                                            <div class="box-shadow w-100">
+                                                <div id="statusBoard3" class="row row-cols-4 m-0">
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-request"></i> -->
+                                                                <span
+                                                                    class="d-block status status-request">REQUEST</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-receive"></i> -->
+                                                                <span
+                                                                    class="d-block status status-receive">RECEIVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-repair"></i> -->
+                                                                <span class="d-block status status-repair">IN
+                                                                    PROGRESS</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-check"></i> -->
+                                                                <span class="d-block status status-check">WAIT
+                                                                    CHECK</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-approve"></i> -->
+                                                                <span class="d-block status status-approve">WAIT
+                                                                    APPROVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result"></i> -->
+                                                                <span class="d-block status status-result">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result-alt"></i> -->
+                                                                <span class="d-block status status-result-alt">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-finish"></i> -->
+                                                                <span
+                                                                    class="d-block status status-finish ">FINISH</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6 mb-3 pe-3">
+                                    <div class="row">
+                                        <div class="col-12 ">
+                                            <div class="row w-100">
+                                                <div class="col">
+                                                    <select class="form-select" multiple for="4" id="Section4_Filter"
+                                                        style="width: 100%">
+                                                        <option value="ALL" selected="">
+                                                            Please select section..
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive text-center box-shadow my-2">
+                                                <table class="table table-hover table-sm view-table" id="RepairOrder4">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Status</th>
+                                                            <th>Plan INJ</th>
+                                                            <th>MOLD Name</th>
+                                                            <th>Trouble</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center align-items-start">
+                                            <div class="box-shadow w-100">
+                                                <div id="statusBoard4" class="row row-cols-4 m-0">
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-request"></i> -->
+                                                                <span
+                                                                    class="d-block status status-request">REQUEST</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-receive"></i> -->
+                                                                <span
+                                                                    class="d-block status status-receive">RECEIVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-repair"></i> -->
+                                                                <span class="d-block status status-repair">IN
+                                                                    PROGRESS</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-check"></i> -->
+                                                                <span class="d-block status status-check">WAIT
+                                                                    CHECK</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-approve"></i> -->
+                                                                <span class="d-block status status-approve">WAIT
+                                                                    APPROVE</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result"></i> -->
+                                                                <span class="d-block status status-result">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-result-alt"></i> -->
+                                                                <span class="d-block status status-result-alt">WAIT
+                                                                    RESULT</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col status-card view my-1 px-1">
+                                                        <div class="card">
+                                                            <div
+                                                                class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                                                                <!-- <i class="fa fa-square d-block status status-finish"></i> -->
+                                                                <span
+                                                                    class="d-block status status-finish ">FINISH</span>
+                                                                <p class="card-text">0
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notify-box" style="display: none">
+                    <div class="dropup float-start" role="group">
+                        <button class="btn btn-warning btn-lg" aria-expanded="false" data-bs-auto-close="true"
+                            data-bs-toggle="dropdown" type="button">
+                            <span class="count-notify-box d-flex justify-content-center align-items-center"></span>
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu text-nowrap p-0"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><svg xmlns="http://www.w3.org/2000/svg"
+            viewBox="-32 0 512 512" width="1em" height="1em" fill="currentColor">
+            <path
+                d="M416 352c-8.188 0-16.38-3.125-22.62-9.375L224 173.3l-169.4 169.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25C432.4 348.9 424.2 352 416 352z">
+            </path>
+        </svg></a>
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/checkwidth.js"></script>
+    <script src="js/collapse.js"></script>
+    <script src="js/DateTime.js"></script>
+    <!-- <script src="https://cdn.datatables.net/v/bs5/dt-1.13.1/date-1.2.0/sb-1.4.0/sp-2.1.0/sl-1.5.0/datatables.min.js"></script> -->
+    <script src="js/datatables.min.js"></script>
+    <script src="js/zingchart.js"></script>
+    <script src="js/select2.full.min.js"></script>
+    <!-- <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/Imgpreview.js"></script>
+    <script src="js/showPdf.js"></script>
+    <script src="js/SidePanel.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/socket.io.min.js"></script>
+    <script src="js/sockethost.js"></script>
+
+    <script src="js/fuctionAll.js"></script>
+    <script src="Main/RepairView.js"></script>
+</body>
+
+</html>
