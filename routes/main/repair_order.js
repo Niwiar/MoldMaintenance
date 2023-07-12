@@ -9,7 +9,11 @@ const fs = require('fs');
 const pdfMake = require('pdfmake');
 
 const { gettime } = require('../../libs/datetime');
-const { uploadOrder, changeFileName } = require('../middleware/uploadFile');
+const {
+  multerOrder,
+  uploadOrder,
+  changeFileName,
+} = require('../middleware/uploadFile');
 const { getChecklist } = require('../../controller/checklistController');
 const {
   updateStatus,
@@ -199,11 +203,14 @@ router.get('/download_img/:ImgPath', async (req, res, next) => {
 });
 
 // Request
-router.post('/request/:Data', async (req, res, next) => {
+router.post('/request', multerOrder, async (req, res, next) => {
   // UPDATE TO Status Request
+  console.log(req.body);
+  console.log(req.files);
   try {
     // IsOther : 0 None, 1 Other
-    let Data = JSON.parse(req.params.Data);
+    let Data = JSON.parse(req.body.Data);
+    let Files = req.files;
     for (let [key, value] of Object.entries(Data)) {
       if (key != 'IsOther' && value == '') {
         return next(createError(400, 'Please fill every field'));
@@ -273,7 +280,6 @@ router.post('/request/:Data', async (req, res, next) => {
         : SlipCount;
     let SlipNo = yy.slice(2) + mm + dd + SlipTxt;
     let Filenames = `${SlipNo}_request`;
-    let Files = await uploadOrder(req, res, Filenames);
     let InsertRepair = `INSERT INTO RepairOrder(SlipNo,InjShot, Section, MoldId, MoldName, MoldControlNo,
         PartId, PartName, PartNo, McName, Cavity, OrderType, CoolingType, InjDate, PartDate,
         Detail, Cause, ProblemId, ProblemNo, Problem, ProblemSource, RequestUserId, RequestTime)
@@ -438,11 +444,12 @@ router.put('/repair_start/:RepairId', async (req, res, next) => {
     next(err);
   }
 });
-router.put('/repair_upload/:RepairId&:Data', async (req, res, next) => {
+router.put('/repair_upload/:RepairId', multerOrder, async (req, res, next) => {
   try {
     let { RepairId } = req.params;
     let datetime = gettime();
-    let Data = JSON.parse(req.params.Data);
+    let Data = JSON.parse(req.body.Data);
+    let Files = req.files;
     let { IndexProgress, UploadUserId } = Data;
     let { Fullname, isNotDm } = await checkDm({ UserId: UploadUserId });
     if (isNotDm)
@@ -453,7 +460,6 @@ router.put('/repair_upload/:RepairId&:Data', async (req, res, next) => {
     let SlipNo = await getSlipNo(RepairId);
     let Filenames = `${SlipNo}_repair${IndexProgress}`,
       ImgArr = [];
-    let Files = await uploadOrder(req, res, Filenames);
     let ShotDest = './img/repairorder';
     for (let idx = 0; idx < Files.length; idx++) {
       let des = path.join(process.cwd(), '/public/' + ShotDest);
@@ -479,47 +485,51 @@ router.put('/repair_upload/:RepairId&:Data', async (req, res, next) => {
     next(err);
   }
 });
-router.put('/repair_inspect_upload/:RepairId&:Data', async (req, res, next) => {
-  try {
-    let { RepairId } = req.params;
-    let datetime = gettime();
-    let Data = JSON.parse(req.params.Data);
-    let { IndexProgress, UploadUserId } = Data;
-    let { Fullname, isNotDm } = await checkDm({ UserId: UploadUserId });
-    if (isNotDm)
-      return next(
-        createError(403, `${Fullname} is not in Die Making Department`)
-      );
-    let pool = await sql.connect(dbconfig);
-    let SlipNo = await getSlipNo(RepairId);
-    let Filenames = `${SlipNo}_inspect${IndexProgress}`,
-      ImgArr = [];
-    let Files = await uploadOrder(req, res, Filenames);
-    let ShotDest = './img/repairorder';
-    for (let idx = 0; idx < Files.length; idx++) {
-      let des = path.join(process.cwd(), '/public/' + ShotDest);
-      let IndexImg = await selectIndexImg(RepairId, 'inspect', IndexProgress);
-      let Filename = await changeFileName(
-        des,
-        Files[idx],
-        `${Filenames}_${IndexImg}`
-      );
-      let InspectFilePath = `${ShotDest}/${Filename}`;
-      let InspectUpload = `INSERT INTO [RepairInspectImg](
+router.put(
+  '/repair_inspect_upload/:RepairId',
+  multerOrder,
+  async (req, res, next) => {
+    try {
+      let { RepairId } = req.params;
+      let datetime = gettime();
+      let Data = JSON.parse(req.body.Data);
+      let Files = req.files;
+      let { IndexProgress, UploadUserId } = Data;
+      let { Fullname, isNotDm } = await checkDm({ UserId: UploadUserId });
+      if (isNotDm)
+        return next(
+          createError(403, `${Fullname} is not in Die Making Department`)
+        );
+      let pool = await sql.connect(dbconfig);
+      let SlipNo = await getSlipNo(RepairId);
+      let Filenames = `${SlipNo}_inspect${IndexProgress}`,
+        ImgArr = [];
+      let ShotDest = './img/repairorder';
+      for (let idx = 0; idx < Files.length; idx++) {
+        let des = path.join(process.cwd(), '/public/' + ShotDest);
+        let IndexImg = await selectIndexImg(RepairId, 'inspect', IndexProgress);
+        let Filename = await changeFileName(
+          des,
+          Files[idx],
+          `${Filenames}_${IndexImg}`
+        );
+        let InspectFilePath = `${ShotDest}/${Filename}`;
+        let InspectUpload = `INSERT INTO [RepairInspectImg](
         RepairId,IndexProgress,IndexImg,InspectFilePath,InspectFileTime,UploadUserId)
         VALUES(
           ${RepairId},${IndexProgress},${IndexImg},N'${InspectFilePath}',N'${datetime}',${UploadUserId})`;
-      await pool.request().query(InspectUpload);
-      ImgArr.push({ IndexImg, InspectFilePath });
+        await pool.request().query(InspectUpload);
+        ImgArr.push({ IndexImg, InspectFilePath });
+      }
+      res.status(200).send({
+        message: `Repair order #${SlipNo} inspect file uploaded`,
+        ImgArr,
+      });
+    } catch (err) {
+      next(err);
     }
-    res.status(200).send({
-      message: `Repair order #${SlipNo} inspect file uploaded`,
-      ImgArr,
-    });
-  } catch (err) {
-    next(err);
   }
-});
+);
 // แก้ไข Problem source,ประเภทปัญหา,รายละเอียดของปัญหา,สาเหตุการเกิด,Inj Shot
 router.put('/repair_edit/:RepairId', async (req, res, next) => {
   try {
@@ -1029,17 +1039,17 @@ router.get('/download_doc/:RepairId', async (req, res, next) => {
   }
 });
 
-router.put('/qa_upload/:RepairId&:Data', async (req, res, next) => {
+router.put('/qa_upload/:RepairId', multerOrder, async (req, res, next) => {
   try {
     let { RepairId } = req.params;
     let datetime = gettime();
-    let Data = JSON.parse(req.params.Data);
+    let Data = JSON.parse(req.body.Data);
+    let Files = req.files;
     let { IndexQa, UploadUserId } = Data;
     let pool = await sql.connect(dbconfig);
     let SlipNo = await getSlipNo(RepairId);
     let Filenames = `${SlipNo}_qa${IndexQa}`,
       ImgArr = [];
-    let Files = await uploadOrder(req, res, Filenames);
     let ShotDest = './img/repairorder';
     for (let idx = 0; idx < Files.length; idx++) {
       let des = path.join(process.cwd(), '/public/' + ShotDest);

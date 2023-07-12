@@ -15,17 +15,16 @@ function uploadFilePNG(
   dataURL,
   CheckFileName,
   FileName,
+  Data,
   Method = 'put'
 ) {
   return new Promise(async (resolve, reject) => {
-    console.log('dataURL: ', dataURL);
     let FilePic = new FormData();
     for (let count = 0; count < dataURL.length; count++) {
       let ImgFile = dataURL[count];
-      // console.log(ImgFile)
-      console.log(FileName);
       FilePic.append(FileName, ImgFile, `${CheckFileName}_${count}`);
     }
+    FilePic.append('Data', Data);
     $.ajax({
       url: ajaxURL,
       method: Method,
@@ -76,7 +75,6 @@ var RepairOrderList;
 // Fill Table
 function fillRepairOrderList(Section) {
   let isRequest = [];
-  // console.log('Section: ',Section)
   if (Section.length == 0) Section = ['ALL'];
   RepairOrderList = $('#RepairOrderList').DataTable({
     bDestroy: true,
@@ -210,7 +208,7 @@ function fillRepairOrderList(Section) {
     ],
     initComplete: () => {
       if (!isRequest.length) {
-        console.log('no request');
+        // no request
         stopSound();
       }
     },
@@ -300,7 +298,6 @@ function DelMcTable(URL, tbId, method = 'delete') {
         },
         error: (err) => {
           let error = err.responseJSON.message;
-          console.log(err);
           Swal.fire({
             position: 'center',
             icon: 'warning',
@@ -477,7 +474,6 @@ function getCheckPoint(RepairId, IndexProgress, OrderType) {
       dataType: 'json',
     })
       .done((res) => {
-        console.log(res);
         let {
           CheckText,
           CheckStart,
@@ -612,9 +608,7 @@ function showHistory(History, RepairImg, StatusId) {
     ApproveHistory,
     QaHistory,
   } = History;
-  // console.log(ScheduleHistory, ProgressHistory, CheckHistory, ApproveHistory, QaHistory);
   let { ProgressImgHistory, InspectImgHistory, QaImgHistory } = RepairImg;
-  // console.log('RepairImg: ',RepairImg)
   if (!ScheduleHistory.length) $('#ScheduleHistory_Req').hide();
   else {
     $('#ScheduleHistory_Req .dropdown-menu').html('');
@@ -652,7 +646,6 @@ function showHistory(History, RepairImg, StatusId) {
         RepairEnd,
         RepairUser,
       } = Repair;
-      // console.log("UploadUser: ", UploadUser);
       let HistoryIndex = IndexProgress;
       // History Progress
       let $Repair_History_div = $(`
@@ -801,7 +794,6 @@ function showHistory(History, RepairImg, StatusId) {
   if (!QaHistory.length) $('#QaHistory_Req').hide();
   else {
     $('#QaHistory_Req .dropdown-menu').html('');
-    console.log('QaHistory: ', QaHistory);
     QaHistory.forEach((Qa) => {
       let { IndexQa, TryDate, QaResult, QaRemark, QaFilePath, QaTime, QaUser } =
         Qa;
@@ -1000,12 +992,11 @@ function bindPreviewEvent(UserId) {
     });
     AjaxDeleteImage(`/repair/image/${Data}`)
       .then(() => $(e.target).parents('.preview-container').remove())
-      .catch((err) => console.log(err));
+      .catch((err) => {});
   });
 }
 
 function showImg(RepairImg) {
-  // console.log('show', RepairImg)
   let { OrderImg, ProgressImg, InspectImg, QaImg } = RepairImg;
   $('.dp-scrollY').empty();
   if (OrderImg.length != 0) {
@@ -1017,9 +1008,6 @@ function showImg(RepairImg) {
       <button class="btn btn-lg preview-download" type="button"><i class="fa fa-download"></i></button>  
       </div>`).appendTo('#DpFile_Req .dp-scrollY');
     });
-    console.log('Req_File: ', $('#DpFile_Req .dp-scrollY').children().length);
-  } else {
-    console.log('no OrderImg');
   }
   if (ProgressImg.length != 0) {
     ProgressImg.forEach((ProgressImg, Num) => {
@@ -1032,8 +1020,6 @@ function showImg(RepairImg) {
         '#DpCheckFile_ReqBtn .dp-scrollY'
       );
     });
-  } else {
-    console.log('no ProgressImg');
   }
 
   if (InspectImg.length != 0) {
@@ -1047,8 +1033,6 @@ function showImg(RepairImg) {
         '#DpInspectFile_ReqBtn .dp-scrollY'
       );
     });
-  } else {
-    console.log('no InspectImg');
   }
 
   if (QaImg.length != 0) {
@@ -1062,14 +1046,9 @@ function showImg(RepairImg) {
         '#DpQaFile_ReqBtn .dp-scrollY'
       );
     });
-  } else {
-    console.log('no QaImg');
   }
-
-  // console.log('show finish')
 }
 function showDetail(Data) {
-  // console.log(Data)
   let {
     SlipNo,
     RequestUser,
@@ -1174,7 +1153,6 @@ const callSwal = (txt, action = 'error', title = 'Warning') => {
 
 const userSign = (RepairId, Action, Data) => {
   return new Promise(async (resolve, reject) => {
-    // console.log(`/repair/${Action}/${RepairId}`);
     $.ajax({
       url: `/repair/${Action}/${RepairId}`,
       method: 'put',
@@ -1182,7 +1160,6 @@ const userSign = (RepairId, Action, Data) => {
       data: JSON.stringify(Data),
     })
       .done((res) => {
-        // console.log(res);
         if (Action.includes('repair')) {
           callSwal(res.message, 'success', 'Success');
           TechnicianList.ajax.reload(null, false);
@@ -1195,7 +1172,6 @@ const userSign = (RepairId, Action, Data) => {
           }
         } else if (Action.includes('check_pass')) {
           callSwal(res.message, 'success', 'Success');
-          // console.log(Action, res);
           let { Fullname, isAlt, Time } = res;
           let prefix = `${isAlt ? 'Alt' : ''}`;
           $(`#Dm_${prefix}CheckUser_`).val(Fullname);
@@ -1208,7 +1184,6 @@ const userSign = (RepairId, Action, Data) => {
           }
         } else if (Action.includes('approve_pass')) {
           callSwal(res.message, 'success', 'Success');
-          // console.log(Action, res);
           let { Fullname, isAlt, Time } = res;
           let prefix = `${isAlt ? 'Alt' : ''}`;
           $(`#Dm_${prefix}ApproveUser_`).val(Fullname);
@@ -1272,7 +1247,6 @@ const fillUser = (Action, Data, StatusId = 0) => {
     $('#Dm_AltApproveTime_').val(DmAltApproveTime || null);
   } else if (Action == 'qa') {
     let { QaResult, QaRemark, TryDate, QaUser, QaFilePath } = Data;
-    // console.log(Data);
     $('#TryDate_Req').val(TryDate || null);
     if (QaResult) {
       $(`input[type="radio"][name="Result_Req"][value="${QaResult}"]`).prop(
@@ -1535,7 +1509,6 @@ const showCheckField = (StatusId = 1, editable) => {
     PreventiveCheckList.hide();
     RepairCheckList.show();
   }
-  console.log('editable', editable);
   if (editable) {
     $('.check-disable').show();
     // $("#RepairCheckForm input").removeAttr("checked");
@@ -1551,7 +1524,6 @@ const showCheckField = (StatusId = 1, editable) => {
     $PointCheckTime.attr('disabled', '');
     $CheckSubmitBtn.show();
   } else {
-    // console.log("check false");
     $('.check-disable').hide();
     $('#SavePointcheck_Btn').hide();
     // $("#RepairCheckForm input").attr("checked", "");
@@ -1582,7 +1554,6 @@ const dropdownProblem = (ProblemId = 0) => {
           `<option value=''><span>Please select problem..</span></option>`
         );
         res.forEach((obj) => {
-          // console.log(ProblemId, obj.ProblemId)
           let ProblemSelected;
           ProblemSelected = obj.ProblemId == ProblemId ? 'selected' : '';
           $('#Problem_Req').append(
@@ -1609,7 +1580,6 @@ const dropdownMold = (Section) => {
     contentType: 'application/json',
     dataType: 'json',
     success: function (res) {
-      // console.log("dpMold: ", res);
       if (res.length == 0) {
         $('#MoldName_ReqOpt option').remove();
         $('#MoldName_ReqOpt').append("<option value='No data'>");
@@ -1754,15 +1724,12 @@ const socketio = () => {
     console.log(msg);
   });
   socket.on('pm-notify', (msg) => {
-    console.log(msg);
     getNotify();
   });
 
   socket.on('repair-update', (msg) => {
-    console.log(msg);
     fillRepairOrderList($('#Section_Filter').val());
     fillRepairOrderDetail($('#Section_Filter').val());
-    // if (msg == 'alert') playSound()
   });
   socket.on('disconnect', () => {
     console.log('disconnectd');
@@ -1916,7 +1883,6 @@ $(document).ready(async () => {
       }
       $('#DpFile_Req').unbind();
       $('#DpFile_Req').on('click', '.preview-request-close', async (e) => {
-        console.log('delete pic');
         $(e.target).parents('.preview-container').remove();
       });
     });
@@ -1962,7 +1928,6 @@ $(document).ready(async () => {
     });
     $SubmitBtn.unbind();
     $SubmitBtn.on('click', () => {
-      console.log('ส่งคำสั่งซ่อม');
       let MoldCheckList = [];
       let DownmoldList = DownmoldDiv.children();
       for (let downmold = 0; downmold < DownmoldList.length; downmold++) {
@@ -2007,9 +1972,10 @@ $(document).ready(async () => {
         MoldCheckList,
         IsOther: 0,
       };
-      // console.log(Data);
+      RequestPic.append('Data', JSON.stringify(Data));
       $.ajax({
-        url: `/repair/request/${JSON.stringify(Data).replaceAll('/', '%2F')}`,
+        // url: `/repair/request/${JSON.stringify(Data).replaceAll('/', '%2F')}`,
+        url: `/repair/request`,
         method: 'post',
         processData: false,
         contentType: false,
@@ -2119,7 +2085,6 @@ $(document).ready(async () => {
 
       if (StatusId == 2 || StatusId >= 4) {
         $SubmitBtn.show();
-        // console.log("sce hide");
         $('#Save_ScheduleBtn, #Save_MfgScheduleBtn').hide();
         $('#OffSchedule_Req, #OnSchedule_Req, #Schedule_Req').attr(
           'disabled',
@@ -2149,7 +2114,6 @@ $(document).ready(async () => {
           $('#Schedule_Req').val(null);
         }
       } else {
-        // console.log("sce show");
         $('#Save_MfgScheduleBtn').hide();
         $SubmitBtn.show();
         $('#Save_ScheduleBtn').show();
@@ -2215,14 +2179,12 @@ $(document).ready(async () => {
           $SubmitBtn.show();
         }
       }
-      // console.log("RepairEnd", RepairEnd);
       if (RepairEnd != null) {
         $('#SigninGroup').hide();
         $('#RepairFinish_Btn').hide();
       }
     });
     $SubmitBtn.unbind();
-    // console.log(StatusId);
     if (StatusId == 1) {
       // REQ
       // next status
@@ -2310,7 +2272,7 @@ $(document).ready(async () => {
         });
       });
       $SubmitBtn.on('click', () => {
-        console.log('รับงาน');
+        // รับงาน
         $.ajax({
           url: `/repair/receive/${RepairId}`,
           method: 'put',
@@ -2368,7 +2330,7 @@ $(document).ready(async () => {
       });
       // next status
       $SubmitBtn.on('click', () => {
-        console.log('ดำเนินการ');
+        // ดำเนินการ
         $.ajax({
           url: `/repair/repair_start/${RepairId}`,
           method: 'put',
@@ -2411,18 +2373,16 @@ $(document).ready(async () => {
           IndexProgress: Index.IndexProgress,
           UploadUserId: UserId,
         };
-        let ajaxUrl = `/repair/repair_inspect_upload/${RepairId}&${JSON.stringify(
-          Data
-        ).replaceAll('/', '%2F')}`;
+        let ajaxUrl = `/repair/repair_inspect_upload/${RepairId}`;
         let Img = $('#InspectFile_Req').prop('files');
         // read the image file as a data URL.
         let ImgArr = await uploadFilePNG(
           ajaxUrl,
           Img,
           `check${Index.IndexProgress}`,
-          'orderimg'
+          'orderimg',
+          JSON.stringify(Data)
         );
-        console.log(ImgArr);
         for (let count = 0; count < ImgArr.length; count++) {
           let { IndexImg, InspectFilePath } = ImgArr[count];
           $(`<div class="col preview-container"><img id="preview-inspect${IndexImg}" class="preview-img box-shadow" src="${InspectFilePath}" />
@@ -2441,9 +2401,7 @@ $(document).ready(async () => {
           IndexProgress: Index.IndexProgress,
           UploadUserId: UserId,
         };
-        let ajaxUrl = `/repair/repair_upload/${RepairId}&${JSON.stringify(
-          Data
-        ).replaceAll('/', '%2F')}`;
+        let ajaxUrl = `/repair/repair_upload/${RepairId}`;
         let Img = $('#CheckFile_Req').prop('files');
 
         // read the image file as a data URL.
@@ -2451,9 +2409,9 @@ $(document).ready(async () => {
           ajaxUrl,
           Img,
           `check${Index.IndexProgress}`,
-          'orderimg'
+          'orderimg',
+          JSON.stringify(Data)
         );
-        console.log(ImgArr);
         for (let count = 0; count < ImgArr.length; count++) {
           let { IndexImg, RepairFilePath } = ImgArr[count];
           $(`<div class="col preview-container"><img id="preview-progress${IndexImg}" class="preview-img box-shadow" src="${RepairFilePath}" />
@@ -2556,7 +2514,6 @@ $(document).ready(async () => {
       $(document).unbind();
       $('#Signin_ReqBtn').on('click', async function () {
         let Userpass = $('#TechPassword_Req').val();
-        // console.log(Userpass);
         await userSign(RepairId, 'repair_login', { Userpass });
       });
       $(document).on('click', '#Signout_ReqBtn', async function () {
@@ -2583,8 +2540,7 @@ $(document).ready(async () => {
         AjaxPut(url, RepairOrderList, Data);
       });
       $SubmitBtn.on('click', async function () {
-        // Point Check
-        console.log('ตรวจสอบ');
+        // Point Check ตรวจสอบ
 
         await getCheckPoint(RepairId, Index.IndexProgress, OrderType);
         showCheck(true);
@@ -2684,7 +2640,7 @@ $(document).ready(async () => {
         // next status
         $CheckSubmitBtn.unbind();
         $CheckSubmitBtn.on('click', function () {
-          console.log('ตรวจสอบสำเร็จ');
+          // ตรวจสอบสำเร็จ
           $.ajax({
             url: `/repair/pointcheck_finish/${RepairId}`,
             method: 'put',
@@ -2710,7 +2666,6 @@ $(document).ready(async () => {
             },
             error: (err) => {
               let error = err.responseJSON.message.replaceAll('\n', '<br>');
-              console.log(error);
               Swal.fire({
                 position: 'center',
                 icon: 'warning',
@@ -2748,7 +2703,6 @@ $(document).ready(async () => {
       $(document).unbind();
       // DM CHECK REJECT
       $(document).on('click', '#Dm_CheckReject_ReqBtn', async function () {
-        // console.log("dm check reject");
         let Userpass = $('#Dm_CheckRejectPassword_Req').val();
         let Reason = $('#Dm_CheckRejectReason_Req').val();
         await userSign(RepairId, 'check_reject', {
@@ -2759,7 +2713,6 @@ $(document).ready(async () => {
       });
       // DM CHECK PASS
       $(document).on('click', '#Dm_CheckUser_ReqBtn', async function () {
-        // console.log("dm check pass");
         let Userpass = $('#Dm_CheckPassword_Req').val();
         await userSign(RepairId, 'check_pass', {
           Userpass,
@@ -2797,7 +2750,6 @@ $(document).ready(async () => {
       $(document).unbind();
       // DM APPROVE REJECT
       $(document).on('click', '#Dm_ApproveReject_ReqBtn', async function () {
-        // console.log("dm approve reject");
         let Userpass = $('#Dm_ApproveRejectPassword_Req').val();
         let Reason = $('#Dm_ApproveRejectReason_Req').val();
         await userSign(RepairId, 'approve_reject', {
@@ -2808,7 +2760,6 @@ $(document).ready(async () => {
       });
       // DM APPROVE PASS
       $(document).on('click', '#Dm_ApproveUser_ReqBtn', async function () {
-        // console.log("dm approve pass");
         let Userpass = $('#Dm_ApprovePassword_Req').val();
         await userSign(RepairId, 'approve_pass', {
           Userpass,
@@ -2830,19 +2781,16 @@ $(document).ready(async () => {
           IndexQa: Index.IndexQa,
           UploadUserId: UserId,
         };
-        let ajaxUrl = `/repair/qa_upload/${RepairId}&${JSON.stringify(
-          Data
-        ).replaceAll('/', '%2F')}`;
+        let ajaxUrl = `/repair/qa_upload/${RepairId}`;
         let Img = $('#QaFile_Req').prop('files');
-
         // read the image file as a data URL.
         let ImgArr = await uploadFilePNG(
           ajaxUrl,
           Img,
           `check${Index.IndexQa}`,
-          'orderimg'
+          'orderimg',
+          JSON.stringify(Data)
         );
-        console.log(ImgArr);
         for (let count = 0; count < ImgArr.length; count++) {
           let { IndexImg, QaFilePath } = ImgArr[count];
           $(`<div class="col preview-container"><img id="preview-qa${IndexImg}" class="preview-img box-shadow" src="${QaFilePath}" />
@@ -2875,7 +2823,6 @@ $(document).ready(async () => {
       $('#QaPassword_Req').val('');
       $(document).unbind();
       $(document).on('click', '#QaUser_ReqBtn', async function () {
-        // console.log("qa pass");
         let Userpass = $('#QaPassword_Req').val();
         // QA PASS
         await userSign(RepairId, 'qa_check', {
@@ -2897,12 +2844,11 @@ $(document).ready(async () => {
       // PRINT REPAIR ORDER
       $('#PrintOrder_ReqBtn').unbind();
       $('#PrintOrder_ReqBtn').on('click', async function () {
-        // console.log("print order", RepairId);
         await userSign(RepairId, 'print_doc', { DocUserId: UserId });
       });
       // next status
       $SubmitBtn.on('click', async () => {
-        console.log('จบงาน');
+        // จบงาน
         await userSign(RepairId, 'finish', {
           FinishUserId: UserId,
           IndexApprove: Index.IndexApprove,
@@ -2917,9 +2863,7 @@ $(document).ready(async () => {
           IndexQa: Index.IndexQa,
           UploadUserId: UserId,
         };
-        let ajaxUrl = `/repair/qa_upload/${RepairId}&${JSON.stringify(
-          Data
-        ).replaceAll('/', '%2F')}`;
+        let ajaxUrl = `/repair/qa_upload/${RepairId}`;
         let Img = $('#QaFile_Req').prop('files');
 
         // read the image file as a data URL.
@@ -2927,9 +2871,9 @@ $(document).ready(async () => {
           ajaxUrl,
           Img,
           `check${Index.IndexQa}`,
-          'orderimg'
+          'orderimg',
+          JSON.stringify(Data)
         );
-        console.log(ImgArr);
         for (let count = 0; count < ImgArr.length; count++) {
           let { IndexImg, QaFilePath } = ImgArr[count];
           $(`<div class="col preview-container"><img id="preview-qa${IndexImg}" class="preview-img box-shadow" src="${QaFilePath}" />
@@ -2965,7 +2909,6 @@ $(document).ready(async () => {
 
       $(document).unbind();
       $(document).on('click', '#Dm_CheckReject_ReqBtn', async function () {
-        // console.log("check reject");
         let Userpass = $('#Dm_CheckRejectPassword_Req').val();
         let Reason = $('#Dm_CheckRejectReason_Req').val();
         // RE-CHECK REJECT
@@ -2976,7 +2919,6 @@ $(document).ready(async () => {
         });
       });
       $(document).on('click', '#Dm_CheckUser_ReqBtn', async function () {
-        // console.log("check pass");
         let Userpass = $('#Dm_CheckPassword_Req').val();
         // RE-CHECK PASS
         await userSign(RepairId, 'check_pass', {
@@ -2986,7 +2928,6 @@ $(document).ready(async () => {
         });
       });
       $(document).on('click', '#Dm_ApproveReject_ReqBtn', async function () {
-        // console.log("approve reject");
         let Userpass = $('#Dm_ApproveRejectPassword_Req').val();
         let Reason = $('#Dm_ApproveRejectReason_Req').val();
         // RE-APPROVE REJECT
@@ -2997,7 +2938,6 @@ $(document).ready(async () => {
         });
       });
       $(document).on('click', '#Dm_ApproveUser_ReqBtn', async function () {
-        console.log('approve pass');
         let Userpass = $('#Dm_ApprovePassword_Req').val();
         // RE-APPROVE PASS
         await userSign(RepairId, 'approve_pass', {
@@ -3007,7 +2947,6 @@ $(document).ready(async () => {
         });
       });
       $(document).on('click', '#QaUser_ReqBtn', async function () {
-        // console.log("qa pass");
         let Userpass = $('#QaPassword_Req').val();
         // QA PASS
         await userSign(RepairId, 'qa_check', {
@@ -3023,20 +2962,17 @@ $(document).ready(async () => {
       // PRINT TAG
       $('#PrintTag_ReqBtn').unbind();
       $('#PrintTag_ReqBtn').on('click', async function () {
-        // console.log("print tags", RepairId);
-        // let Printer = $('#TagPrinter_Req').val()
         await userSign(RepairId, 'print_tag', { TagUserId: UserId });
       });
       // PRINT REPAIR ORDER
       $('#PrintOrder_ReqBtn').unbind();
       $('#PrintOrder_ReqBtn').on('click', async function () {
-        // console.log("print order", RepairId);
         await userSign(RepairId, 'print_doc', { DocUserId: UserId });
       });
       // finish
       $SubmitBtn.unbind();
       $SubmitBtn.on('click', async () => {
-        // console.log("จบงาน");
+        // จบงาน
         await userSign(RepairId, 'finish', {
           FinishUserId: UserId,
           IndexApprove: Index.IndexApprove,
@@ -3065,20 +3001,16 @@ $(document).ready(async () => {
       // PRINT TAG
       $('#PrintTag_ReqBtn').unbind();
       $('#PrintTag_ReqBtn').on('click', async function () {
-        // console.log("print tags", RepairId);
-        // let Printer = $('#TagPrinter_Req').val()
         await userSign(RepairId, 'print_tag', { TagUserId: UserId });
       });
       // PRINT REPAIR ORDER
       $('#PrintOrder_ReqBtn').unbind();
       $('#PrintOrder_ReqBtn').on('click', async function () {
-        // console.log("print order", RepairId);
         await userSign(RepairId, 'print_doc', { DocUserId: UserId });
       });
       // PASS QA
       $(document).unbind();
       $(document).on('click', '#QaUser_ReqBtn', async function () {
-        // console.log("qa pass");
         let Userpass = $('#QaPassword_Req').val();
         await userSign(RepairId, 'qa_check', {
           Userpass,
@@ -3094,7 +3026,6 @@ $(document).ready(async () => {
       });
       // Reject QA
       $(document).on('click', '#QaUser_RejectBtn', async function () {
-        // console.log("approve reject");
         let Userpass = $('#QaPassword_Reject').val();
         let Reason = $('#QaReason_Reject').val();
         await userSign(RepairId, 'qa_reject', {
@@ -3108,7 +3039,7 @@ $(document).ready(async () => {
       });
       // finish
       $SubmitBtn.on('click', async () => {
-        // console.log("ปิดงาน");
+        // ปิดงาน
         await userSign(RepairId, 'complete', {
           FinishUserId: UserId,
           IndexApprove: Index.IndexApprove,

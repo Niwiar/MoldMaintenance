@@ -126,7 +126,7 @@ function fillRepairOrderList(TableId, Section) {
     ],
     initComplete: () => {
       if (!isRequest.length) {
-        console.log('no request');
+        // no request
         stopSound();
       }
     },
@@ -160,8 +160,8 @@ function autoRefresh() {
 function notifyRefresh() {
   getNotify();
 }
-setInterval('autoRefresh()', 1000 * 60);
-setInterval('notifyRefresh()', 1000 * 60 * 30);
+// setInterval('autoRefresh()', 1000 * 60);
+// setInterval('notifyRefresh()', 1000 * 60 * 30);
 
 const socketio = () => {
   const socket = io.connect(socketHost, {

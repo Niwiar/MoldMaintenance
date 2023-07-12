@@ -1,19 +1,19 @@
 let MoldActualList, tbActualHistory, tbPmHistory, tbCumulativeShot;
 
 let ActCol = [
-  { data: "UpdatedTime" },
-  { data: "PartName" },
-  { data: "ActualShot" },
+  { data: 'UpdatedTime' },
+  { data: 'PartName' },
+  { data: 'ActualShot' },
 ];
 let PmHistoryCol = [
-  { data: "PmDate" },
-  { data: "PartName" },
-  { data: "InjShot" },
+  { data: 'PmDate' },
+  { data: 'PartName' },
+  { data: 'InjShot' },
 ];
-let CumulativeCol = [{ data: "PartName" }, { data: "CumulativeShot" }];
+let CumulativeCol = [{ data: 'PartName' }, { data: 'CumulativeShot' }];
 function dataURLtoBlob(dataURL) {
-  var byteString = atob(dataURL.split(",")[1]);
-  var mimeString = dataURL.split(",")[0].split(":")[1].split(";")[0];
+  var byteString = atob(dataURL.split(',')[1]);
+  var mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
   var ab = new ArrayBuffer(byteString.length);
   var ia = new Uint8Array(ab);
   for (var i = 0; i < byteString.length; i++) {
@@ -24,7 +24,7 @@ function dataURLtoBlob(dataURL) {
   return blob;
 }
 function fillMoldActualList(Section) {
-  MoldActualList = $("#MoldActualList").DataTable({
+  MoldActualList = $('#MoldActualList').DataTable({
     bDestroy: true,
     scrollCollapse: true,
     searching: true,
@@ -33,10 +33,10 @@ function fillMoldActualList(Section) {
     lengthChange: false,
     info: false,
     autoWidth: false,
-    dom: "rtp",
+    dom: 'rtp',
     ajax: {
       url: `/pm/list_mold/${Section}`,
-      dataSrc: "",
+      dataSrc: '',
     },
     columnDefs: [
       { orderData: [0, 11], targets: [0, 1] },
@@ -48,27 +48,27 @@ function fillMoldActualList(Section) {
     ],
     columns: [
       {
-        data: "MoldSection",
+        data: 'MoldSection',
         render: function (data, type, row) {
           if (!data) return `-`;
           else return data;
         },
       },
       {
-        data: "MoldName",
+        data: 'MoldName',
         render: function (data) {
           return `<div class="d-flex justify-content-start align-item-center"><span class="text-start fw-bold">${data}</span></div>`;
         },
       },
       {
-        data: "MoldControlNo",
+        data: 'MoldControlNo',
         render: function (data, type, row) {
           if (!data) return `-`;
           else return data;
         },
       },
       {
-        data: "CleaningPlan",
+        data: 'CleaningPlan',
         render: function (data, type, row) {
           if (data == 0)
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center">-</span></div>`;
@@ -76,25 +76,25 @@ function fillMoldActualList(Section) {
         },
       },
       {
-        data: "CleaningShot",
+        data: 'CleaningShot',
         render: function (data, type, row) {
           if (data) {
             let textColor;
             let Plan = parseInt(row.CleaningPlan);
             let Warning = Plan * 0.01 * row.WarnPercent;
             let Danger = Plan * 0.01 * row.DangerPercent;
-            if (data > Danger) textColor = "text-alert";
-            else if (data < Warning) textColor = "";
+            if (data > Danger) textColor = 'text-alert';
+            else if (data < Warning) textColor = '';
             else if (data == 0 || Plan == 0) {
-              textColor = "";
-              data = "-";
-            } else textColor = "text-warn";
+              textColor = '';
+              data = '-';
+            } else textColor = 'text-warn';
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center ${textColor}">${data.toLocaleString()}</span></div>`;
-          } else return "-";
+          } else return '-';
         },
       },
       {
-        data: "PreventivePlan",
+        data: 'PreventivePlan',
         render: function (data, type, row) {
           if (data == 0)
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center">-</span></div>`;
@@ -102,25 +102,25 @@ function fillMoldActualList(Section) {
         },
       },
       {
-        data: "PreventiveShot",
+        data: 'PreventiveShot',
         render: function (data, type, row) {
           if (data) {
             let textColor;
             let Plan = parseInt(row.PreventivePlan);
             let Warning = Plan * 0.01 * row.WarnPercent;
             let Danger = Plan * 0.01 * row.DangerPercent;
-            if (data > Danger) textColor = "text-alert";
-            else if (data < Warning) textColor = "";
+            if (data > Danger) textColor = 'text-alert';
+            else if (data < Warning) textColor = '';
             else if (data == 0 || Plan == 0) {
-              textColor = "";
-              data = "-";
-            } else textColor = "text-warn";
+              textColor = '';
+              data = '-';
+            } else textColor = 'text-warn';
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center ${textColor}">${data.toLocaleString()}</span></div>`;
-          } else return "-";
+          } else return '-';
         },
       },
       {
-        data: "LifeShot",
+        data: 'LifeShot',
         render: function (data, type, row) {
           if (data == 0)
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center">-</span></div>`;
@@ -128,25 +128,25 @@ function fillMoldActualList(Section) {
         },
       },
       {
-        data: "CumulativeShot",
+        data: 'CumulativeShot',
         render: function (data, type, row) {
           if (data) {
             let textColor;
             let Plan = parseInt(row.LifeShot);
             let Warning = Plan * 0.01 * row.WarnPercent;
             let Danger = Plan * 0.01 * row.DangerPercent;
-            if (data > Danger) textColor = "text-alert";
-            else if (data < Warning) textColor = "";
+            if (data > Danger) textColor = 'text-alert';
+            else if (data < Warning) textColor = '';
             else if (data == 0 || Plan == 0) {
-              textColor = "";
-              data = "-";
-            } else textColor = "text-warn";
+              textColor = '';
+              data = '-';
+            } else textColor = 'text-warn';
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center ${textColor}">${data.toLocaleString()}</span></div>`;
-          } else return "-";
+          } else return '-';
         },
       },
       {
-        data: "OtherPlan",
+        data: 'OtherPlan',
         render: function (data, type, row) {
           if (data == 0)
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center">-</span></div>`;
@@ -154,37 +154,37 @@ function fillMoldActualList(Section) {
         },
       },
       {
-        data: "OtherShot",
+        data: 'OtherShot',
         render: function (data, type, row) {
           if (data) {
             let textColor;
             let Plan = parseInt(row.OtherPlan);
             let Warning = Plan * 0.01 * row.WarnPercent;
             let Danger = Plan * 0.01 * row.DangerPercent;
-            if (data > Danger) textColor = "text-alert";
-            else if (data < Warning) textColor = "";
+            if (data > Danger) textColor = 'text-alert';
+            else if (data < Warning) textColor = '';
             else if (data == 0 || Plan == 0) {
-              textColor = "";
-              data = "-";
-            } else textColor = "text-warn";
+              textColor = '';
+              data = '-';
+            } else textColor = 'text-warn';
             return `<div class="d-flex justify-content-center align-item-center"><span class="text-center ${textColor}">${data.toLocaleString()}</span></div>`;
-          } else return "-";
+          } else return '-';
         },
       },
       {
-        data: "MoldId",
+        data: 'MoldId',
       },
     ],
   });
 }
 
 function searchMoldActualList() {
-  $("#MoldActualList thead tr")
+  $('#MoldActualList thead tr')
     .clone(true)
-    .addClass("filters")
-    .appendTo("#MoldActualList thead");
-  $("#MoldActualList .filters th").each(function (e) {
-    var title = $("#MoldActualList thead th").eq($(this).index()).text();
+    .addClass('filters')
+    .appendTo('#MoldActualList thead');
+  $('#MoldActualList .filters th').each(function (e) {
+    var title = $('#MoldActualList thead th').eq($(this).index()).text();
     $(this).html(
       `<input class="form-control p-1" type="text" placeholder="${title}"/>`
     );
@@ -192,8 +192,8 @@ function searchMoldActualList() {
   MoldActualList.columns()
     .eq(0)
     .each(function (colIdx) {
-      $("input", $("#MoldActualList .filters th")[colIdx]).on(
-        "keyup change",
+      $('input', $('#MoldActualList .filters th')[colIdx]).on(
+        'keyup change',
         function (e) {
           if (colIdx == 11) return;
           MoldActualList.column(colIdx).search(this.value).draw();
@@ -201,20 +201,20 @@ function searchMoldActualList() {
       );
     });
 }
-const $SubmitBtn = $("#Submit_ReqBtn"),
-  $LoginBtn = $("#LoginBtn");
-const RepairRequestModal = $("#RepairRequestModal"),
-  MoldShotDetailModal = $("#MoldShotDetailModal"),
-  MoldShotModal = $("#MoldShotModal"),
-  LoginModal = $("#RepairLogin"),
-  UpdateActForm = $("#UpdateActForm");
+const $SubmitBtn = $('#Submit_ReqBtn'),
+  $LoginBtn = $('#LoginBtn');
+const RepairRequestModal = $('#RepairRequestModal'),
+  MoldShotDetailModal = $('#MoldShotDetailModal'),
+  MoldShotModal = $('#MoldShotModal'),
+  LoginModal = $('#RepairLogin'),
+  UpdateActForm = $('#UpdateActForm');
 
 const checkUser = (Data) => {
   return new Promise(async (resolve, reject) => {
     $.ajax({
-      url: "/user/check",
-      method: "post",
-      contentType: "application/json",
+      url: '/user/check',
+      method: 'post',
+      contentType: 'application/json',
       data: JSON.stringify(Data),
     })
       .done((user) => {
@@ -226,21 +226,21 @@ const checkUser = (Data) => {
       });
   });
 };
-const callSwal = (txt, action = "error", title = "Warning") => {
-  if (action == "error") {
+const callSwal = (txt, action = 'error', title = 'Warning') => {
+  if (action == 'error') {
     Swal.fire({
-      position: "center",
-      icon: "warning",
+      position: 'center',
+      icon: 'warning',
       title: title,
       text: txt,
       showConfirmButton: true,
-      confirmButtonText: "OK",
-      confirmButtonColor: "#FF5733",
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#FF5733',
     });
-  } else if (action == "success") {
+  } else if (action == 'success') {
     Swal.fire({
-      position: "center",
-      icon: "success",
+      position: 'center',
+      icon: 'success',
       title: title,
       text: txt,
       showConfirmButton: false,
@@ -253,17 +253,18 @@ function showRequestBtn(btnId, Plan, Act, Warning) {
     $(`#${btnId}`).hide();
   } else {
     $(`#${btnId}`).show();
-    Act <= Plan * 0.01 * Warning ? $(`#${btnId}`).hide() : $(`#${btnId}`).show();
+    Act <= Plan * 0.01 * Warning
+      ? $(`#${btnId}`).hide()
+      : $(`#${btnId}`).show();
   }
 }
 const dropdownMold = (Section, No) => {
   $.ajax({
     url: `/dropdown/mold_section/${Section}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
-      // console.log("dpMold: ", res);
       if (res.length == 0) {
         $(`#MoldName_ActOpt_0${No} option`).remove();
         $(`#MoldName_ActOpt_0${No}`).append(`<option value='No data'>`);
@@ -289,9 +290,9 @@ const dropdownMold = (Section, No) => {
 const dropdownMoldDetail = (MoldId, No) => {
   $.ajax({
     url: `/dropdown/mold_detail/${MoldId}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
       $(`#MoldCtrlNo_Act_0${No}`).val(res.MoldControlNo);
       $(`#Cavity_Act_0${No}`).val(res.MoldCavity);
@@ -305,58 +306,57 @@ const dropdownMoldDetail = (MoldId, No) => {
 const dropdownMoldReq = (Section) => {
   $.ajax({
     url: `/dropdown/mold_section/${Section}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
-      // console.log("dpMold: ", res);
       if (res.length == 0) {
-        $("#MoldName_ReqOpt option").remove();
-        $("#MoldName_ReqOpt").append("<option value='No data'>");
-        $("#MoldName_Req").attr("disabled", "");
+        $('#MoldName_ReqOpt option').remove();
+        $('#MoldName_ReqOpt').append("<option value='No data'>");
+        $('#MoldName_Req').attr('disabled', '');
       } else {
-        $("#MoldName_ReqOpt option").remove();
-        $("#MoldName_ReqOpt optgroup").remove();
-        $("#MoldName_ReqOpt").append("<option value=''> ");
+        $('#MoldName_ReqOpt option').remove();
+        $('#MoldName_ReqOpt optgroup').remove();
+        $('#MoldName_ReqOpt').append("<option value=''> ");
         res.forEach((obj) => {
-          $("#MoldName_ReqOpt").append(
+          $('#MoldName_ReqOpt').append(
             `<option value='${obj.MoldId}) ${obj.MoldName}'>`
           );
         });
       }
     },
     error: function (err) {
-      $("#MoldName_ReqOpt option").remove();
-      $("#MoldName_ReqOpt").append("<option value='No data'>");
-      $("#MoldName_Req").attr("disabled", "");
+      $('#MoldName_ReqOpt option').remove();
+      $('#MoldName_ReqOpt').append("<option value='No data'>");
+      $('#MoldName_Req').attr('disabled', '');
     },
   });
 };
 const dropdownMoldDetailReq = (MoldId) => {
   $.ajax({
     url: `/dropdown/mold_detail/${MoldId}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
-      $("#MoldCtrl_Req").val(res.MoldControlNo);
-      $("#Cavity_Req").val(res.MoldCavity);
+      $('#MoldCtrl_Req').val(res.MoldControlNo);
+      $('#Cavity_Req').val(res.MoldCavity);
     },
     error: function (err) {
-      $("#MoldCtrl_Req").val("No Data");
-      $("#Cavity_Req").val("No Data");
+      $('#MoldCtrl_Req').val('No Data');
+      $('#Cavity_Req').val('No Data');
     },
   });
 };
-const dropdownPart = (StatusId = 1, Filter = "PO", No) => {
+const dropdownPart = (StatusId = 1, Filter = 'PO', No) => {
   $.ajax({
     url:
       StatusId == 1
         ? `/dropdown/part_section/${Filter}`
         : `/dropdown/part/${Filter}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
       if (res.length == 0) {
         $(`#PartName_ActOpt_0${No} option`).remove();
@@ -383,9 +383,9 @@ const dropdownPart = (StatusId = 1, Filter = "PO", No) => {
 const dropdownPartDetail = (PartId, No) => {
   $.ajax({
     url: `/dropdown/part_detail/${PartId}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
       $(`#PartNo_Act_0${No}`).val(res.PartNo);
     },
@@ -394,107 +394,106 @@ const dropdownPartDetail = (PartId, No) => {
     },
   });
 };
-const dropdownPartReq = (StatusId = 1, Filter = "PO") => {
+const dropdownPartReq = (StatusId = 1, Filter = 'PO') => {
   $.ajax({
     url:
       StatusId == 1
         ? `/dropdown/part_section/${Filter}`
         : `/dropdown/part/${Filter}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
       if (res.length == 0) {
-        $("#PartName_ReqOpt option").remove();
-        $("#PartName_ReqOpt").append("<option value='No data'>");
-        $("#PartName_Req").attr("disabled", "");
+        $('#PartName_ReqOpt option').remove();
+        $('#PartName_ReqOpt').append("<option value='No data'>");
+        $('#PartName_Req').attr('disabled', '');
       } else {
-        $("#PartName_ReqOpt option").remove();
-        $("#PartName_ReqOpt optgroup").remove();
-        $("#PartName_ReqOpt").append("<option value=''> ");
+        $('#PartName_ReqOpt option').remove();
+        $('#PartName_ReqOpt optgroup').remove();
+        $('#PartName_ReqOpt').append("<option value=''> ");
         res.forEach((obj) => {
-          $("#PartName_ReqOpt").append(
+          $('#PartName_ReqOpt').append(
             `<option value='${obj.PartId})  ${obj.PartName}'>`
           );
         });
       }
     },
     error: function (err) {
-      $("#PartName_ReqOpt option").remove();
-      $("#PartName_ReqOpt").append("<option value='No data'>");
-      $("#PartName_Req").attr("disabled", "");
+      $('#PartName_ReqOpt option').remove();
+      $('#PartName_ReqOpt').append("<option value='No data'>");
+      $('#PartName_Req').attr('disabled', '');
     },
   });
 };
 const dropdownPartDetailReq = (PartId) => {
   $.ajax({
     url: `/dropdown/part_detail/${PartId}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
-      $("#PartNo_Req").val(res.PartNo);
+      $('#PartNo_Req').val(res.PartNo);
     },
     error: function (err) {
-      $("#PartNo_Req").val("No Data");
+      $('#PartNo_Req').val('No Data');
     },
   });
 };
 
-const dropdownMcReq = (StatusId = 1, Filter = "PO") => {
+const dropdownMcReq = (StatusId = 1, Filter = 'PO') => {
   $.ajax({
     url:
       StatusId == 1
         ? `/dropdown/mc_section/${Filter}`
         : `/dropdown/mc/${Filter}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
       if (res.length == 0) {
-        $("#Mc_ReqOpt option").remove();
-        $("#Mc_ReqOpt").append("<option value='No data'>");
-        $("#Mc_Req").attr("disabled", "");
+        $('#Mc_ReqOpt option').remove();
+        $('#Mc_ReqOpt').append("<option value='No data'>");
+        $('#Mc_Req').attr('disabled', '');
       } else {
-        $("#Mc_ReqOpt option").remove();
-        $("#Mc_ReqOpt optgroup").remove();
-        $("#Mc_ReqOpt").append("<option value=''> ");
+        $('#Mc_ReqOpt option').remove();
+        $('#Mc_ReqOpt optgroup').remove();
+        $('#Mc_ReqOpt').append("<option value=''> ");
         res.forEach((obj) => {
-          $("#Mc_ReqOpt").append(`<option value='${obj.McName}'>`);
+          $('#Mc_ReqOpt').append(`<option value='${obj.McName}'>`);
         });
       }
     },
     error: function (err) {
-      $("#Mc_ReqOpt option").remove();
-      $("#Mc_ReqOpt").append("<option value='No data'>");
-      $("#Mc_Req").attr("disabled", "");
+      $('#Mc_ReqOpt option').remove();
+      $('#Mc_ReqOpt').append("<option value='No data'>");
+      $('#Mc_Req').attr('disabled', '');
     },
   });
 };
 const dropdownProblemReq = (ProblemId = 0) => {
   $.ajax({
-    url: "/dropdown/problem",
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    url: '/dropdown/problem',
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
     success: function (res) {
       if (!res.length) {
-        $("#Problem_Req option").remove();
-        $("#Problem_Req optgroup").remove();
-        $("#Problem_Req").append(
+        $('#Problem_Req option').remove();
+        $('#Problem_Req optgroup').remove();
+        $('#Problem_Req').append(
           "<optgroup label='No data in database'></optgroup>"
         );
       } else {
-        $("#Problem_Req option").remove();
-        $("#Problem_Req optgroup").remove();
-        $("#Problem_Req").append(
+        $('#Problem_Req option').remove();
+        $('#Problem_Req optgroup').remove();
+        $('#Problem_Req').append(
           `<option value=''><span>Please select problem..</span></option>`
         );
         res.forEach((obj) => {
-          // console.log(ProblemId, obj.ProblemId)
           let ProblemSelected;
-          ProblemSelected = obj.ProblemId == ProblemId ? "selected" : "";
-          $("#Problem_Req").append(
+          ProblemSelected = obj.ProblemId == ProblemId ? 'selected' : '';
+          $('#Problem_Req').append(
             `<option value='${obj.ProblemId}' ${ProblemSelected}> 
                         <span>${obj.ProblemNo}) ${obj.Problem}</span>
                       </option>`
@@ -503,9 +502,9 @@ const dropdownProblemReq = (ProblemId = 0) => {
       }
     },
     error: function (err) {
-      $("#Problem_Req option").remove();
-      $("#Problem_Req optgroup").remove();
-      $("#Problem_Req").append(
+      $('#Problem_Req option').remove();
+      $('#Problem_Req optgroup').remove();
+      $('#Problem_Req').append(
         "<optgroup label='No data in database'></optgroup>"
       );
     },
@@ -588,100 +587,96 @@ function getMoldRow(No = 1) {
   </div>`;
 }
 function moldRowDataChange(UserId) {
-  $("#MoldUpload_ActBtn").unbind();
-  $("#MoldUpload_ActBtn").on("click", (e) => {
-    $("#UploadFile_").click();
+  $('#MoldUpload_ActBtn').unbind();
+  $('#MoldUpload_ActBtn').on('click', (e) => {
+    $('#UploadFile_').click();
   });
 
-  $("#UploadFile_").unbind();
-  $("#UploadFile_").change(async function (e) {
+  $('#UploadFile_').unbind();
+  $('#UploadFile_').change(async function (e) {
     let ExFile = e.target.files[0];
     let Excel = new FormData();
-    Excel.append("injshotfile", ExFile, "injshotfile");
-    console.log(Excel);
-    $("#UploadFile_").val("");
+    Excel.append('injshotfile', ExFile, 'injshotfile');
+    $('#UploadFile_').val('');
     try {
       let res = await AjaxDataJsonUploadFile(
         `/pm/upload_injshot/${UserId}`,
         `post`,
         Excel
       );
-      SwalAlert(res, "Uploaded");
+      SwalAlert(res, 'Uploaded');
       MoldActualList.ajax.reload(null, false);
-      MoldShotModal.modal("hide");
+      MoldShotModal.modal('hide');
     } catch (error) {
-      SwalAlert(error, "Error");
+      SwalAlert(error, 'Error');
     }
   });
-  $(".mold-name-act").unbind();
-  $(".mold-name-act").on("keyup change", (e) => {
-    let MoldId = e.target.value.split(")")[0];
-    let No = e.target.id.split("_0")[1];
+  $('.mold-name-act').unbind();
+  $('.mold-name-act').on('keyup change', (e) => {
+    let MoldId = e.target.value.split(')')[0];
+    let No = e.target.id.split('_0')[1];
     dropdownMoldDetail(MoldId, No);
-    $(`#Qty_Prod_0${No},#Qty_Act_0${No}`).val("");
+    $(`#Qty_Prod_0${No},#Qty_Act_0${No}`).val('');
     MoldId != null
-      ? $(`#Qty_Prod_0${No}`).removeAttr("disabled")
-      : $(`#Qty_Prod_0${No}`).attr("disabled", "");
+      ? $(`#Qty_Prod_0${No}`).removeAttr('disabled')
+      : $(`#Qty_Prod_0${No}`).attr('disabled', '');
   });
-  $(".part-name-act").unbind();
-  $(".part-name-act").on("keyup change", (e) => {
-    let PartId = e.target.value.split(")")[0];
-    let No = e.target.id.split("_0")[1];
+  $('.part-name-act').unbind();
+  $('.part-name-act').on('keyup change', (e) => {
+    let PartId = e.target.value.split(')')[0];
+    let No = e.target.id.split('_0')[1];
     dropdownPartDetail(PartId, No);
   });
-  $(".qty-prod").unbind();
-  $(".qty-prod").on("keyup change", (e) => {
-    let No = e.target.id.split("_0")[1];
-    console.log("Qty Name Id", No);
+  $('.qty-prod').unbind();
+  $('.qty-prod').on('keyup change', (e) => {
+    let No = e.target.id.split('_0')[1];
     let Qty_Prod = $(`#${e.target.id}`).val();
     let Cavity = $(`#Cavity_Act_0${No}`).val();
     let Qty_Act = Qty_Prod / Cavity;
     $(`#Qty_Act_0${No}`).val(Math.ceil(Qty_Act));
   });
   // ชื่อตัวแปร
-  $("#Submit_ActBtn").unbind();
-  $("#Submit_ActBtn").on("click", async () => {
-    console.log("เพิ่มช็อตแม่พิมพ์");
+  $('#Submit_ActBtn').unbind();
+  $('#Submit_ActBtn').on('click', async () => {
     let MoldDetail = [];
-    let Max = $("#MoldShotSection").children().length;
+    let Max = $('#MoldShotSection').children().length;
     for (let i = 1; i <= Max; i++) {
       MoldDetail.push({
-        MoldId: $(`#MoldName_Act_0${i}`).val().split(")")[0],
-        PartId: $(`#PartName_Act_0${i}`).val().split(")")[0],
+        MoldId: $(`#MoldName_Act_0${i}`).val().split(')')[0],
+        PartId: $(`#PartName_Act_0${i}`).val().split(')')[0],
         ActualShot: parseInt($(`#Qty_Act_0${i}`).val()),
       });
     }
-    // console.log("Detail: ", MoldDetail);
     let data = {
       UpdateUserId: UserId,
-      UpdateTime: $("#Date_Act").val().replace("T", " "),
+      UpdateTime: $('#Date_Act').val().replace('T', ' '),
       MoldData: MoldDetail,
     };
     try {
       let res = await AjaxDataJson(`/pm/mold_injshot`, `post`, data);
-      SwalAlert(res, "Created");
+      SwalAlert(res, 'Created');
       MoldActualList.ajax.reload(null, false);
-      MoldShotModal.modal("hide");
+      MoldShotModal.modal('hide');
     } catch (error) {
-      SwalAlert(error, "Error");
+      SwalAlert(error, 'Error');
     }
   });
 }
 function getRequestTemplate(UserId, Section) {
   $.ajax({
     url: `/repair/template/${UserId}`,
-    method: "get",
-    contentType: "application/json",
-    dataType: "json",
+    method: 'get',
+    contentType: 'application/json',
+    dataType: 'json',
   })
     .done((res) => {
       let { RequestTime, RequestUser, CheckMold } = res;
-      $("#Date_Req").val(RequestTime);
-      $("#Approved_Req").val(RequestUser);
-      $("#downmoldDiv").html("");
+      $('#Date_Req').val(RequestTime);
+      $('#Approved_Req').val(RequestUser);
+      $('#downmoldDiv').html('');
       CheckMold.forEach((Downmold) => {
         let { CheckMoldId, CheckMoldNo, CheckMold } = Downmold;
-        $("#downmoldDiv").append(`
+        $('#downmoldDiv').append(`
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="Check${CheckMoldId}_Req"/>
                     <label class="form-check-label" for="Check${CheckMoldId}_Req" style="font-size: 12px">${CheckMoldNo}) ${CheckMold}</label>
@@ -692,9 +687,9 @@ function getRequestTemplate(UserId, Section) {
       dropdownMcReq(1, Section);
     })
     .fail((err) => {
-      $("#UserSection_ option, #UserSection_ optgroup").remove();
-      $("#UserPosition_ option, #UserPosition_ optgroup").remove();
-      $("#UserSection_, #UserPosition_").append(
+      $('#UserSection_ option, #UserSection_ optgroup').remove();
+      $('#UserPosition_ option, #UserPosition_ optgroup').remove();
+      $('#UserSection_, #UserPosition_').append(
         "<optgroup label='No data in database'></optgroup>"
       );
     });
@@ -702,71 +697,67 @@ function getRequestTemplate(UserId, Section) {
 function sendRequest(RequestDetail, type) {
   let { UserId, Section, MoldId, MoldName } = RequestDetail;
   let IsOther;
-  $("#RepairForm").trigger("reset");
-  RepairRequestModal.modal("show");
+  $('#RepairForm').trigger('reset');
+  RepairRequestModal.modal('show');
   getRequestTemplate(UserId, Section);
-  $("#MoldName_Req").val(MoldName);
+  $('#MoldName_Req').val(MoldName);
   dropdownMoldDetailReq(MoldId);
 
-  if (type == "other") {
-    console.log(type);
+  if (type == 'other') {
     IsOther = 1;
     $('input[type="radio"][name="Type_Req"]')
-      .prop("checked", false)
-      .removeAttr("disabled");
-  } else if (type == "clean") {
-    console.log(type);
+      .prop('checked', false)
+      .removeAttr('disabled');
+  } else if (type == 'clean') {
     IsOther = 2;
-    $('input[type="radio"][name="Type_Req"]').attr("disabled", "");
-    $('input[type="radio"][name="Type_Req"][value="3"]').prop("checked", true);
+    $('input[type="radio"][name="Type_Req"]').attr('disabled', '');
+    $('input[type="radio"][name="Type_Req"][value="3"]').prop('checked', true);
     $('input[type="radio"][name="Source_Req"][value="MOLD"]').prop(
-      "checked",
+      'checked',
       true
     );
-    $("#Problem_Req").val(20);
-    $("#Detail_Req,#Reason_Req").val("ล้างแม่พิมพ์ : ตามวาระ ( Shot )");
-  } else if (type == "prev") {
-    console.log(type);
+    $('#Problem_Req').val(20);
+    $('#Detail_Req,#Reason_Req').val('ล้างแม่พิมพ์ : ตามวาระ ( Shot )');
+  } else if (type == 'prev') {
     IsOther = 3;
-    $('input[type="radio"][name="Type_Req"]').attr("disabled", "");
-    $('input[type="radio"][name="Type_Req"][value="4"]').prop("checked", true);
+    $('input[type="radio"][name="Type_Req"]').attr('disabled', '');
+    $('input[type="radio"][name="Type_Req"][value="4"]').prop('checked', true);
     $('input[type="radio"][name="Source_Req"][value="MOLD"]').prop(
-      "checked",
+      'checked',
       true
     );
-    $("#Problem_Req").val(21);
-    $("#Detail_Req,#Reason_Req").val("ครบกำหนด PREVENTIVE");
+    $('#Problem_Req').val(21);
+    $('#Detail_Req,#Reason_Req').val('ครบกำหนด PREVENTIVE');
   }
 
-  $("#PartName_Req").unbind();
-  $("#PartName_Req").on("keyup change", () => {
-    let PartId = $("#PartName_Req").val().split(")")[0];
+  $('#PartName_Req').unbind();
+  $('#PartName_Req').on('keyup change', () => {
+    let PartId = $('#PartName_Req').val().split(')')[0];
     dropdownPartDetailReq(PartId);
   });
 
-  $("#File_ReqBtn").unbind();
-  $("#File_ReqBtn").on("click", function () {
-    $("#File_Req").click();
+  $('#File_ReqBtn').unbind();
+  $('#File_ReqBtn').on('click', function () {
+    $('#File_Req').click();
   });
 
-  $("#File_Req").unbind();
-  $("#File_Req").change(function (e) {
+  $('#File_Req').unbind();
+  $('#File_Req').change(function (e) {
     for (let i = 0; i < this.files.length; i++) {
       var reader = new FileReader();
       reader.onload = function (e) {
         // get loaded data and render thumbnail.
         $(`<div class="col preview-container"><img id="preview-request${i}" class="preview-img box-shadow" src="${e.target.result}" />
           <button class="preview-request-close bg-danger" type="button"><i class="fa fa-remove"></i></button></div>`).appendTo(
-          "#DpFile_Req .dp-scrollY"
+          '#DpFile_Req .dp-scrollY'
         );
       };
       // read the image file as a data URL.
       reader.readAsDataURL(this.files[i]);
     }
-    $("#DpFile_Req").unbind();
-    $("#DpFile_Req").on("click", ".preview-request-close", async (e) => {
-      console.log("delete pic");
-      $(e.target).parents(".preview-container").remove();
+    $('#DpFile_Req').unbind();
+    $('#DpFile_Req').on('click', '.preview-request-close', async (e) => {
+      $(e.target).parents('.preview-container').remove();
     });
   });
 
@@ -775,53 +766,53 @@ function sendRequest(RequestDetail, type) {
     let Type = $('input[type="radio"][name="Type_Req"]:checked').val();
     Type == 3 || Type == 4
       ? $('input[type="radio"][name="Source_Req"][value="MOLD"]').prop(
-          "checked",
+          'checked',
           true
         )
       : $('input[type="radio"][name="Source_Req"][value="MOLD"]').prop(
-          "checked",
+          'checked',
           false
         );
     if (Type == 3) {
-      $("#Problem_Req").val(19);
+      $('#Problem_Req').val(19);
       let InputText = $(`#Problem_Req option[value='19'] span`).text();
-      let Check = InputText.split(") ");
+      let Check = InputText.split(') ');
       if (isNaN(Check[0])) {
-        $("#Detail_Req,#Reason_Req").val(Check[1]);
+        $('#Detail_Req,#Reason_Req').val(Check[1]);
       }
     } else if (Type == 4) {
-      $("#Problem_Req").val(21);
+      $('#Problem_Req').val(21);
       let InputText = $(`#Problem_Req option[value='21'] span`).text();
-      let Check = InputText.split(") ");
+      let Check = InputText.split(') ');
       if (isNaN(Check[0])) {
-        $("#Detail_Req,#Reason_Req").val(Check[1]);
+        $('#Detail_Req,#Reason_Req').val(Check[1]);
       }
     } else {
-      $("#Problem_Req,#Detail_Req,#Reason_Req").val("");
+      $('#Problem_Req,#Detail_Req,#Reason_Req').val('');
     }
   });
-  $("#Problem_Req").unbind();
-  $("#Problem_Req").change((e) => {
-    let value = $("#Problem_Req").val();
+  $('#Problem_Req').unbind();
+  $('#Problem_Req').change((e) => {
+    let value = $('#Problem_Req').val();
     let InputText = $(`#Problem_Req option[value='${value}'] span`).text();
-    let Check = InputText.split(") ");
+    let Check = InputText.split(') ');
     if (isNaN(Check[0])) {
-      $("#Detail_Req,#Reason_Req").val(Check[1]);
+      $('#Detail_Req,#Reason_Req').val(Check[1]);
     }
   });
   $SubmitBtn.unbind();
-  $SubmitBtn.on("click", async () => {
-    console.log("ส่งคำสั่งซ่อม");
+  $SubmitBtn.on('click', async () => {
+    // ส่งคำสั่งซ่อม
     let MoldCheckList = [];
-    let DownmoldList = $("#downmoldDiv").children();
+    let DownmoldList = $('#downmoldDiv').children();
     for (let downmold = 0; downmold < DownmoldList.length; downmold++) {
       let checkbox = $(DownmoldList[downmold]).find('input[type="checkbox"]');
-      let Checked = $(checkbox).is(":checked") ? 1 : 0;
-      let CheckMoldId = checkbox.attr("id").split("_")[0].replace("Check", "");
+      let Checked = $(checkbox).is(':checked') ? 1 : 0;
+      let CheckMoldId = checkbox.attr('id').split('_')[0].replace('Check', '');
       let [CheckMoldNo, CheckMold] = $(DownmoldList[downmold])
-        .find("label")
+        .find('label')
         .text()
-        .split(") ");
+        .split(') ');
       MoldCheckList.push({
         CheckMoldId,
         CheckMoldNo,
@@ -829,49 +820,49 @@ function sendRequest(RequestDetail, type) {
         Checked,
       });
     }
-    let count_Pic = $("#DpFile_Req .dp-scrollY").children().length;
+    let count_Pic = $('#DpFile_Req .dp-scrollY').children().length;
     let RequestPic = new FormData();
     for (let i = 0; i < count_Pic; i++) {
       let blob = dataURLtoBlob(
-        $($("#DpFile_Req .dp-scrollY .preview-container img")[i]).attr("src")
+        $($('#DpFile_Req .dp-scrollY .preview-container img')[i]).attr('src')
       );
-      RequestPic.append("orderimg", blob, `orderimg_${i}`);
+      RequestPic.append('orderimg', blob, `orderimg_${i}`);
     }
     let Data = {
       RequestUserId: UserId,
-      RequestTime: $("#Date_Req").val().replace("T", " "),
+      RequestTime: $('#Date_Req').val().replace('T', ' '),
       MoldId: MoldId,
-      PartId: parseInt($("#PartName_Req").val().split(")")[0]),
-      McName: $("#Mc_Req").val(),
-      Cavity: $("#Cavity_Req").val(),
+      PartId: parseInt($('#PartName_Req').val().split(')')[0]),
+      McName: $('#Mc_Req').val(),
+      Cavity: $('#Cavity_Req').val(),
       OrderType: $('input[type="radio"][name="Type_Req"]:checked').val() || 0,
       CoolingType:
         $('input[type="radio"][name="Cooling_Req"]:checked').val() || 0,
-      InjDate: $("#ScheduleInj_Req").val().replace("T", " "),
-      PartDate: $("#SchedulePart_Req").val().replace("T", " "),
-      Detail: $("#Detail_Req").val(),
-      Cause: $("#Reason_Req").val(),
-      ProblemId: $("#Problem_Req").val(),
+      InjDate: $('#ScheduleInj_Req').val().replace('T', ' '),
+      PartDate: $('#SchedulePart_Req').val().replace('T', ' '),
+      Detail: $('#Detail_Req').val(),
+      Cause: $('#Reason_Req').val(),
+      ProblemId: $('#Problem_Req').val(),
       ProblemSource:
         $('input[type="radio"][name="Source_Req"]:checked').val() || 0,
-      InjShot: $("#Shot_Req").val(),
+      InjShot: $('#Shot_Req').val(),
       MoldCheckList,
       IsOther: IsOther,
     };
     try {
       let res = await AjaxDataJsonUploadFile(
-        `/repair/request/${JSON.stringify(Data).replaceAll("/", "%2F")}`,
-        "post",
+        `/repair/request/${JSON.stringify(Data).replaceAll('/', '%2F')}`,
+        'post',
         RequestPic
       );
-      SwalAlert(res, "Request");
+      SwalAlert(res, 'Request');
       tbPmHistory.ajax.reload(null, false);
       tbCumulativeShot.ajax.reload(null, false);
       MoldActualList.ajax.reload(null, false);
-      MoldShotDetailModal.modal("hide");
-      RepairRequestModal.modal("hide");
+      MoldShotDetailModal.modal('hide');
+      RepairRequestModal.modal('hide');
     } catch (error) {
-      SwalAlert(error, "Error");
+      SwalAlert(error, 'Error');
     }
   });
 }
@@ -883,105 +874,102 @@ const socketio = () => {
     reconnectionAttempts: 99999,
   });
 
-  socket.on("connect", () => {
-    console.log("connected");
-    socket.emit("joinRoom", `PmOrder`);
+  socket.on('connect', () => {
+    console.log('connected');
+    socket.emit('joinRoom', `PmOrder`);
   });
 
-  socket.on("reconnect", () => {
+  socket.on('reconnect', () => {
     console.log(`reconnect`);
-    socket.emit("joinRoom", `PmOrder`);
+    socket.emit('joinRoom', `PmOrder`);
   });
-  socket.on("connect_error", (err) => {
+  socket.on('connect_error', (err) => {
     console.log(`connect_error due to ${err.message}`);
   });
 
-  socket.on("check-connect", (msg) => {
+  socket.on('check-connect', (msg) => {
     console.log(msg);
   });
 
-  socket.on("pm-update", (msg) => {
-    console.log(msg);
-    fillMoldActualList($("#Section").val());
+  socket.on('pm-update', (msg) => {
+    fillMoldActualList($('#Section').val());
   });
-  socket.on("disconnect", () => {
-    console.log("disconnectd");
+  socket.on('disconnect', () => {
+    console.log('disconnectd');
     window.setTimeout(socket.connect(), 5000);
   });
 };
 $(async function () {
-  fillMoldActualList("ALL");
+  fillMoldActualList('ALL');
   searchMoldActualList();
   socketio();
   try {
-    let res = await AjaxDataJson("/dropdown/section/ALL", "get");
-    $("#Section").empty();
+    let res = await AjaxDataJson('/dropdown/section/ALL', 'get');
+    $('#Section').empty();
     if (res.length != 0) {
-      $("#Section").append(
+      $('#Section').append(
         `<option value="ALL" selected="">Please select section..</option>`
       );
       res.forEach((data) => {
         let { Section } = data;
-        $("#Section").append(`<option value ="${Section}">${Section}</option>`);
+        $('#Section').append(`<option value ="${Section}">${Section}</option>`);
       });
-    } else $("#Section").append(`<option value ="No Data">No Data</option>`);
+    } else $('#Section').append(`<option value ="No Data">No Data</option>`);
     let {} = res;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
-  $("#Section").unbind();
-  $("#Section").on("change", (e) => {
-    console.log(e.target.value);
+  $('#Section').unbind();
+  $('#Section').on('change', (e) => {
     fillMoldActualList(e.target.value);
   });
 
-  $("#LoginPassword_Req").unbind();
-  $("#LoginPassword_Req").on("keypress", function (e) {
+  $('#LoginPassword_Req').unbind();
+  $('#LoginPassword_Req').on('keypress', function (e) {
     // If the user presses the "Enter" key on the keyboard
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       // Cancel the default action, if needed
       e.preventDefault();
       $LoginBtn.click();
     }
   });
 
-  $("#MoldShot_ActBtn").unbind();
-  $("#MoldShot_ActBtn").on("click", () => {
-    $("#LoginPassword_Req").val("");
-    LoginModal.modal("show");
-    UpdateActForm.trigger("reset");
+  $('#MoldShot_ActBtn').unbind();
+  $('#MoldShot_ActBtn').on('click', () => {
+    $('#LoginPassword_Req').val('');
+    LoginModal.modal('show');
+    UpdateActForm.trigger('reset');
 
     let UserId, Section;
     $LoginBtn.unbind();
-    $LoginBtn.on("click", async () => {
+    $LoginBtn.on('click', async () => {
       let LoginData = {
-        Userpass: $("#LoginPassword_Req").val(),
-        Action: "request",
+        Userpass: $('#LoginPassword_Req').val(),
+        Action: 'request',
       };
       let user;
       try {
         user = await checkUser(LoginData);
-        $("#MoldShotSection").html(getMoldRow());
-        MoldShotModal.modal("show");
-        LoginModal.modal("hide");
+        $('#MoldShotSection').html(getMoldRow());
+        MoldShotModal.modal('show');
+        LoginModal.modal('hide');
         let Name = user.Fullname;
         UserId = user.UserId;
         Section = user.Section;
-        $("#Issue_Act").val(Name);
-        $("#Date_Act").val(getDateTimeLocal());
+        $('#Issue_Act').val(Name);
+        $('#Date_Act').val(getDateTimeLocal());
       } catch (error) {
         callSwal(error);
       }
-      let MoldRow = $("#MoldShotSection").children().length + 1;
+      let MoldRow = $('#MoldShotSection').children().length + 1;
       dropdownMold(Section, 1);
       dropdownPart(1, Section, 1);
       moldRowDataChange(UserId);
 
-      $("#Add_ModRowBtn").unbind();
-      $("#Add_ModRowBtn").on("click", (e) => {
+      $('#Add_ModRowBtn').unbind();
+      $('#Add_ModRowBtn').on('click', (e) => {
         let newMoldRow = getMoldRow(MoldRow);
-        console.log(MoldRow);
-        $(newMoldRow).appendTo("#MoldShotSection");
+        $(newMoldRow).appendTo('#MoldShotSection');
         dropdownMold(Section, MoldRow);
         dropdownPart(1, Section, MoldRow);
         MoldRow++;
@@ -990,9 +978,9 @@ $(async function () {
     });
   });
 
-  $("#MoldActualList tbody").unbind();
-  $("#MoldActualList tbody").on("click", "tr", (e) => {
-    let row = $(e.target).closest("tr");
+  $('#MoldActualList tbody').unbind();
+  $('#MoldActualList tbody').on('click', 'tr', (e) => {
+    let row = $(e.target).closest('tr');
     let {
       MoldId,
       MoldName,
@@ -1008,22 +996,22 @@ $(async function () {
       DangerPercent,
       WarnPercent,
     } = MoldActualList.row(row).data();
-    $("#LoginPassword_Req").val("");
-    LoginModal.modal("show");
+    $('#LoginPassword_Req').val('');
+    LoginModal.modal('show');
 
     let UserId, Name, Section;
     $LoginBtn.unbind();
-    $LoginBtn.on("click", async () => {
+    $LoginBtn.on('click', async () => {
       let LoginData = {
-        Userpass: $("#LoginPassword_Req").val(),
-        Action: "request",
+        Userpass: $('#LoginPassword_Req').val(),
+        Action: 'request',
       };
       let user;
       try {
         user = await checkUser(LoginData);
-        MoldShotDetailModal.modal("show");
-        LoginModal.modal("hide");
-        $("#DetailActForm").trigger("reset");
+        MoldShotDetailModal.modal('show');
+        LoginModal.modal('hide');
+        $('#DetailActForm').trigger('reset');
         Name = user.Fullname;
         UserId = user.UserId;
         Section = user.Section;
@@ -1032,17 +1020,17 @@ $(async function () {
       }
 
       // fillData
-      $("#MoldCtrlNo_Edit").val(MoldControlNo);
-      $("#MoldName_Edit").val(MoldName);
-      $("#OtherPlan").val(OtherPlan);
-      $("#OtherAct").val(OtherShot);
-      $("#CleanPlan").val(CleaningPlan);
-      $("#CleanAct").val(CleaningShot);
-      $("#PreventivePlan").val(PreventivePlan);
-      $("#PreventiveAct").val(PreventiveShot);
-      $("#CumulativePlan").val(LifeShot);
-      $("#CumulativeAct").val(CumulativeShot);
-      $("#Pmtype_").val('ALL');
+      $('#MoldCtrlNo_Edit').val(MoldControlNo);
+      $('#MoldName_Edit').val(MoldName);
+      $('#OtherPlan').val(OtherPlan);
+      $('#OtherAct').val(OtherShot);
+      $('#CleanPlan').val(CleaningPlan);
+      $('#CleanAct').val(CleaningShot);
+      $('#PreventivePlan').val(PreventivePlan);
+      $('#PreventiveAct').val(PreventiveShot);
+      $('#CumulativePlan').val(LifeShot);
+      $('#CumulativeAct').val(CumulativeShot);
+      $('#Pmtype_').val('ALL');
 
       showRequestBtn(`Other_Pm`, OtherPlan, OtherShot, WarnPercent);
       showRequestBtn(`Cleaning_Pm`, CleaningPlan, CleaningShot, WarnPercent);
@@ -1052,17 +1040,15 @@ $(async function () {
         PreventiveShot,
         WarnPercent
       );
-      // console.log(CumulativeShot)
       LifeShot == 0 || CumulativeShot == 0
-        ? $("#ClearShot_Pm").hide()
-        : $("#ClearShot_Pm").show();
+        ? $('#ClearShot_Pm').hide()
+        : $('#ClearShot_Pm').show();
 
       let FilterTime = {
-        FromDate: $(`#FromDate_`).val().replace("T", " "),
-        ToDate: $(`#ToDate_`).val().replace("T", " "),
-        PmType: $("#Pmtype_").val(),
+        FromDate: $(`#FromDate_`).val().replace('T', ' '),
+        ToDate: $(`#ToDate_`).val().replace('T', ' '),
+        PmType: $('#Pmtype_').val(),
       };
-      console.log(FilterTime);
       tbActualHistory = await fillTable(
         `/pm/actual_history/${MoldId}&${JSON.stringify(FilterTime)}`,
         `tbActualHistory`,
@@ -1086,53 +1072,54 @@ $(async function () {
         MoldName,
       };
       dropdownProblemReq();
-      $("#Other_Pm").unbind();
-      $("#Other_Pm").on("click", async () => {
-        sendRequest(RequestDetail, "other");
+      $('#Other_Pm').unbind();
+      $('#Other_Pm').on('click', async () => {
+        sendRequest(RequestDetail, 'other');
       });
-      $("#Cleaning_Pm").unbind();
-      $("#Cleaning_Pm").on("click", async () => {
-        sendRequest(RequestDetail, "clean");
+      $('#Cleaning_Pm').unbind();
+      $('#Cleaning_Pm').on('click', async () => {
+        sendRequest(RequestDetail, 'clean');
       });
-      $("#Preventive_Pm").unbind();
-      $("#Preventive_Pm").on("click", async () => {
-        sendRequest(RequestDetail, "prev");
+      $('#Preventive_Pm').unbind();
+      $('#Preventive_Pm').on('click', async () => {
+        sendRequest(RequestDetail, 'prev');
       });
-      $("#ClearShot_Pm").unbind();
-      $("#ClearShot_Pm").on("click", async () => {
+      $('#ClearShot_Pm').unbind();
+      $('#ClearShot_Pm').on('click', async () => {
         try {
-          let res = await AjaxClear(`/pm/clear_cumulative/${MoldId}`, "put");
-          SwalAlert(res, "Clear");
-          $("#CumulativeAct").val(0);
-          $("#ClearShot_Pm").hide();
+          let res = await AjaxClear(`/pm/clear_cumulative/${MoldId}`, 'put');
+          SwalAlert(res, 'Clear');
+          $('#CumulativeAct').val(0);
+          $('#ClearShot_Pm').hide();
           MoldActualList.ajax.reload(null, false);
         } catch (error) {
-          SwalAlert(error, "Error");
+          SwalAlert(error, 'Error');
         }
       });
       $('#DownloadHis_ActBtn').unbind();
-      $('#DownloadHis_ActBtn').on('click',() => {
+      $('#DownloadHis_ActBtn').on('click', () => {
         let FilterTime = {
-          FromDate: $(`#FromDate_`).val().replace("T", " ") || "",
-          ToDate: $(`#ToDate_`).val().replace("T", " "),
-          PmType: $("#Pmtype_").val(),
+          FromDate: $(`#FromDate_`).val().replace('T', ' ') || '',
+          ToDate: $(`#ToDate_`).val().replace('T', ' '),
+          PmType: $('#Pmtype_').val(),
         };
-        window.open(`/pm/export_actual/${MoldId}&${JSON.stringify(FilterTime)}`);
+        window.open(
+          `/pm/export_actual/${MoldId}&${JSON.stringify(FilterTime)}`
+        );
       });
-      $("#FromDate_,#ToDate_,#Pmtype_").unbind();
-      $("#FromDate_,#ToDate_,#Pmtype_").change(async (e) => {
-        // console.log(e.target.id);
+      $('#FromDate_,#ToDate_,#Pmtype_').unbind();
+      $('#FromDate_,#ToDate_,#Pmtype_').change(async (e) => {
         let FilterTime = {
-          FromDate: $(`#FromDate_`).val().replace("T", " ") || "",
-          ToDate: $(`#ToDate_`).val().replace("T", " "),
-          PmType: $("#Pmtype_").val(),
+          FromDate: $(`#FromDate_`).val().replace('T', ' ') || '',
+          ToDate: $(`#ToDate_`).val().replace('T', ' '),
+          PmType: $('#Pmtype_').val(),
         };
         tbPmHistory = await fillTable(
           `/pm/pm_history/${MoldId}&${JSON.stringify(FilterTime)}`,
           `tbPmHistory`,
           PmHistoryCol
         );
-        if (e.target.id != "Pmtype_") {
+        if (e.target.id != 'Pmtype_') {
           tbActualHistory = await fillTable(
             `/pm/actual_history/${MoldId}&${JSON.stringify(FilterTime)}`,
             `tbActualHistory`,
