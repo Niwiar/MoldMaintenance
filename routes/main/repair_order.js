@@ -279,7 +279,6 @@ router.post('/request', multerOrder, async (req, res, next) => {
         ? '0' + SlipCount
         : SlipCount;
     let SlipNo = yy.slice(2) + mm + dd + SlipTxt;
-    let Filenames = `${SlipNo}_request`;
     let InsertRepair = `INSERT INTO RepairOrder(SlipNo,InjShot, Section, MoldId, MoldName, MoldControlNo,
         PartId, PartName, PartNo, McName, Cavity, OrderType, CoolingType, InjDate, PartDate,
         Detail, Cause, ProblemId, ProblemNo, Problem, ProblemSource, RequestUserId, RequestTime)
@@ -292,14 +291,8 @@ router.post('/request', multerOrder, async (req, res, next) => {
     let RepairId = Repair.recordset[0].Id;
     let ShotDest = './img/repairorder';
     for (let idx = 0; idx < Files.length; idx++) {
-      let des = path.join(process.cwd(), '/public/' + ShotDest);
       let IndexImg = await selectIndexImg(RepairId, 'order');
-      let Filename = await changeFileName(
-        des,
-        Files[idx],
-        `${Filenames}_${IndexImg}`
-      );
-      let ProblemFilePath = `${ShotDest}/${Filename}`;
+      let ProblemFilePath = `${ShotDest}/${Files[idx].filename}`;
       let OrderUpload = `INSERT INTO [RepairOrderImg](
         RepairId,IndexImg,ProblemFilePath)
         VALUES(
@@ -458,18 +451,11 @@ router.put('/repair_upload/:RepairId', multerOrder, async (req, res, next) => {
       );
     let pool = await sql.connect(dbconfig);
     let SlipNo = await getSlipNo(RepairId);
-    let Filenames = `${SlipNo}_repair${IndexProgress}`,
-      ImgArr = [];
+    let ImgArr = [];
     let ShotDest = './img/repairorder';
     for (let idx = 0; idx < Files.length; idx++) {
-      let des = path.join(process.cwd(), '/public/' + ShotDest);
       let IndexImg = await selectIndexImg(RepairId, 'repair', IndexProgress);
-      let Filename = await changeFileName(
-        des,
-        Files[idx],
-        `${Filenames}_${IndexImg}`
-      );
-      let RepairFilePath = `${ShotDest}/${Filename}`;
+      let RepairFilePath = `${ShotDest}/${Files[idx].filename}`;
       let RepairUpload = `INSERT INTO [RepairProgressImg](
         RepairId,IndexProgress,IndexImg,RepairFilePath,RepairFileTime,UploadUserId)
         VALUES(
@@ -502,18 +488,11 @@ router.put(
         );
       let pool = await sql.connect(dbconfig);
       let SlipNo = await getSlipNo(RepairId);
-      let Filenames = `${SlipNo}_inspect${IndexProgress}`,
-        ImgArr = [];
+      let ImgArr = [];
       let ShotDest = './img/repairorder';
       for (let idx = 0; idx < Files.length; idx++) {
-        let des = path.join(process.cwd(), '/public/' + ShotDest);
         let IndexImg = await selectIndexImg(RepairId, 'inspect', IndexProgress);
-        let Filename = await changeFileName(
-          des,
-          Files[idx],
-          `${Filenames}_${IndexImg}`
-        );
-        let InspectFilePath = `${ShotDest}/${Filename}`;
+        let InspectFilePath = `${ShotDest}/${Files[idx].filename}`;
         let InspectUpload = `INSERT INTO [RepairInspectImg](
         RepairId,IndexProgress,IndexImg,InspectFilePath,InspectFileTime,UploadUserId)
         VALUES(
@@ -1048,18 +1027,11 @@ router.put('/qa_upload/:RepairId', multerOrder, async (req, res, next) => {
     let { IndexQa, UploadUserId } = Data;
     let pool = await sql.connect(dbconfig);
     let SlipNo = await getSlipNo(RepairId);
-    let Filenames = `${SlipNo}_qa${IndexQa}`,
-      ImgArr = [];
+    let ImgArr = [];
     let ShotDest = './img/repairorder';
     for (let idx = 0; idx < Files.length; idx++) {
-      let des = path.join(process.cwd(), '/public/' + ShotDest);
       let IndexImg = await selectIndexImg(RepairId, 'qa', IndexQa);
-      let Filename = await changeFileName(
-        des,
-        Files[idx],
-        `${Filenames}_${IndexImg}`
-      );
-      let QaFilePath = `${ShotDest}/${Filename}`;
+      let QaFilePath = `${ShotDest}/${Files[idx].filename}`;
       let QaUpload = `INSERT INTO [RepairQaImg](
         RepairId,IndexQa,IndexImg,QaFilePath,QaFileTime,QaUploadUserId)
         VALUES(
